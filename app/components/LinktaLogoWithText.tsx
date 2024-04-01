@@ -1,18 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+import React from 'react'
 
-const LinktaLogoWithText: React.FC = () => {
+const LinktaLogoWithText = () => {
   return (
-    <figure>
-      <Image
-        src="/linkta-logo-gray.svg"
-        width={50}
-        height={50}
-        alt="Linkta Logo"
-      />
-      <figcaption>Linkta</figcaption>
-    </figure>
-  );
-};
+    <div>LinktaLogoWithText</div>
+  )
+}
 
-export default LinktaLogoWithText;
+export default LinktaLogoWithText

@@ -1,3 +1,21 @@
-export default function Home() {
-  return <main>SIGN UP NOW AND JOIN THE LINKTA WORLD TAKEOVER</main>;
+import React from 'react'
+import LandingPageTreeVisualizationPanel from './components/main-content/LandingPageTreeVisualizationPanel';
+import LandingPageMainHero from './components/main-content/LandingPageMainHero';
+import WaitingListForm from './components/main-content/WaitingListForm';
+import WaitingListResponseToast from './components/main-content/WaitingListResponseToast';
+import ShowFormButton from './components/main-content/ShowFormButton';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Hi there,</h1>
+      <WaitingListResponseToast />
+      <LandingPageMainHero />
+      <LandingPageTreeVisualizationPanel/>
+      <ShowFormButton />
+      <WaitingListForm />
+    </div>
+  )
 }
+
+export default Home;

@@ -12,7 +12,7 @@ const cookiePreferencesPageRouteTab: Tab = {
 };
 const securityPageRouteTab: Tab = { tabname: 'Security', path: '/security' };
 const legalPageRouteTab: Tab = { tabname: 'Legal', path: '/legal' };
-const privacyPageRouteTab: Tab = { tabname: 'Privacy', path: '/privacy' };
+const privacyPageRouteTab: Tab = { tabname: 'Privacy', path: 'https://ai.google.dev/terms' };
 /**
  * Maps footer labels to link
  */

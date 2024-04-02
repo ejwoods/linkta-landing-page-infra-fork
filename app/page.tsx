@@ -4,15 +4,15 @@ import WaitingListForm from './components/main-content/PrelaunchSignUpForm';
 import WaitingListResponseToast from './components/main-content/SubmissionStatusPopup';
 import ShowFormButton from './components/main-content/VisualizationTriggerButton';
 
-export default function Home () {
+export default function Home() {
   return (
     <div>
       <h1>Hi there,</h1>
       <WaitingListResponseToast />
       <LandingPageMainHero />
-      <LandingPageTreeVisualizationPanel/>
+      <LandingPageTreeVisualizationPanel />
       <ShowFormButton />
       <WaitingListForm />
     </div>
-  )
+  );
 }

@@ -1,6 +1,3 @@
-export default function PrelaunchSignUpForm () {
-  return (
-    <div>PrelaunchSignUpForm</div>
-  )
+export default function PrelaunchSignUpForm() {
+  return <div>PrelaunchSignUpForm</div>;
 }
-

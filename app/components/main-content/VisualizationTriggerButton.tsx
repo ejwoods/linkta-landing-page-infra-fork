@@ -1,6 +1,3 @@
 export default function VisualizationTriggerButton() {
-  return (
-    <div>VisualizationTriggerButton</div>
-  )
+  return <div>VisualizationTriggerButton</div>;
 }
-

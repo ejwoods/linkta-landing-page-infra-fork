@@ -1,5 +1,3 @@
-export default function SubmissionStatusPopup () {
-  return (
-    <div>SubmissionStatusPopup</div>
-  )
+export default function SubmissionStatusPopup() {
+  return <div>SubmissionStatusPopup</div>;
 }

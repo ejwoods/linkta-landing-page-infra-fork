@@ -4,7 +4,7 @@ import WaitingListForm from './components/main-content/WaitingListForm';
 import WaitingListResponseToast from './components/main-content/WaitingListResponseToast';
 import ShowFormButton from './components/main-content/ShowFormButton';
 
-const Home = () => {
+export default function Home () {
   return (
     <div>
       <h1>Hi there,</h1>
@@ -16,5 +16,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home;

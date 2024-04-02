@@ -1,7 +1,6 @@
-const LandingPageTreeVisualizationPanel = () => {
+export default function LandingPageTreeVisualizationPanel () {
   return (
     <div>LandingPageTreeVisualizationPanel</div>
   )
 }
 
-export default LandingPageTreeVisualizationPanel;

@@ -1,7 +1,5 @@
-const WaitingListResponseToast = () => {
+export default function WaitingListResponseToast () {
   return (
     <div>WaitingListResponseToast</div>
   )
 }
-
-export default WaitingListResponseToast;

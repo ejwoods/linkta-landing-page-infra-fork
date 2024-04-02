@@ -1,7 +1,5 @@
-const LinktaLogoWithText = () => {
+export default function LinktaLogoWithText = () => {
   return (
     <div>LinktaLogoWithText</div>
   )
 }
-
-export default LinktaLogoWithText

@@ -1,7 +1,6 @@
-const WaitingListForm = () => {
+export default function WaitingListForm () {
   return (
     <div>WaitingListForm</div>
   )
 }
 
-export default WaitingListForm;

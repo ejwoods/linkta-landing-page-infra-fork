@@ -1,7 +1,6 @@
-const ShowFormButton = () => {
+export default function ShowFormButton() {
   return (
     <div>ShowFormButton</div>
   )
 }
 
-export default ShowFormButton;

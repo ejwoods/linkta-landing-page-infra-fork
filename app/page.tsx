@@ -1,4 +1,3 @@
-import React from 'react'
 import LandingPageTreeVisualizationPanel from './components/main-content/LandingPageTreeVisualizationPanel';
 import LandingPageMainHero from './components/main-content/LandingPageMainHero';
 import WaitingListForm from './components/main-content/WaitingListForm';

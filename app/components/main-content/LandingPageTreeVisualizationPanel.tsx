@@ -1,5 +1,3 @@
-import React from 'react'
-
 const LandingPageTreeVisualizationPanel = () => {
   return (
     <div>LandingPageTreeVisualizationPanel</div>

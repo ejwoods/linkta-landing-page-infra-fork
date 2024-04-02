@@ -1,14 +1,14 @@
+import Image from 'next/image';
 export default function LinktaLogoWithText () {
   return (
     <figure>
-      <img
+      <Image
         src="/linkta-logo-gray.svg"
-        width="50"
-        height="50"
+        width={50}
+        height={50}
         alt="Linkta Logo"
       />
       <figcaption>Linkta</figcaption>
     </figure>
   )
 }
-

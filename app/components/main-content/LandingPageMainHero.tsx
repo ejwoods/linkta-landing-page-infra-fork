@@ -1,6 +1,3 @@
-export default function LandingPageMainHero () {
-  return (
-    <div>LandingPageMainHero</div>
-  )
+export default function LandingPageMainHero() {
+  return <div>LandingPageMainHero</div>;
 }
-

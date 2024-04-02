@@ -1,6 +1,3 @@
-export default function LandingPageTreeVisualizationPanel () {
-  return (
-    <div>LandingPageTreeVisualizationPanel</div>
-  )
+export default function LandingPageTreeVisualizationPanel() {
+  return <div>LandingPageTreeVisualizationPanel</div>;
 }
-

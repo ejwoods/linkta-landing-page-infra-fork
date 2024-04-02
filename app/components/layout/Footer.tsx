@@ -1,7 +1,7 @@
-import { footerLinks } from "./layoutConfig";
+import { footerLinks } from './layoutConfig';
 import Link from 'next/link';
 
-export default function Footer (){
+export default function Footer() {
   return (
     <>
       <div>©2024 Linkta L.L.C. All rights reserved.</div>
@@ -13,5 +13,5 @@ export default function Footer (){
         ))}
       </ul>
     </>
-  )
+  );
 }

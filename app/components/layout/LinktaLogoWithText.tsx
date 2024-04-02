@@ -1,5 +1,5 @@
 import Image from 'next/image';
-export default function LinktaLogoWithText () {
+export default function LinktaLogoWithText() {
   return (
     <figure>
       <Image
@@ -10,5 +10,5 @@ export default function LinktaLogoWithText () {
       />
       <figcaption>Linkta</figcaption>
     </figure>
-  )
+  );
 }

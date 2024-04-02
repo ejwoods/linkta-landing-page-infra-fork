@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Footer from "./components/layout/Footer";
-import LinktaLogoWithText from "./components/layout/LinktaLogoWithText";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Footer from './components/layout/Footer';
+import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Linkta",
-  description: "Revolutionize your learning",
+  title: 'Linkta',
+  description: 'Revolutionize your learning',
 };
 
 export default function RootLayout({
@@ -19,9 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header><LinktaLogoWithText /></header>
+        <header>
+          <LinktaLogoWithText />
+        </header>
         <main>{children}</main>
-        <footer><Footer /></footer>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

@@ -5,7 +5,6 @@ export default function Footer (){
   return (
     <>
       <div>©2024 Linkta L.L.C. All rights reserved.</div>
-
       <ul>
         {footerLinks.map((tab) => (
           <li key={`${tab.path}-${tab.tabname}`}>

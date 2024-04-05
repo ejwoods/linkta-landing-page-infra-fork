@@ -1,7 +1,7 @@
-export default function Home() {
+export default function CookiePreferences() {
   return (
     <div>
-      <h1>cookies prefences</h1>
+      <h1>cookies preferences placeholder</h1>
     </div>
   );
 }

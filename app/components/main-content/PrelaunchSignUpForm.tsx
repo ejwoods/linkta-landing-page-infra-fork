@@ -41,7 +41,7 @@ export default function PrelaunchSignUpForm() {
               {...form.getInputProps('email')}
             />
 
-            <Button type="submit">Sign Up</Button>
+            <Button type="submit">Join Waiting List</Button>
           </section>
         </form>
       </Box>

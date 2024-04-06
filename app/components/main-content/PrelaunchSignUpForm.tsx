@@ -31,6 +31,8 @@ export default function PrelaunchSignUpForm() {
             label="Email"
             {...form.getInputProps('email')}
           />
+
+          <Button type="submit" mt="sm">Sign Up</Button>
         </form>
       </Box>
     </>

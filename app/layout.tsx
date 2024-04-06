@@ -4,7 +4,7 @@ import './globals.css';
 import '@mantine/core/styles.css';
 import Footer from './components/layout/Footer';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={inter.className}>
         <MantineProvider>
           <header>

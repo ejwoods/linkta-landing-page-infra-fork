@@ -18,7 +18,9 @@ export default function PrelaunchSignUpForm() {
 
   return (
     <>
-      <div>PrelaunchSignUpForm</div>
+      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+
+      </form>
     </>
   )
 }

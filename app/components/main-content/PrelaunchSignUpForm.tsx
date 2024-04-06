@@ -20,6 +20,10 @@ export default function PrelaunchSignUpForm() {
     <>
       <Box maw={300} mx="auto">
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
+          <Button>Google Sign In Placeholder</Button>
+
+          <Button>Github Sign In Placeholder</Button>
+
           <TextInput
             required
             label="Name"
@@ -32,7 +36,7 @@ export default function PrelaunchSignUpForm() {
             {...form.getInputProps('email')}
           />
 
-          <Button type="submit" mt="sm">Sign Up</Button>
+          <Button type="submit">Sign Up</Button>
         </form>
       </Box>
     </>

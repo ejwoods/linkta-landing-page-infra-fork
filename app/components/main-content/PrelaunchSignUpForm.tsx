@@ -20,23 +20,29 @@ export default function PrelaunchSignUpForm() {
     <>
       <Box maw={300} mx="auto">
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
-          <Button>Google Sign In Placeholder</Button>
 
-          <Button>Github Sign In Placeholder</Button>
+          <section aria-label="Sign Up with OAuth Providers">
+            <h3>sign up with google or github</h3>
+            <Button>Google Sign In Placeholder</Button>
+            <Button>Github Sign In Placeholder</Button>
+          </section>
 
-          <TextInput
-            required
-            label="Name"
-            {...form.getInputProps('name')}
-          />
+          <section aria-label="Sign Up with Email">
+            <h3>or sign up with email</h3>
+            <TextInput
+              required
+              label="Name"
+              {...form.getInputProps('name')}
+            />
 
-          <TextInput
-            required
-            label="Email"
-            {...form.getInputProps('email')}
-          />
+            <TextInput
+              required
+              label="Email"
+              {...form.getInputProps('email')}
+            />
 
-          <Button type="submit">Sign Up</Button>
+            <Button type="submit">Sign Up</Button>
+          </section>
         </form>
       </Box>
     </>

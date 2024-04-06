@@ -19,7 +19,17 @@ export default function PrelaunchSignUpForm() {
   return (
     <>
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <TextInput
+          required
+          label="Name"
+          {...form.getInputProps('name')}
+        />
 
+        <TextInput
+          required
+          label="Email"
+          {...form.getInputProps('email')}
+        />
       </form>
     </>
   )

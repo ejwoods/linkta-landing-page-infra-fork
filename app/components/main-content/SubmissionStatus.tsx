@@ -1,6 +1,6 @@
 export default function SubmissionStatus() {
   const linktaEmail = 'info@linkta.org';
-
+  //TODO: replace animination placeholders with lottiefiles
   return (
     <article aria-live="polite">
       <h1>Thank you!</h1>

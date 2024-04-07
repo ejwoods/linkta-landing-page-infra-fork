@@ -8,7 +8,7 @@ export interface Tab {
 //TODO: paths to be updated
 const cookiePreferencesPageRouteTab: Tab = {
   tabname: 'Cookie Preferences',
-  path: '/cookie_preferences',
+  path: '/cookie-preferences',
 };
 const securityPageRouteTab: Tab = { tabname: 'Security', path: '/security' };
 const legalPageRouteTab: Tab = { tabname: 'Legal', path: '/legal' };

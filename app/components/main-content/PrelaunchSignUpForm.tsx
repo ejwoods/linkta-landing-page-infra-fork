@@ -27,7 +27,7 @@ export default function PrelaunchSignUpForm() {
 
           <section aria-label="Sign Up with OAuth Providers">
             <h3>sign up with google or github</h3>
-            <Button>Google Sign In Placeholder</Button>
+            <Button>Google Sign In Placeholder</Button><br/>
             <Button>Github Sign In Placeholder</Button>
           </section>
 

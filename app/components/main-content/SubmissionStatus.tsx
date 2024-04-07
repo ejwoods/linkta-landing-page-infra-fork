@@ -3,11 +3,11 @@ export default function SubmissionStatus() {
     <article aria-live="polite">
       <h1>Thank you!</h1>
       <div>animated heart placeholder</div>
-      <p>We're super excited to have you on board!</p>
-      <p>(Our demo is in the final stages of preparation, and we can't wait to share it with you.)</p>
+      <p>We're thrilled to have you join us on this exciting journey!</p>
+      <p>(Our demo is almost ready, and we can't wait for you to experience it firsthand.)</p>
       <div>green paper plane placeholder</div>
-      <p>Keep an eye out for an <strong>exclusive invitation</strong> as soon as it's ready!</p>
-      <p>If you have any questions, don't hesitate to contact us at <a href="mailto:info@linkta.org">info@linkta.org</a></p>
+      <p>Keep an eye on your inbox for an <strong>exclusive invitation</strong> coming your way soon!</p>
+      <p>Got questions? We’re here to help! Shoot us an email at <a href="mailto:info@linkta.org">info@linkta.org</a></p>
     </article>
   )
 }

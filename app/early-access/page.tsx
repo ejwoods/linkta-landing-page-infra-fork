@@ -26,9 +26,10 @@ export default function PreLaunchSignupFlowContainer() {
   }, [flowState, router]);
 
   // TODO: replace loader placeholder with component
+  // TODO: pass handleFormSubmit={handleFormSubmit} to PrelaunchSignUpForm
   return (
     <main>
-      {flowState === 'viewingForm' && <PrelaunchSignUpForm handleFormSubmit={handleFormSubmit} />}
+      {flowState === 'viewingForm' && <PrelaunchSignUpForm />}
       {flowState === 'processing' && <div>loader placeholder</div>}
       {flowState === 'confirmed' && <SubmissionStatus />}
     </main>

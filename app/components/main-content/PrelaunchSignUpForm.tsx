@@ -46,6 +46,7 @@ export default function PrelaunchSignUpForm() {
             />
 
             <Button type="submit">Join Waiting List</Button>
+            <p>Privacy statement placeholder</p>
           </section>
         </form>
       </Box>

@@ -1,10 +1,12 @@
 'use client'
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'
 import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm';
 import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
 
 export default function PreLaunchSignupFlowContainer() {
   const [showSubmissionStatus, setShowSubmissionStatus] = useState(false);
+  const router = useRouter()
 
   const handleFormSubmit = () => {
     // more form submittion logic will be added here
@@ -15,7 +17,7 @@ export default function PreLaunchSignupFlowContainer() {
   useEffect(() => {
     if (showSubmissionStatus) {
       const timeoutId = setTimeout(() => {
-      // add redirect logic
+        router.push('/');
       }, 3000);
 
       // Cleanup timeoutId if component unmounts
@@ -25,8 +27,7 @@ export default function PreLaunchSignupFlowContainer() {
 
   return (
     <main>
-      {!showSubmissionStatus && <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
-      {showSubmissionStatus && <SubmissionStatus />}
+      {showSubmissionStatus ? <SubmissionStatus /> : <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
     </main>
   );
 }

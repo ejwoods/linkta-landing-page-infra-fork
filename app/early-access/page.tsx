@@ -7,7 +7,7 @@ import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
 type FlowState = 'viewingForm' |'processing' | 'confirmed';
 /**
  * Handles the flow from viewing the signup form, processing the form submission,
- * to confirming submission success, followed by redirection to the homepage.
+ * to confirming submission success, followed by redirection to the homepage after 3 seconds.
  */
 export default function PreLaunchSignupFlowContainer() {
   const [flowState, setFlowState] = useState<FlowState>('viewingForm');
@@ -18,13 +18,12 @@ export default function PreLaunchSignupFlowContainer() {
   // TODO: Expand with form submission logic & refactor setTimeOut placeholder
      setTimeout(() => setFlowState('confirmed'), 1000); // Placeholder for actual
   }
-
+  // Redirects to homepage 3 seconds after confirmation. Prevents leaks by clearing timeout on component unmount or state change.
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    if (flowState === 'confirmed') {
-      timeoutId = setTimeout( () => router.push('/'), 3000);
-    }
-    return () => timeoutId && clearTimeout(timeoutId);
+    if (flowState !== 'confirmed') return;
+
+    const timeoutId = setTimeout(() => router.push('/'), 3000);
+    return () => clearTimeout(timeoutId);
   }, [flowState]);
 
   // TODO: replace loader placeholder with component

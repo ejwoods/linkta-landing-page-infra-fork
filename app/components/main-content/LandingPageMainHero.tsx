@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import UniversalButton from '../common/UniversalButton';
+import LandingPageTreeVisualizationPanel from './LandingPageTreeVisualizationPanel';
 
 export default function LandingPageMainHero() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function LandingPageMainHero() {
 
   return (
     <main>
-      <div>LandingPageMainHero</div>
+      <LandingPageTreeVisualizationPanel/>
       <UniversalButton onClick={handleClick} label='Join Our Journey'/>
     </main>
   )

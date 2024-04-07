@@ -21,6 +21,10 @@ export default function PrelaunchSignUpForm() {
       <Box>
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
 
+          <h1>Shape Our Future with Your Vision</h1>
+
+          <h2>Get exclusive early access to try our product</h2>
+
           <section aria-label="Sign Up with OAuth Providers">
             <h3>sign up with google or github</h3>
             <Button>Google Sign In Placeholder</Button>

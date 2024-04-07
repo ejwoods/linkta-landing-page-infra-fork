@@ -5,18 +5,23 @@ import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm'
 import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
 
 type FlowState = 'viewingForm' |'processing' | 'confirmed';
-
+/**
+ * Handles the flow from viewing the signup form, processing the form submission,
+ * to confirming submission success, followed by redirection to the homepage.
+ */
 export default function PreLaunchSignupFlowContainer() {
   const [flowState, setFlowState] = useState<FlowState>('viewingForm');
   const router = useRouter()
 
   const handleFormSubmit = () : void => {
     setFlowState('processing');
-  // TODO: Expand with form submission logic.
-    setFlowState('confirmed');
+  // TODO: Expand with form submission logic & refactor setTimeOut placeholder
+     setTimeout(() => setFlowState('confirmed'), 1000); // Placeholder for actual submission logic.
     scheduleRedirectHome();
   }
-
+  /**
+   * Schedules automatic redirection to homepage after a confirmation message is displayed.
+   */
   const scheduleRedirectHome = (): void => {
     setTimeout(() => {
       router.push('/');

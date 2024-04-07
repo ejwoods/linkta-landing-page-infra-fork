@@ -1,3 +1,5 @@
+import { Button } from '@mantine/core';
+
 export default function VisualizationTriggerButton() {
-  return <div>VisualizationTriggerButton</div>;
+  return <Button>Button</Button>;;
 }

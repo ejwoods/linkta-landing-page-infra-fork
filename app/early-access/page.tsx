@@ -4,13 +4,14 @@ import { useRouter } from 'next/navigation'
 import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm';
 import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
 
-type FlowState = 'form' | 'submissionStatus';
+type FlowState = 'form' | 'submissionStatus' | 'loading';
 
 export default function PreLaunchSignupFlowContainer() {
   const [flowState, setFlowState] = useState<FlowState>('form');
   const router = useRouter()
 
   const handleFormSubmit = () : void => {
+    setFlowState('loading');
   // TODO: Expand with form submission logic.
     setFlowState('submissionStatus');
     scheduleRedirectHome();
@@ -29,14 +30,12 @@ export default function PreLaunchSignupFlowContainer() {
     }
     return () => timeoutId && clearTimeout(timeoutId);
   }, [flowState]);
-
+  // TODO: replace loader placeholder with component
   return (
     <main>
-      {flowState === 'form' ? (
-        <PrelaunchSignUpForm onSubmit={handleFormSubmit} />
-      ) : (
-        <SubmissionStatus />
-      )}
+      {flowState === 'loading' && <div>loader placeholder</div>}
+      {flowState === 'form' && <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
+      {flowState === 'submissionStatus' && <SubmissionStatus />}
     </main>
   );
 }

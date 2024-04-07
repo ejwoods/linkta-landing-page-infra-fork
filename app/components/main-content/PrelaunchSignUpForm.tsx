@@ -18,7 +18,7 @@ export default function PrelaunchSignUpForm() {
 
   return (
     <>
-      <Box maw={300} mx="auto">
+      <Box>
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
 
           <section aria-label="Sign Up with OAuth Providers">

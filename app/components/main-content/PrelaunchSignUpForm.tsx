@@ -1,6 +1,6 @@
 'use client'
 
-import { TextInput, Checkbox, Button, Group, Box } from '@mantine/core';
+import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 export default function PrelaunchSignUpForm() {

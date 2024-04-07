@@ -3,6 +3,7 @@ import {
   type Auth,
   getAuth,
   signInWithRedirect,
+  signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
   OAuthCredential,
@@ -66,4 +67,66 @@ export const signUpWithGoogle = () => {
      // The AuthCredential type that was used.
      const credential = GoogleAuthProvider.credentialFromError(error);
    });
+}
+
+export const signUpWithGitHub = () => {
+  const ghProvider = new GithubAuthProvider();
+  // ghProvider.addScope('user');
+  signInWithRedirect(auth, ghProvider);
+  return getRedirectResult(auth)
+   .then((result) => {
+     // This gives you a Google Access Token. You can use it to access the Google API.
+     if(!result){
+      console.error('No sign-in  redirect result found');
+      return;
+     }
+
+     const credential = GithubAuthProvider.credentialFromResult(result);
+     //credential null check
+     if(credential){
+       const token = credential.accessToken;
+     }
+
+     // The signed-in user info.
+     const user = result.user; 
+     console.log('user:', user);
+     // IdP data available using getAdditionalUserInfo(result)
+  return user;
+   }).catch((error) => {
+     // Handle Errors here.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+     // The email of the user's account used.
+     const email = error.customData.email;
+     // The AuthCredential type that was used.
+     const credential = GithubAuthProvider.credentialFromError(error);
+   });
+}
+
+export const signUpWthGHpop = () => {
+  const ghProvider = new GithubAuthProvider();
+  return signInWithPopup(auth, ghProvider)
+  .then((result) => {
+    // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    if(credential){
+
+      const token = credential.accessToken;
+    }
+
+    // The signed-in user info.
+    const user = result.user;
+    console.log('GH User:', user)
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GithubAuthProvider.credentialFromError(error);
+    // ...
+  });
 }

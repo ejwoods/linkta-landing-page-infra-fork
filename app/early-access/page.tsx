@@ -16,25 +16,17 @@ export default function PreLaunchSignupFlowContainer() {
   const handleFormSubmit = () : void => {
     setFlowState('processing');
   // TODO: Expand with form submission logic & refactor setTimeOut placeholder
-     setTimeout(() => setFlowState('confirmed'), 1000); // Placeholder for actual submission logic.
-    scheduleRedirectHome();
+     setTimeout(() => setFlowState('confirmed'), 1000); // Placeholder for actual
   }
-  /**
-   * Schedules automatic redirection to homepage after a confirmation message is displayed.
-   */
-  const scheduleRedirectHome = (): void => {
-    setTimeout(() => {
-      router.push('/');
-    }, 3000);
-  };
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
     if (flowState === 'confirmed') {
-      timeoutId = setTimeout(scheduleRedirectHome, 3000);
+      timeoutId = setTimeout( () => router.push('/'), 3000);
     }
     return () => timeoutId && clearTimeout(timeoutId);
   }, [flowState]);
+
   // TODO: replace loader placeholder with component
   return (
     <main>

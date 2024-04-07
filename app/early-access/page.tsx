@@ -21,7 +21,6 @@ export default function PreLaunchSignupFlowContainer() {
   // Redirects to homepage 3 seconds after confirmation. Prevents leaks by clearing timeout on component unmount or state change.
   useEffect(() => {
     if (flowState !== 'confirmed') return;
-
     const timeoutId = setTimeout(() => router.push('/'), 3000);
     return () => clearTimeout(timeoutId);
   }, [flowState, router]);

@@ -11,21 +11,24 @@ export default function PreLaunchSignupFlowContainer() {
   const router = useRouter()
 
   const handleFormSubmit = () : void => {
-    // more form submittion logic will be added here
-    // pass event handler to PrelaunchSignUpForm
-    setShowSubmissionStatus(true);
+  // TODO: Expand with form submission logic.
+    setFlowState('submissionStatus');
+    scheduleRedirectHome();
   }
 
-  useEffect(() => {
-    if (showSubmissionStatus) {
-      const timeoutId: NodeJS.Timeout = setTimeout(() => {
-        router.push('/');
-      }, 3000);
+  const scheduleRedirectHome = (): void => {
+    setTimeout(() => {
+      router.push('/');
+    }, 3000);
+  };
 
-      // Cleanup timeoutId if component unmounts
-      return () => clearTimeout(timeoutId);
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    if (flowState === 'submissionStatus') {
+      timeoutId = setTimeout(scheduleRedirectHome, 3000);
     }
-  }, [showSubmissionStatus]);
+    return () => timeoutId && clearTimeout(timeoutId);
+  }, [flowState]);
 
   return (
     <main>

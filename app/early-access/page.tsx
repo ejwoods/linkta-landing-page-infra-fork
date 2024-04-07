@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm';
-import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
+import SubmissionStatus from '../components/main-content/SubmissionStatus';
 
 type FlowState = 'viewingForm' |'processing' | 'confirmed';
 /**
@@ -29,7 +29,7 @@ export default function PreLaunchSignupFlowContainer() {
   // TODO: replace loader placeholder with component
   return (
     <main>
-      {flowState === 'viewingForm' && <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
+      {flowState === 'viewingForm' && <PrelaunchSignUpForm handleFormSubmit={handleFormSubmit} />}
       {flowState === 'processing' && <div>loader placeholder</div>}
       {flowState === 'confirmed' && <SubmissionStatus />}
     </main>

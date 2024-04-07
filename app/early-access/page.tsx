@@ -24,7 +24,7 @@ export default function PreLaunchSignupFlowContainer() {
 
     const timeoutId = setTimeout(() => router.push('/'), 3000);
     return () => clearTimeout(timeoutId);
-  }, [flowState]);
+  }, [flowState, router]);
 
   // TODO: replace loader placeholder with component
   return (

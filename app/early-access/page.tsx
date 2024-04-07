@@ -4,16 +4,16 @@ import { useRouter } from 'next/navigation'
 import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm';
 import SubmissionStatus from '../components/main-content/SubmissionStatusPopup';
 
-type FlowState = 'form' | 'submissionStatus' | 'loading';
+type FlowState = 'viewingForm' |'processing' | 'confirmed';
 
 export default function PreLaunchSignupFlowContainer() {
-  const [flowState, setFlowState] = useState<FlowState>('form');
+  const [flowState, setFlowState] = useState<FlowState>('viewingForm');
   const router = useRouter()
 
   const handleFormSubmit = () : void => {
-    setFlowState('loading');
+    setFlowState('processing');
   // TODO: Expand with form submission logic.
-    setFlowState('submissionStatus');
+    setFlowState('confirmed');
     scheduleRedirectHome();
   }
 
@@ -25,7 +25,7 @@ export default function PreLaunchSignupFlowContainer() {
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
-    if (flowState === 'submissionStatus') {
+    if (flowState === 'confirmed') {
       timeoutId = setTimeout(scheduleRedirectHome, 3000);
     }
     return () => timeoutId && clearTimeout(timeoutId);
@@ -33,9 +33,9 @@ export default function PreLaunchSignupFlowContainer() {
   // TODO: replace loader placeholder with component
   return (
     <main>
-      {flowState === 'loading' && <div>loader placeholder</div>}
-      {flowState === 'form' && <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
-      {flowState === 'submissionStatus' && <SubmissionStatus />}
+      {flowState === 'viewingForm' && <PrelaunchSignUpForm onSubmit={handleFormSubmit} />}
+      {flowState === 'processing' && <div>loader placeholder</div>}
+      {flowState === 'confirmed' && <SubmissionStatus />}
     </main>
   );
 }

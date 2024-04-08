@@ -1,28 +1,59 @@
 // export default function PrelaunchSignUpForm() {
 //   return <div>PrelaunchSignUpForm</div>;
 // }
-'use client'
-import React, { useState } from "react";
-import { signUpWithGoogle } from "@/app/config/firebase";
-const initialState = {
+'use client';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { Auth } from 'firebase/auth';
+import {
+  signUpWithGitHub,
+  signUpWithGoogle,
+  signOutUser,
+  createUserDoc
+} from '@/app/config/firebase'; // Removed unused import
+
+interface User {
+  name?: string;
+  email: string;
+}
+
+const initialState: User = {
   name: '',
   email: '',
-//interest; hdyhau?
+  // Removed the invalid comment from the object
 };
 
 export default function PrelaunchSignUpForm() {
-const [user, setUser] = useState(initialState);
+  const [user, setUser] = useState(initialState);
+  const router = useRouter();
 
-  return (
-  <div>
-    <button className="border" onClick={() => signUpWithGoogle()} >signup with Google</button>
-    {/* TODO: <button className="border" onClick={() => signUpWithGitHub()} >signup with Google</button> */}
-  </div>
-  )
+const signUpWithGoogleRedirect = () => {
+  const logGoogleUser = async () => {
+    const {user} = await signUpWithGoogle();
+    const userDocRef = await createUserDoc(user);
+  }
 }
 
+  return (
+    <div>
+      <button
+        className="border"
+        onClick={signUpWithGoogle}
+      >
+        Signup with Google
+      </button>
+      <br />
+      <button
+        className="border"
+        onClick={() => signUpWithGitHub()}
+      >
+        Signup with GitHub
+      </button>
+    </div>
+  );
+}
 
-
+//TODO: figure out why, once getting authorized, google redirect window doesnt show up
 /*
 FE------------
 Using Firebase:

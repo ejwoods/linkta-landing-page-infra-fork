@@ -4,7 +4,7 @@ import './globals.css';
 import '@mantine/core/styles.css';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap'});
 
 export const metadata: Metadata = {
   title: 'Linkta',

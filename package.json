@@ -11,6 +11,7 @@
     "cypress-run": "npx cypress run"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.4",
     "@mantine/core": "^7.7.1",
     "@mantine/hooks": "^7.7.1",
     "next": "14.1.3",

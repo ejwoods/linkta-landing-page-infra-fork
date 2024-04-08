@@ -1,6 +1,6 @@
 'use client';
 //import * as LottiePlayer from "@lottiefiles/lottie-player";
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, useRef, FC } from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';
 
 
@@ -10,9 +10,14 @@ interface LottieSeriesPlayerProps {
 
 const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     const [currentAnimation, setCurrentAnimation] = useState(0);
+    const ref = useRef<any>(null)
 
     useEffect(() => {
-        import("@lottiefiles/lottie-player");
+        import("@lottiefiles/lottie-player").then(() => {
+            if (ref.current) {
+                ref.current.load(animationData[currentAnimation].src); // Reload the animation whenever 'currentAnimation' changes
+            }
+        })
         const timer = setTimeout(() => {
             setCurrentAnimation(prevIndex => prevIndex >= animationData.length - 1 ? 0 : prevIndex + 1);
         }, animationData[currentAnimation].duration); 
@@ -23,7 +28,7 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     return (
         <lottie-player
         autoplay
-        controls={false}
+        ref={ref}
         loop={false}
         mode="normal"
         src={animationData[currentAnimation].src}

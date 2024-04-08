@@ -20,7 +20,7 @@ interface ExtendedUser extends User {
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!, //TODO: change to app domain
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!, 
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MSG_SENDER_ID,
@@ -57,8 +57,6 @@ export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
 export const createUserDoc = async (userAuth: ExtendedUser) => {
   const userDocRef = doc(db, 'users', userAuth.uid);  //create a User Document reference
 
-  console.log('userDocRef:', userDocRef);
-  //TODO: find out whether we need to perform getDoc() on every call
   const userSnapShot = await getDoc(userDocRef); //using DocRef to checking if the document already exists in the db
 
   //if user data does not exists
@@ -74,7 +72,7 @@ export const createUserDoc = async (userAuth: ExtendedUser) => {
         createdAt
       });
     } catch (error) {
-      console.log('error creating the user in DB', error);
+      console.log('An error occurred during account creation.');
     }
   }
 
@@ -83,7 +81,3 @@ export const createUserDoc = async (userAuth: ExtendedUser) => {
 };
 
 
-/*
-TODO: 1.update firebase & github to linkta admin account
-      2. update redirect domain in auth_domain field
-*/

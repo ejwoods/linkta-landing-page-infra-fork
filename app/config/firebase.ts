@@ -37,10 +37,12 @@ if (
     'Firebase configuration error: Missing essential configuration values'
   );
 }
-
+//initialize firebase app
 const firebaseApp = initializeApp(firebaseConfig);
-export const auth: Auth = getAuth(firebaseApp);
-auth.useDeviceLanguage();
+
+export const auth: Auth = getAuth(firebaseApp); //initialize Firebase Authentication service
+auth.useDeviceLanguage(); //detecting/using user perferrd languague on their devices
+export const db = getFirestore(firebaseApp); //initialize Firestore service
 
 const googleProvider = new GoogleAuthProvider();
 const ghProvider = new GithubAuthProvider();
@@ -51,20 +53,20 @@ googleProvider.setCustomParameters({
 export const signUpWithGoogle = () => signInWithRedirect(auth, googleProvider);
 export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
 
-export const db = getFirestore(firebaseApp);
 
 export const createUserDoc = async (userAuth: ExtendedUser) => {
-  const userDocRef = doc(db, 'users', userAuth.uid);
+  const userDocRef = doc(db, 'users', userAuth.uid);  //create a User Document reference
 
   console.log('userDocRef:', userDocRef);
-  const userSnapShot = await getDoc(userDocRef);
+  //TODO: find out whether we need to perform getDoc() on every call
+  const userSnapShot = await getDoc(userDocRef); //using DocRef to checking if the document already exists in the db
 
   //if user data does not exists
   if (!userSnapShot.exists()) {
     let name = userAuth.displayName || userAuth.reloadUserInfo?.screenName
     const { email } = userAuth;
     const createdAt = new Date();
-    //createt/set document with the data from userAuth in the users collection
+    //create/set document with the data from userAuth in the users collection
     try {
       await setDoc(userDocRef, {
         name,

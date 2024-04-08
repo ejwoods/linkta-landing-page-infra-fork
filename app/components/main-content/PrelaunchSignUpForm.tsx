@@ -11,7 +11,7 @@ import {
 export default function PrelaunchSignUpForm() {
     useEffect(() => {
       async function checkRedirectResult() {
-        const res = await getRedirectResult(auth);
+        const res = await getRedirectResult(auth); //Needed to access user data after redirect during OAuth sign in
         console.log('res:',res);
         if (res) {
           await createUserDoc(res.user);

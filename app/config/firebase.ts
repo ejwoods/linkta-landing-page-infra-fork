@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import {
   type Auth,
+  type User,
   getAuth,
   signInWithRedirect,
   GoogleAuthProvider,
@@ -8,6 +9,14 @@ import {
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+
+interface ReloadUser {
+ screenName: string
+}
+
+interface ExtendedUser extends User {
+  reloadUserInfo?: ReloadUser;
+}
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
@@ -44,7 +53,7 @@ export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
 
 export const db = getFirestore();
 
-export const createUserDoc = async (userAuth) => {
+export const createUserDoc = async (userAuth: ExtendedUser) => {
   const userDocRef = doc(db, 'users', userAuth.uid);
 
   console.log('userDocRef:', userDocRef);
@@ -52,7 +61,7 @@ export const createUserDoc = async (userAuth) => {
 
   //if user data does not exists
   if (!userSnapShot.exists()) {
-    let name = userAuth.displayName || userAuth.reloadUserInfo.screenName
+    let name = userAuth.displayName || userAuth.reloadUserInfo?.screenName
     const { email } = userAuth;
     const createdAt = new Date();
     //createt/set document with the data from userAuth in the users collection
@@ -75,5 +84,4 @@ export const createUserDoc = async (userAuth) => {
 /*
 TODO: 1.update firebase & github to linkta admin account
       2. update redirect domain in auth_domain field
-      3. figureout userAuth type
 */

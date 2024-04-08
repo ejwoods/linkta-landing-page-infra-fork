@@ -51,7 +51,7 @@ googleProvider.setCustomParameters({
 export const signUpWithGoogle = () => signInWithRedirect(auth, googleProvider);
 export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
 
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export const createUserDoc = async (userAuth: ExtendedUser) => {
   const userDocRef = doc(db, 'users', userAuth.uid);

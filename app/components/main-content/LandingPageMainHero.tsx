@@ -1,3 +1,19 @@
+'use client'
+import { useRouter } from 'next/navigation';
+import UniversalButton from '../common/UniversalButton';
+import LandingPageTreeVisualizationPanel from './LandingPageTreeVisualizationPanel';
+
 export default function LandingPageMainHero() {
-  return <div>LandingPageMainHero</div>;
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/early-access');
+  };
+
+  return (
+    <main>
+      <LandingPageTreeVisualizationPanel/>
+      <UniversalButton onClick={handleClick} label='Join Our Journey'/>
+    </main>
+  )
 }

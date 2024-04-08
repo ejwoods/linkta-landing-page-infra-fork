@@ -1,51 +1,45 @@
-// export default function PrelaunchSignUpForm() {
-//   return <div>PrelaunchSignUpForm</div>;
-// }
 'use client';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { Auth } from 'firebase/auth';
+import { getRedirectResult } from 'firebase/auth';
 import {
+  auth,
   signUpWithGitHub,
   signUpWithGoogle,
-  signOutUser,
-  createUserDoc
-} from '@/app/config/firebase'; // Removed unused import
-
-interface User {
-  name?: string;
-  email: string;
-}
-
-const initialState: User = {
-  name: '',
-  email: '',
-  // Removed the invalid comment from the object
-};
+  createUserDoc,
+} from '@/app/config/firebase'; 
 
 export default function PrelaunchSignUpForm() {
-  const [user, setUser] = useState(initialState);
-  const router = useRouter();
+    useEffect(() => {
+      async function checkRedirectResult() {
 
-const signUpWithGoogleRedirect = () => {
-  const logGoogleUser = async () => {
-    const {user} = await signUpWithGoogle();
-    const userDocRef = await createUserDoc(user);
+        const res = await getRedirectResult(auth);
+        console.log('res:',res);
+        if (res) {
+          await createUserDoc(res.user);
+        }
+      }
+      checkRedirectResult();
+    }, []);
+
+  const handleSignUpWithGoogle = () => {
+    signUpWithGoogle();
   }
-}
 
+  const handleSignUpWithGitHub = () => {
+    signUpWithGitHub();
+  }
   return (
     <div>
       <button
         className="border"
-        onClick={signUpWithGoogle}
+        onClick={handleSignUpWithGoogle}
       >
         Signup with Google
       </button>
       <br />
       <button
         className="border"
-        onClick={() => signUpWithGitHub()}
+        onClick={handleSignUpWithGitHub}
       >
         Signup with GitHub
       </button>
@@ -53,19 +47,4 @@ const signUpWithGoogleRedirect = () => {
   );
 }
 
-//TODO: figure out why, once getting authorized, google redirect window doesnt show up
-/*
-FE------------
-Using Firebase:
-1.user sign up with Google or GH
-2.after authentication -> get user name, email and send to back end()
-3.store in DB
 
-Using SignUp Form:
-1. collect input: fullName, email, interests(optional - dropdown meun), hdyhau(optional - dropdown)
-2. send back to backend
-3.store in DB
-
-BE--------------
-1. check if email has already signup?
-*/

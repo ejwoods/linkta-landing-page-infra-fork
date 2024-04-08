@@ -1,6 +1,6 @@
 'use client'
 
-import { TextInput, Button, Box } from '@mantine/core';
+import { TextInput, Button, Box, createTheme, MantineProvider } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 export default function PrelaunchSignUpForm() {
@@ -16,9 +16,25 @@ export default function PrelaunchSignUpForm() {
     },
   });
 
+  const theme= createTheme({
+    components: {
+      TextInput: TextInput.extend({
+        classNames: {
+          label: 'label-primary',
+          input: 'input-primary'
+        }
+      }),
+      Button: Button.extend({
+        classNames: {
+          root: 'button-primary'
+        }
+      })
+    }
+  });
+
   return (
-    <>
-      <Box>
+    <MantineProvider theme={theme}>
+      <Box className="text-center">
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
 
           <h1>Shape Our Future with Your Vision</h1>
@@ -27,7 +43,7 @@ export default function PrelaunchSignUpForm() {
 
           <section aria-label="Sign Up with OAuth Providers">
             <h3>sign up with google or github</h3>
-            <Button>Google Sign In Placeholder</Button><br/>
+            <Button className="bg-white border border-[#ffa51b]">Google Sign In Placeholder</Button><br/>
             <Button>Github Sign In Placeholder</Button>
           </section>
 
@@ -50,6 +66,6 @@ export default function PrelaunchSignUpForm() {
           </section>
         </form>
       </Box>
-    </>
+    </MantineProvider>
   )
 }

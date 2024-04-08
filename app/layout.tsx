@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import '@mantine/core/styles.css';
 import Footer from './components/layout/Footer';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap'});
 
 export const metadata: Metadata = {
   title: 'Linkta',
@@ -23,7 +20,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={inter.className}>
+      <body className=" px-10">
         <MantineProvider>
           <header>
             <LinktaLogoWithText />

@@ -3,7 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 10, 10, 10;
+  --foreground-rgb: 244, 251, 249;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --text-color: #1c1c1c;
+}
+
+
+
+@layer base {
+  body {
+    background-color: rgb(244, 251, 249);
+    color: var(--text-color);
+  }
+
+  h1, header {
+    @apply font-serif font-semibold text-3xl;
+  }
+  
+  .button-primary {
+    @apply bg-[#ffa51b] shadow-md m-2 w-full rounded-full py-2;
+  }
+
+  .label-primary {
+    @apply font-sans text-sm w-full font-semibold text-left block mt-2;
+  }
+
+  .input-primary {
+    @apply rounded-lg border border-[--text-color] w-full;
+  }
 }

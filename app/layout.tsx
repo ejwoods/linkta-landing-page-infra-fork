@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import '@mantine/core/styles.css';
+import Footer from './components/layout/Footer';
+import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap'});
@@ -22,7 +24,15 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
-         <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <header>
+            <LinktaLogoWithText />
+          </header>
+          <main>{children}</main>
+          <footer>
+            <Footer />
+          </footer>
+        </MantineProvider>
       </body>
     </html>
   );

@@ -52,13 +52,13 @@ export const createUserDoc = async (userAuth) => {
 
   //if user data does not exists
   if (!userSnapShot.exists()) {
-    let displayName = userAuth.displayName || userAuth.reloadUserInfo.screenName
+    let name = userAuth.displayName || userAuth.reloadUserInfo.screenName
     const { email } = userAuth;
     const createdAt = new Date();
     //createt/set document with the data from userAuth in the users collection
     try {
       await setDoc(userDocRef, {
-        displayName,
+        name,
         email,
         createdAt
       });

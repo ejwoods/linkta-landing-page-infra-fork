@@ -11,7 +11,6 @@ import {
 export default function PrelaunchSignUpForm() {
     useEffect(() => {
       async function checkRedirectResult() {
-
         const res = await getRedirectResult(auth);
         console.log('res:',res);
         if (res) {

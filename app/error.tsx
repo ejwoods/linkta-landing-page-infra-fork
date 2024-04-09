@@ -6,13 +6,12 @@ import { useEffect } from "react";
  * For more context on Error Boundary: https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary
  */
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
+interface ErrorProps {
+  error: Error & { digest?: string },
   reset: () => void
-}) {
+}
+
+export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
     console.error(error)
   }, [error])

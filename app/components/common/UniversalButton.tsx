@@ -10,5 +10,5 @@ interface UniversalButtonProps {
  * This allows the component to be reused for different actions and labels.
  */
 export default function UniversalButton({ onClick, label } : UniversalButtonProps) {
-  return <Button onClick={onClick}>{label}</Button>;
+  return <Button onClick={onClick} classNames={{root: 'button-primary'}}>{label}</Button>;
 }

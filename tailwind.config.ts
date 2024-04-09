@@ -55,6 +55,9 @@ const config: Config = {
           white: '#c1c1c1',
         },
       },
+      screens: {
+        sm: '390px',
+      },
     },
     fontFamily: {
       sans: ['Inter, sans-serif'],

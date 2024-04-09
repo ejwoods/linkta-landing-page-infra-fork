@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text;
+    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text w-full p-2;
   }
 
   
@@ -23,9 +23,13 @@
     @apply rounded-lg border w-full border-black;
   }
 
+  footer {
+    @apply text-sm;
+  }
+
   @media screen and (max-width: 390px) {
     body {
-      @apply bg-[#F4FBF9] px-10 text-black;      
+      @apply bg-[#F4FBF9] px-10 text-black min-w-min;
     }
 
     footer, header {

@@ -17,8 +17,8 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error])
 
   return (
-    <div>
-      <h2>Oops! Something went wrong!</h2>
+    <div className="flex flex-col m-auto">
+      <h2 className="flex flex-col m-auto">Oops! Something went wrong!</h2>
       <button
         onClick={
           // This button triggers the reset function, which will try to re-render the Error Boundary's contents without triggering a full page reload.

@@ -2,6 +2,14 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useEffect } from 'react';
+import { getRedirectResult } from 'firebase/auth';
+import {
+  auth,
+  signUpWithGitHub,
+  signUpWithGoogle,
+  createUserDoc,
+} from '@/app/config/firebase'; 
 
 export default function PrelaunchSignUpForm() {
 

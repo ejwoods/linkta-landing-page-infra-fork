@@ -1,4 +1,3 @@
-'use client';
 //import * as LottiePlayer from "@lottiefiles/lottie-player";
 import { useState, useEffect, useRef, FC } from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';

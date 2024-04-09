@@ -1,40 +1,45 @@
 import LottieSeriesPlayer from "../common/LottieSeriesPlayer";
+import deleteNodeAnimationData from "../../../public/lottiefiles/delete-node.json";
+import editNodeAnimationData from "../../../public/lottiefiles/edit-node.json";
+import dragTreeAnimationData from "../../../public/lottiefiles/drag-tree.json";
+import addNodeAnimationData from "../../../public/lottiefiles/add-node.json";
+import promptInputAnimationData from "../../../public/lottiefiles/prompt-input.json";
+import treeGenerateAnimationData from "../../../public/lottiefiles/tree-generate.json";
 
 export interface LottieAnimation {
-  src: string;
+  src: object;
   duration: number;
 }
 
-const deleteNodeAnimation: LottieAnimation = {
-  src: "https://lottie.host/c26b8196-b715-44fb-a38d-839726da6e19/aqNgCzReE3.json",
-  duration: 800 
-};
-
 const editNodeAnimation: LottieAnimation = {
-  src: "https://lottie.host/4324eb6f-6d19-48ad-ae9b-9d98867b3f50/4xk7Et4guE.json",
+  src: editNodeAnimationData,
   duration: 3800
 };
 
 const dragTreeAnimation: LottieAnimation = {
-  src: "https://lottie.host/3f2ace73-6ec4-453a-8c1e-1724b8f15366/Iff8gphZBj.json",
-  duration: 1800 
+  src: dragTreeAnimationData,
+  duration: 1800
 };
 
 const addNodeAnimation: LottieAnimation = {
-  src: "https://lottie.host/804bd6ee-4bab-490f-91ad-7a6c2db81576/e4Oci66fMt.json",
-  duration: 2900 // duration for add animation
+  src: addNodeAnimationData,
+  duration: 2900
 };
 
 const promptInputAnimation: LottieAnimation = {
-  src: "https://lottie.host/baa4c4fa-a563-4acf-ad7c-ac6661ad5afa/N9qEcExdMN.json",
-  duration: 2000 // duration for input animation
+  src: promptInputAnimationData,
+  duration: 2000
 };
 
 const treeGenerateAnimation: LottieAnimation = {
-  src: "https://lottie.host/5bb25d17-ed4f-49c3-894b-22913de3b6fd/Y26mKjkqDS.json",
-  duration: 1400 // duration for generate tree animation
+  src: treeGenerateAnimationData,
+  duration: 2000
 };
 
+const deleteNodeAnimation: LottieAnimation = {
+  src: deleteNodeAnimationData,
+  duration: 800 
+};
 
 
 export default function LandingPageTreeVisualizationPanel() {

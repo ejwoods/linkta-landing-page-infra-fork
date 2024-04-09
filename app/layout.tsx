@@ -19,12 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body className="content-center w-10/12">
+      <body className="w-10/12 flex flex-col m-auto">
         <header>
           <LinktaLogoWithText />
         </header>
-        <main>{children}</main>
-        <footer>
+        <main className="flex flex-col my-3">{children}</main>
+        <footer className="sm:flex flex-col">
           <Footer />
         </footer>
       </body>

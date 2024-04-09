@@ -14,11 +14,6 @@ export default function PreLaunchSignupFlowContainer() {
   const [flowState, setFlowState] = useState<FlowState>('viewingForm');
   const router = useRouter()
 
-  const handleFormSubmit = () : void => {
-    setFlowState('processing');
-  // TODO: Expand with form submission logic & refactor setTimeOut placeholder
-     setTimeout(() => setFlowState('confirmed'), 1000); // Placeholder for actual
-  }
   // Redirects to homepage 3 seconds after confirmation. Prevents leaks by clearing timeout on component unmount or state change.
   useEffect(() => {
     if (flowState !== 'confirmed') return;

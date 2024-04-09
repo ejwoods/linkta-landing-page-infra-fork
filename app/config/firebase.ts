@@ -55,7 +55,15 @@ export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
 
 
 export const createUserDoc = async (userAuth: ExtendedUser) => {
-  const userDocRef = doc(db, 'users', userAuth.uid);  //create a User Document reference
+  // when using createUserDoc, user email must be available on userAuth object
+  if (!userAuth.email) {
+    console.error('User email address not found')
+    return {
+      userDocRef: null,
+      status: 'error',
+    }
+  }
+  const userDocRef = doc(db, 'users', userAuth.email as string);  //create a User Document reference
 
   const userSnapShot = await getDoc(userDocRef); //using DocRef to checking if the document already exists in the db
 
@@ -77,7 +85,10 @@ export const createUserDoc = async (userAuth: ExtendedUser) => {
   }
 
   // if user data exists
-  return userDocRef;
+  return {
+    userDocRef: userDocRef,
+    status: 'ok',
+  };
 };
 
 

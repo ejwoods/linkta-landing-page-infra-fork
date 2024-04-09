@@ -93,7 +93,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   return (
     <MantineProvider theme={theme}>
       <Box className="text-center">
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit(handleSubmit)}>
 
           <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 

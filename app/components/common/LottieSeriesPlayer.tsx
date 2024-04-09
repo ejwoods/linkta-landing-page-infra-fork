@@ -1,4 +1,3 @@
-//import * as LottiePlayer from "@lottiefiles/lottie-player";
 import { useState, useEffect,  FC } from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';

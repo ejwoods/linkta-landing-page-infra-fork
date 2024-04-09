@@ -11,6 +11,7 @@
     "cypress-run": "npx cypress run"
   },
   "dependencies": {
+    "firebase": "^10.10.0",
     "@mantine/core": "^7.7.1",
     "@mantine/form": "^7.7.1",
     "@mantine/hooks": "^7.7.1",

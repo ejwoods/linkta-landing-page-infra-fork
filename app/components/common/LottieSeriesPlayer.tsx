@@ -1,6 +1,6 @@
-//import * as LottiePlayer from "@lottiefiles/lottie-player";
-import { useState, useEffect, useRef, FC } from 'react';
+import { useState, useEffect,  FC } from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
 interface LottieSeriesPlayerProps {
@@ -9,17 +9,8 @@ interface LottieSeriesPlayerProps {
 
 const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     const [currentAnimation, setCurrentAnimation] = useState(0);
-    const ref = useRef<any>(null)
 
     useEffect(() => {
-        const playAnimation = async () => {
-            const { default: LottiePlayer } = await import("@lottiefiles/lottie-player");
-            if (ref.current) {
-              ref.current.load(animationData[currentAnimation].src);
-            }
-          };
-      
-          playAnimation();
         const timer = setTimeout(() => {
             setCurrentAnimation(prevIndex => prevIndex >= animationData.length - 1 ? 0 : prevIndex + 1);
         }, animationData[currentAnimation].duration); 
@@ -28,15 +19,14 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     }, [currentAnimation, animationData]);
 
     return (
-        <lottie-player
+        <Player
         autoplay
-        ref={ref}
         loop={false}
-        mode="normal"
         src={animationData[currentAnimation].src}
         style={{ width: '320px' }} 
       >
-      </lottie-player>
+        <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+      </Player>
     );
 }
 

@@ -15,13 +15,12 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
         const timer = setTimeout(() => {
             setCurrentAnimation(prevIndex => prevIndex >= animationData.length - 1 ? 0 : prevIndex + 1);
         }, animationData[currentAnimation].duration); 
-
+        
         return () => clearTimeout(timer);
     }, [currentAnimation, animationData]);
 
     return (
         <Player
-        autoplay
         loop={false}
         src={animationData[currentAnimation].src}
         style={{ width: '320px' }} 

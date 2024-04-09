@@ -27,7 +27,7 @@
   }
 
   .input-primary {
-    @apply rounded-lg border border-black;
+    @apply rounded-lg border border-black px-2;
   }
 
   footer {

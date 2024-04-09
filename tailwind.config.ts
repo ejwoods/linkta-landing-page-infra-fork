@@ -51,8 +51,8 @@ const config: Config = {
           info: '',
           transparent: 'transparent',
           current: 'currentColor',
-          black: '#1c1c1c',
-          white: '#c1c1c1',
+          black: '#2c1d15',
+          white: '#fdfefe',
         },
       },
       screens: {

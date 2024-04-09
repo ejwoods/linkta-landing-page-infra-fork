@@ -2,8 +2,28 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useEffect, Dispatch, SetStateAction } from 'react';
+import { FlowState } from '../../early-access/page'
+import { getRedirectResult } from 'firebase/auth';
+import {
+  auth,
+  signUpWithGitHub,
+  signUpWithGoogle,
+  createUserDoc,
+} from '@/app/config/firebase'; 
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/app/config/firebase';
 
-export default function PrelaunchSignUpForm() {
+interface PrelaunchSignUpFormProps {
+  setFlowState: Dispatch<SetStateAction<FlowState>>;
+}
+
+interface FormValues {
+  name: string;
+  email: string;
+}
+
+const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
   const form = useForm({
     initialValues: {
@@ -16,19 +36,56 @@ export default function PrelaunchSignUpForm() {
     },
   });
 
+  useEffect(() => {
+    async function checkRedirectResult() {
+      const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
+      
+      if (res) {
+        setFlowState('processing');
+        await createUserDoc(res.user);
+        setFlowState('confirmed')
+      }
+    }
+    checkRedirectResult();
+  }, [setFlowState]);
+
+  async function handleSubmit({ email, name }: FormValues) {
+    setFlowState('processing')
+
+    // creates user document reference using email as document id
+    const userDocRef = doc(db, 'users', email);
+    // checks if document exists in db
+    const userSnapShot = await getDoc(userDocRef);
+
+    // creates a new document if none exists already
+    if (!userSnapShot.exists()) {
+      try {
+        await setDoc(userDocRef, {
+          name,
+          email,
+          createdAt: serverTimestamp()
+        })
+      } catch (error) {
+        console.error('An error occurred during account creation.');
+      }
+    }
+    
+    setFlowState('confirmed')
+  }
+
   return (
     <>
       <Box>
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit(handleSubmit)}>
 
           <h1>Shape Our Future with Your Vision</h1>
 
           <h2>Get exclusive early access to try our product</h2>
 
-          <section aria-label="Sign Up with OAuth Providers">
+          <section aria-label="Sign Up with Google or Github">
             <h3>sign up with google or github</h3>
-            <Button>Google Sign In Placeholder</Button><br/>
-            <Button>Github Sign In Placeholder</Button>
+            <Button onClick={signUpWithGoogle}>Continue with Google</Button><br/>
+            <Button onClick={signUpWithGitHub}>Continue with Github</Button>
           </section>
 
           <section aria-label="Sign Up with Email">
@@ -53,3 +110,5 @@ export default function PrelaunchSignUpForm() {
     </>
   )
 }
+
+export default PrelaunchSignUpForm;

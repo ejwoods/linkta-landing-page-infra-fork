@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className=" px-10">
+      <body className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
         <MantineProvider>
           <header>
             <LinktaLogoWithText />

@@ -9,8 +9,8 @@ const ebGaramond = EB_Garamond({ subsets: ['latin'], display: 'swap', weight: "6
 
 export default function Home() {
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-      <header className={ebGaramond.className}>
+    <div>
+      <header className={ebGaramond.className + " block"}>
         <LinktaLogoWithText />
       </header>
       <main className={inter.className}>

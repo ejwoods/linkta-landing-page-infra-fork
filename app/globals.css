@@ -1,26 +1,16 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 244, 251, 249;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --text-color: #1c1c1c;
-}
-
 
 
 @layer base {
   body {
-    background-color: rgb(244, 251, 249);
-    color: var(--text-color);
+    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text;
   }
 
-  h1, header {
+  
+  h1 {
     @apply font-serif font-semibold text-3xl;
   }
-  
+
   .button-primary {
     @apply bg-[#ffa51b] shadow-md m-2 w-full rounded-full py-2;
   }
@@ -30,6 +20,20 @@
   }
 
   .input-primary {
-    @apply rounded-lg border border-[--text-color] w-full;
+    @apply rounded-lg border w-full border-black;
   }
+
+  @media screen and (max-width: 390px) {
+    body {
+      @apply bg-[#F4FBF9] px-10 text-black;      
+    }
+
+    footer, header {
+      display: none;
+    }
+  }
+
 }
+
+@tailwind components;
+@tailwind utilities;

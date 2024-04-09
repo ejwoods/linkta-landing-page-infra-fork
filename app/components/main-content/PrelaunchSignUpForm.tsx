@@ -100,7 +100,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
           <h2 className="text-sm">Get exclusive early access to try our product</h2>
 
           <section aria-label="Sign Up with Google or Github" className="text-sm pb-2">
-            <h3>sign up with Google or GitHub</h3>
+            <h3>Sign up with Google or GitHub</h3>
             <Button className="bg-white border border-[#ffa51b] dark:text-dark-black" onClick={signUpWithGoogle}>Continue with Google</Button><br/>
             <Button onClick={signUpWithGitHub}>Continue with GitHub</Button>
           </section>

@@ -7,6 +7,7 @@ import addNodeAnimationData from "../../../public/lottiefiles/add-node.json";
 import promptInputAnimationData from "../../../public/lottiefiles/prompt-input.json";
 import treeGenerateAnimationData from "../../../public/lottiefiles/tree-generate.json";
 
+
 export interface LottieAnimation {
   src: object;
   duration: number;
@@ -52,11 +53,11 @@ export default function LandingPageTreeVisualizationPanel() {
     deleteNodeAnimation,
     addNodeAnimation,
   ]
-
+  
   return (
     <div>
       <div style={{ width: '320px', height: '360px' }}>
-        <LottieSeriesPlayer animationData={treeAnimationData} />
+        <LottieSeriesPlayer animationData={treeAnimationData}/>
       </div>
       <h2>Make Learning Easier</h2>
       <h4>Organize, structure, and navigate knowledge with the help of AI</h4>

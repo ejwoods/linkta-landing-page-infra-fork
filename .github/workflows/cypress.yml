@@ -22,9 +22,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build the application
-      run: npm run build
-
     - name: Debug environment variables
       run: |
         echo "NEXT_PUBLIC_FIREBASE_API_KEY exists: ${NEXT_PUBLIC_FIREBASE_API_KEY:+true}"
@@ -32,6 +29,20 @@ jobs:
         echo "NEXT_PUBLIC_FIREBASE_PROJECT_ID exists: ${NEXT_PUBLIC_FIREBASE_PROJECT_ID:+true}"
         echo "NEXT_PUBLIC_FIREBASE_APP_ID exists: ${NEXT_PUBLIC_FIREBASE_APP_ID:+true}"
       shell: bash
+      env:
+        NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
+        NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+        NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+        NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
+
+    - name: Build the application
+      run: npm run build
+      env:
+        CI: true
+        NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
+        NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+        NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+        NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
 
     - name: Start the application
       run: npm start &

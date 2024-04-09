@@ -5,7 +5,7 @@ import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm'
 import SubmissionStatus from '../components/main-content/SubmissionStatus';
 import { createUserDoc } from '../config/firebase';
 
-type FlowState = 'viewingForm' |'processing' | 'confirmed';
+export type FlowState = 'viewingForm' | 'processing' | 'confirmed';
 /**
  * Handles the flow from viewing the signup form, processing the form submission,
  * to confirming submission success, followed by redirection to the homepage after 3 seconds.

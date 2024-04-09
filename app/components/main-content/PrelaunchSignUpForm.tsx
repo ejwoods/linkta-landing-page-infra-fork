@@ -3,6 +3,7 @@
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, Dispatch, SetStateAction } from 'react';
+import { FlowState } from '../../early-access/page'
 import { getRedirectResult } from 'firebase/auth';
 import {
   auth,
@@ -12,7 +13,7 @@ import {
 } from '@/app/config/firebase'; 
 
 interface PrelaunchSignUpFormProps {
-  setFlowState: Dispatch<SetStateAction<string>>;
+  setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {

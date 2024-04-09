@@ -13,6 +13,7 @@ import {
 } from '@/app/config/firebase'; 
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
+import PrivacyAgreement from '../common/PrivacyAgreement';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -94,11 +95,11 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
       <Box className="text-center">
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
 
-          <h1>Shape Our Future with Your Vision</h1>
+          <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
-          <h2>Get exclusive early access to try our product</h2>
+          <h2 className="text-sm">Get exclusive early access to try our product</h2>
 
-          <section aria-label="Sign Up with Google or Github">
+          <section aria-label="Sign Up with Google or Github" className="text-sm pb-2">
             <h3>sign up with google or github</h3>
             <Button className="bg-white border border-[#ffa51b] dark:text-dark-black" onClick={signUpWithGoogle}>Continue with Google</Button><br/>
             <Button onClick={signUpWithGitHub}>Continue with Github</Button>
@@ -119,7 +120,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
             />
 
             <Button type="submit">Join Waiting List</Button>
-            <p>Privacy statement placeholder</p>
+            <PrivacyAgreement />
           </section>
         </form>
       </Box>

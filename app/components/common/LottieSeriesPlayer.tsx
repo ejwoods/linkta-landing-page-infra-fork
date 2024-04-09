@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, FC, SetStateAction } from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';
-//import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
 interface LottieSeriesPlayerProps {
@@ -10,18 +10,18 @@ interface LottieSeriesPlayerProps {
 
 const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     const [currentAnimation, setCurrentAnimation] = useState(0);
-    const [Player, setPlayer] = useState<any>();
-    const [Controls, setControls] = useState<any>();
+    // const [Player, setPlayer] = useState<any>();
+    // const [Controls, setControls] = useState<any>();
 
-    useEffect(() => {
-    const importLottie = async () => {
-      const { Player, Controls } = await import('@lottiefiles/react-lottie-player');
-      setPlayer(() => Player);
-      setControls(() => Controls);
-    };
+    // useEffect(() => {
+    // const importLottie = async () => {
+    //   const { Player, Controls } = await import('@lottiefiles/react-lottie-player');
+    //   setPlayer(() => Player);
+    //   setControls(() => Controls);
+    // };
 
-    importLottie();
-  }, []);
+//     importLottie();
+//   }, []);
 
     useEffect(() => {
 

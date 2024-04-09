@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import PrelaunchSignUpForm from '../components/main-content/PrelaunchSignUpForm';
 import SubmissionStatus from '../components/main-content/SubmissionStatus';
-import { createUserDoc } from '../config/firebase';
 
 export type FlowState = 'viewingForm' | 'processing' | 'confirmed';
 /**

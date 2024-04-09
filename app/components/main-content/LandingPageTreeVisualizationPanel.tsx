@@ -7,6 +7,7 @@ import addNodeAnimationData from "../../../public/lottiefiles/add-node.json";
 import promptInputAnimationData from "../../../public/lottiefiles/prompt-input.json";
 import treeGenerateAnimationData from "../../../public/lottiefiles/tree-generate.json";
 
+
 export interface LottieAnimation {
   src: object;
   duration: number;
@@ -52,7 +53,7 @@ export default function LandingPageTreeVisualizationPanel() {
     deleteNodeAnimation,
     addNodeAnimation,
   ]
-
+  
   return (
     <div>
       <style>

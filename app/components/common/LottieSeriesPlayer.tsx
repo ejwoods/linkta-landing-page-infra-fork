@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect,  FC } from 'react';
+import { useState, useEffect, FC} from 'react';
 import { LottieAnimation } from '../../components/main-content/LandingPageTreeVisualizationPanel';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
@@ -12,10 +12,11 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     const [currentAnimation, setCurrentAnimation] = useState(0);
 
     useEffect(() => {
+
         const timer = setTimeout(() => {
             setCurrentAnimation(prevIndex => prevIndex >= animationData.length - 1 ? 0 : prevIndex + 1);
         }, animationData[currentAnimation].duration); 
-
+        
         return () => clearTimeout(timer);
     }, [currentAnimation, animationData]);
 

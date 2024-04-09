@@ -3,8 +3,8 @@ import heartAnimationData from "../../../public/lottiefiles/heart.json";
 import mailAnimationData from "../../../public/lottiefiles/mail-plane.json";
 export default function SubmissionStatus() {
   const linktaEmail = 'info@linkta.org';
-  const heartRef = useRef(null);
-  const mailRef = useRef(null);
+  const heartRef = useRef<any>(null);
+  const mailRef = useRef<any>(null);
 
   useEffect(() => {
     const loadLottieFiles = async () => {
@@ -23,18 +23,18 @@ export default function SubmissionStatus() {
       <h1>Thank you!</h1>
       <div><lottie-player
           id="flyingHeart"
-          ref={ref}
+          ref={heartRef}
           autoplay
           loop
           mode="normal"
           src={heartAnimationData}
-          style={{ width: "300px", height: "300px" }}
+          style={{ width: "50px", height: "50px" }}
         ></lottie-player></div>
       <p>We&apos;re thrilled to have you join us on this exciting journey!</p>
       <p>(Our demo is almost ready, and we can&apos;t wait for you to experience it firsthand.)</p>
       <div><lottie-player
           id="flyingMail"
-          ref={ref}
+          ref={mailRef}
           autoplay
           loop
           mode="normal"

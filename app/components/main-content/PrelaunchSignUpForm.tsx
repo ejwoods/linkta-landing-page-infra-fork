@@ -120,7 +120,10 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
             />
 
             <Button type="submit">Join Waiting List</Button>
+            <footer className="pt-2">
+
             <PrivacyAgreement />
+            </footer>
           </section>
         </form>
       </Box>

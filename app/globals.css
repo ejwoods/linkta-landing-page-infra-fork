@@ -43,7 +43,7 @@
       @apply bg-[#F4FBF9] m-auto text-black min-w-[200px];
     }
 
-    footer, header {
+    body > footer, body > header {
       @apply hidden;
     }
 

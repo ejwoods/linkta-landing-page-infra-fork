@@ -56,7 +56,7 @@ export default function LandingPageTreeVisualizationPanel() {
   return (
     <div>
       <style>
-        {'header { display: block; }'}
+        {'body > header { display: block; }'}
       </style>
       <div style={{ maxWidth: '320px' }}>
         <LottieSeriesPlayer animationData={treeAnimationData} />

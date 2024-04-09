@@ -1,3 +1,4 @@
+'use client'
 import LottieSeriesPlayer from "../common/LottieSeriesPlayer";
 import deleteNodeAnimationData from "../../../public/lottiefiles/delete-node.json";
 import editNodeAnimationData from "../../../public/lottiefiles/edit-node.json";

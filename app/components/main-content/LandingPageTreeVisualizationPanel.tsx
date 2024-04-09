@@ -51,6 +51,7 @@ export default function LandingPageTreeVisualizationPanel() {
     deleteNodeAnimation,
     addNodeAnimation,
   ]
+
   return (
     <div>
       <div style={{ width: '320px', height: '360px' }}>

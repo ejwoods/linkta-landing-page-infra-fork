@@ -84,8 +84,8 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <section aria-label="Sign Up with Google or Github">
             <h3>sign up with google or github</h3>
-            <Button onClick={signUpWithGoogle}>Google Sign In Placeholder</Button><br/>
-            <Button onClick={signUpWithGitHub}>Github Sign In Placeholder</Button>
+            <Button onClick={signUpWithGoogle}>Continue with Google</Button><br/>
+            <Button onClick={signUpWithGitHub}>Continue with Github</Button>
           </section>
 
           <section aria-label="Sign Up with Email">

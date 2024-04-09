@@ -1,12 +1,12 @@
 'use client'
-//import LottieSeriesPlayer from "../common/LottieSeriesPlayer";
+import LottieSeriesPlayer from "../common/LottieSeriesPlayer";
 import deleteNodeAnimationData from "../../../public/lottiefiles/delete-node.json";
 import editNodeAnimationData from "../../../public/lottiefiles/edit-node.json";
 import dragTreeAnimationData from "../../../public/lottiefiles/drag-tree.json";
 import addNodeAnimationData from "../../../public/lottiefiles/add-node.json";
 import promptInputAnimationData from "../../../public/lottiefiles/prompt-input.json";
 import treeGenerateAnimationData from "../../../public/lottiefiles/tree-generate.json";
-import dynamic from 'next/dynamic';
+
 
 export interface LottieAnimation {
   src: object;
@@ -53,7 +53,6 @@ export default function LandingPageTreeVisualizationPanel() {
     deleteNodeAnimation,
     addNodeAnimation,
   ]
-  const LottieSeriesPlayer = dynamic(() => import('../common/LottieSeriesPlayer'));
   
   return (
     <div>

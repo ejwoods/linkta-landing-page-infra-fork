@@ -16,4 +16,18 @@ export default function Error({
   useEffect(() => {
     console.error(error)
   }, [error])
+
+  return (
+    <div>
+      <h2>Oops! Something went wrong!</h2>
+      <button
+        onClick={
+          // This button triggers the reset function, which will try to re-render the Error Boundary's contents without triggering a full page reload.
+          () => reset()
+        }
+      >
+        Try again
+      </button>
+    </div>
+  );
 }

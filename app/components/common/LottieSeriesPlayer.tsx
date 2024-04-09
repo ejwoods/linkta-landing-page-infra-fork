@@ -12,11 +12,14 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
     const ref = useRef<any>(null)
 
     useEffect(() => {
-        import("@lottiefiles/lottie-player").then(() => {
+        const playAnimation = async () => {
+            const { default: LottiePlayer } = await import("@lottiefiles/lottie-player");
             if (ref.current) {
-                ref.current.load(animationData[currentAnimation].src); // Reload the animation whenever 'currentAnimation' changes
+              ref.current.load(animationData[currentAnimation].src);
             }
-        })
+          };
+      
+          playAnimation();
         const timer = setTimeout(() => {
             setCurrentAnimation(prevIndex => prevIndex >= animationData.length - 1 ? 0 : prevIndex + 1);
         }, animationData[currentAnimation].duration); 

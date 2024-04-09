@@ -54,7 +54,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <h2>Get exclusive early access to try our product</h2>
 
-          <section aria-label="Sign Up with OAuth Providers">
+          <section aria-label="Sign Up with Google or Github">
             <h3>sign up with google or github</h3>
             <Button onClick={signUpWithGoogle}>Google Sign In Placeholder</Button><br/>
             <Button onClick={signUpWithGitHub}>Github Sign In Placeholder</Button>

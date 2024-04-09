@@ -24,7 +24,7 @@ const LottieSeriesPlayer: FC<LottieSeriesPlayerProps> = ({animationData}) => {
         autoplay
         loop={false}
         src={animationData[currentAnimation].src}
-        style={{ width: '320px' }} 
+        style={{ maxWidth: '320px', minWidth: '200px' }} 
       >
         <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
       </Player>

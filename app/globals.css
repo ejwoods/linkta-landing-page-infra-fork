@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text w-full p-2;
+    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text w-full p-2 m-auto;
   }
 
   
@@ -12,7 +12,7 @@
   }
 
   .button-primary {
-    @apply bg-[#ffa51b] shadow-md m-2 w-full rounded-full py-2;
+    @apply bg-[#ffa51b] shadow-md m-2 rounded-full p-2;
   }
 
   .label-primary {
@@ -27,13 +27,21 @@
     @apply text-sm;
   }
 
+  .line hr {
+    @apply flex-1 mx-1;
+  }
+
   @media screen and (max-width: 390px) {
     body {
-      @apply bg-[#F4FBF9] px-10 text-black min-w-min;
+      @apply bg-[#F4FBF9] m-auto text-black min-w-[200px];
     }
 
     footer, header {
       display: none;
+    }
+
+    .button-primary {
+      @apply w-full px-0;
     }
   }
 

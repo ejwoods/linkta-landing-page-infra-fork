@@ -7,15 +7,19 @@ export default function SubmissionStatus() {
   
   return (
     <article aria-live="polite">
-      <h1>Thank you!</h1>
-      <div><Player
+      <h1 className="flex pt-4 h-[60px] align-bottom">
+        <span className="align-text-bottom">
+          Thank you!
+        </span>
+        <Player
           autoplay
           loop={false}
           src={heartAnimationData}
-          style={{ width: "50px", height: "50px" }}
+          style={{ width: "50px", height: "50px", background: "transparent", fillOpacity: "0" }}
         >
           <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player></div>
+        </Player>
+      </h1>
       <p className="pt-4 text-lg">We&apos;re thrilled to have you join us on this exciting journey!</p>
       <p className="text-xs pt-2">(Our demo is almost ready, and we can&apos;t wait for you to experience it firsthand.)</p>
       <div>

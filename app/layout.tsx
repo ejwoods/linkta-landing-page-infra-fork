@@ -18,9 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
       </head>
-      <body className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+      <body className="content-center w-10/12">
         <header>
           <LinktaLogoWithText />
         </header>

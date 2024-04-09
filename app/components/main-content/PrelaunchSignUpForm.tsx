@@ -48,7 +48,7 @@ export default function PrelaunchSignUpForm() {
           </section>
 
           <section aria-label="Sign Up with Email">
-            <h3>or sign up with email</h3>
+            <span className="w-full flex items-center line"><hr />or sign up with email<hr /></span>
             <TextInput
               required
               label="Name"

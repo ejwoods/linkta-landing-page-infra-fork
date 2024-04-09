@@ -30,9 +30,10 @@ export default function PreLaunchSignupFlowContainer() {
   // TODO: pass handleFormSubmit={handleFormSubmit} to PrelaunchSignUpForm
   return (
     <main>
-      {flowState === 'viewingForm' && <PrelaunchSignUpForm />}
-      {flowState === 'processing' && <div>loader placeholder</div>}
-      {flowState === 'confirmed' && <SubmissionStatus />}
+      {/* {flowState === 'viewingForm' && <PrelaunchSignUpForm />} */}
+      {/* {flowState === 'processing' && <div>loader placeholder</div>} */}
+      {/* {flowState === 'confirmed' && <SubmissionStatus />} */}
+      <SubmissionStatus />
     </main>
   );
 }

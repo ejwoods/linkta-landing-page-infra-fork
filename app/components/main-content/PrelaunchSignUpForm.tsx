@@ -11,7 +11,7 @@ import {
   createUserDoc,
 } from '@/app/config/firebase'; 
 
-export default function PrelaunchSignUpForm() {
+export default function PrelaunchSignUpForm({ setFlowState }) {
 
   const form = useForm({
     initialValues: {
@@ -23,6 +23,23 @@ export default function PrelaunchSignUpForm() {
       email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address')
     },
   });
+
+  useEffect(() => {
+    async function checkRedirectResult() {
+      const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
+
+      // TODO: remove this log
+      console.log('res:',res);
+      
+      if (res) {
+        setFlowState('processing');
+        await createUserDoc(res.user);
+        // TODO: error handling? What happens if user is not saved?
+        setFlowState('confirmed')
+      }
+    }
+    checkRedirectResult();
+  }, [setFlowState]);
 
   return (
     <>

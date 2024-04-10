@@ -102,7 +102,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         <section aria-label="Sign Up with Email">
           <span className="w-full flex items-center line text-sm"><hr />or sign up with email<hr /></span>
           <TextInput
-            className="dark:text-dark-accent"
+            className="sm:dark:text-dark-accent"
             classNames={{
               label: 'label-primary',
               input: 'input-primary'
@@ -113,7 +113,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
           />
 
           <TextInput
-            className="dark:text-dark-accent"
+            className="sm:dark:text-dark-accent"
             classNames={{
               label: 'label-primary',
               input: 'input-primary'

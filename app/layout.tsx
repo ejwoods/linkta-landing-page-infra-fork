@@ -18,15 +18,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <ColorSchemeScript />
       </head>
       <body className="w-10/12 flex flex-col m-auto">
-        <header>
-          <LinktaLogoWithText />
-        </header>
-        <main className="flex flex-col my-3">{children}</main>
-        <footer className="sm:flex flex-col">
-          <Footer />
-        </footer>
+        <MantineProvider>
+          <header>
+            <LinktaLogoWithText />
+          </header>
+          <main className="flex flex-col my-3">{children}</main>
+          <footer className="sm:flex flex-col">
+            <Footer />
+          </footer>
+        </MantineProvider>
       </body>
     </html>
   );

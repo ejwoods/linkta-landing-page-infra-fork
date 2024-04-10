@@ -1,6 +1,6 @@
 'use client'
 
-import { TextInput, Button, Box, createTheme, MantineProvider } from '@mantine/core';
+import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page'
@@ -74,62 +74,68 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     setFlowState('confirmed')
   }
 
-  const theme= createTheme({
-    components: {
-      TextInput: TextInput.extend({
-        classNames: {
-          label: 'label-primary',
-          input: 'input-primary'
-        }
-      }),
-      Button: Button.extend({
-        classNames: {
-          root: 'button-primary'
-        }
-      })
-    }
-  });
-
   return (
-    <MantineProvider theme={theme}>
-      <Box className="text-center">
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+    <Box className="text-center">
+      <form onSubmit={form.onSubmit(handleSubmit)}>
 
-          <h1 className="pb-4">Shape Our Future with Your Vision</h1>
+        <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
-          <h2 className="text-sm">Get exclusive early access to try our product</h2>
+        <h2 className="text-sm">Get exclusive early access to try our product</h2>
 
-          <section aria-label="Sign Up with Google or Github" className="text-sm pb-2">
-            <h3>Sign up with Google or GitHub</h3>
-            <Button className="bg-white border border-[#ffa51b] dark:text-dark-black" onClick={signUpWithGoogle}>Continue with Google</Button><br/>
-            <Button onClick={signUpWithGitHub}>Continue with GitHub</Button>
-          </section>
+        <section aria-label="Sign Up with Google or Github" className="text-sm pb-2">
+          <h3>Sign up with Google or GitHub</h3>
+          <Button 
+            className="bg-white border border-[#ffa51b] dark:text-dark-black" 
+            classNames={{
+              root: 'button-primary'
+            }}
+            onClick={signUpWithGoogle}
+          >Continue with Google</Button><br/>
+          <Button 
+            classNames={{
+              root: 'button-primary'
+            }}
+            onClick={signUpWithGitHub}
+          >Continue with GitHub</Button>
+        </section>
 
-          <section aria-label="Sign Up with Email">
-            <span className="w-full flex items-center line text-sm"><hr />or sign up with email<hr /></span>
-            <TextInput
-              className="dark:text-dark-accent"
-              required
-              label="Name"
-              {...form.getInputProps('name')}
-            />
+        <section aria-label="Sign Up with Email">
+          <span className="w-full flex items-center line text-sm"><hr />or sign up with email<hr /></span>
+          <TextInput
+            className="dark:text-dark-accent"
+            classNames={{
+              label: 'label-primary',
+              input: 'input-primary'
+            }}
+            required
+            label="Name"
+            {...form.getInputProps('name')}
+          />
 
-            <TextInput
-              className="dark:text-dark-accent"
-              required
-              label="Email"
-              {...form.getInputProps('email')}
-            />
+          <TextInput
+            className="dark:text-dark-accent"
+            classNames={{
+              label: 'label-primary',
+              input: 'input-primary'
+            }}
+            required
+            label="Email"
+            {...form.getInputProps('email')}
+          />
 
-            <Button type="submit">Join Waiting List</Button>
-            <footer className="pt-2">
+          <Button 
+            type="submit"
+            classNames={{
+              root: 'button-primary'
+            }}
+          >Join Waiting List</Button>
+          <footer className="pt-2">
 
-            <PrivacyAgreement />
-            </footer>
-          </section>
-        </form>
-      </Box>
-    </MantineProvider>
+          <PrivacyAgreement />
+          </footer>
+        </section>
+      </form>
+    </Box>
   )
 }
 

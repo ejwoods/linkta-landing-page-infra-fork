@@ -1,5 +1,5 @@
 'use client'
-import Link from "next/link";
+
 import heartAnimationData from "../../../public/lottiefiles/heart.json";
 import mailAnimationData from "../../../public/lottiefiles/mail-plane.json";
 import { Player, Controls } from '@lottiefiles/react-lottie-player';

@@ -1,12 +1,8 @@
 @tailwind base;
 
 
-@layer base {
-  body {
-    @apply bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text w-full p-2 m-auto;
-  }
-  
-  main div {
+@layer base {  
+  main div { /* This will apply all of these values to <div> elements under main */
     @apply flex flex-col items-center justify-center m-auto;
   }
 
@@ -14,60 +10,27 @@
     @apply font-serif font-semibold text-3xl;
   }
 
-  .button-primary {
-    @apply bg-[#ffa51b] shadow-md my-2 m-auto rounded-full p-2;
-  }
-
+  /* The following is for handling form elements with Mantine */
   div:has( > label) {
-    @apply w-fit;
+    @apply w-full sm:w-fit;
   }
 
+  .button-primary {
+    @apply bg-[#ffa51b] shadow-md my-2 m-auto rounded-full w-full p-2 sm:w-fit;
+  }
+  
   .label-primary {
     @apply font-sans text-sm font-semibold text-left mt-2 w-full pl-2;
   }
 
   .input-primary {
-    @apply rounded-lg border border-black px-2;
+    @apply rounded-lg border border-black px-2 w-full sm:w-fit;
   }
 
-  footer {
-    @apply text-sm;
+  .mantine-Input-wrapper {
+    @apply w-full px-0;
   }
-
-  .line hr {
-    @apply flex-1 mx-1;
-  }
-
-  @media screen and (max-width: 390px) {
-    body {
-      @apply bg-[#F4FBF9] m-auto text-black min-w-[200px];
-    }
-
-    body > footer, body > header {
-      @apply hidden;
-    }
-
-    .button-primary {
-      @apply w-full px-0;
-    }
-
-    div:has( > label) {
-      @apply w-full;
-    }
-
-    .label-primary {
-      @apply w-full pl-1;
-    }
-
-    .input-primary {
-      @apply w-full px-0;
-    }
-
-    .mantine-Input-wrapper {
-      @apply w-full px-0;
-    }
-  }
-
+  /* End of Mantine form elements */
 }
 
 @tailwind components;

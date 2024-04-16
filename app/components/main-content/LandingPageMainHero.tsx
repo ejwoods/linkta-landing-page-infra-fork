@@ -11,9 +11,15 @@ export default function LandingPageMainHero() {
   };
 
   return (
-    <main className="flex flex-col justify-center">
+    <main className="flex flex-col sm:flex-row justify-center">
       <LandingPageTreeVisualizationPanel/>
-      <UniversalButton onClick={handleClick} label='Join Our Journey'/>
+      <UniversalButton 
+        onClick={handleClick}
+        label='Join Our Journey'
+        classNames={{
+          root: 'button-primary sm:flex-o'
+        }}
+      />
     </main>
   )
 }

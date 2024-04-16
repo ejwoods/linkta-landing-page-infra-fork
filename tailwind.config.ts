@@ -6,7 +6,20 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  // darkMode: 'selector', // enable this for manually toggling dark mode
   theme: {
+    screens: {
+      // defaults from https://tailwindcss.com/docs/theme
+      sm: '431px', // 430px is the width of the iPhone 14 Pro Max
+      // We currently have web and mobile breakpoints
+      // md: '768px',
+      // lg: '976px',
+      // xl: '1440px',
+    },
+    fontFamily: {
+      sans: ['Inter, sans-serif'],
+      serif: ['EB Garamond'],
+    },
     extend: {
       colors: {
         light: {
@@ -55,14 +68,6 @@ const config: Config = {
           white: '#fdfefe',
         },
       },
-      screens: {
-        sm: '390px',
-        'input-text-breakpoint': '391px'
-      },
-    },
-    fontFamily: {
-      sans: ['Inter, sans-serif'],
-      serif: ['EB Garamond'],
     },
   },
   plugins: [],

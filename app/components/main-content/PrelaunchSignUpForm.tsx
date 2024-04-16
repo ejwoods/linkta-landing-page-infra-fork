@@ -100,7 +100,11 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         </section>
 
         <section aria-label="Sign Up with Email">
-          <span className="w-full flex items-center line text-sm"><hr />or sign up with email<hr /></span>
+          <span className="w-full flex items-center line text-sm">
+            <hr className="flex-1 mx-1" />
+              or sign up with email
+            <hr className="flex-1 mx-1" />
+          </span>
           <TextInput
             className="input-text-breakpoint:dark:text-dark-accent"
             classNames={{

@@ -10,7 +10,7 @@ import {
   signUpWithGitHub,
   signUpWithGoogle,
   createUserDoc,
-} from '@/app/config/firebase'; 
+} from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 
@@ -39,7 +39,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   useEffect(() => {
     async function checkRedirectResult() {
       const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
-      
+
       if (res) {
         setFlowState('processing');
         await createUserDoc(res.user);
@@ -69,9 +69,37 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         console.error('An error occurred during account creation.');
       }
     }
-    
+
     setFlowState('confirmed')
   }
+
+const TEXT_INPUT_CONFIG = [
+  {
+    field: 'name',
+    label: 'Name',
+    placeholder: 'Enter your name',
+  },
+  {
+    field: 'email',
+    label: 'Email',
+    placeholder: 'Enter your email',
+  },
+  {
+    field: 'interests',
+    label: 'Interests',
+    placeholder: 'Enter your interests',
+  },
+  {
+    field: 'source',
+    label: 'How did you hear about us?',
+    placeholder: 'Enter your source',
+  },
+  {
+    field: 'features',
+    label: 'What features are you most interested in?',
+    placeholder: 'Describe features',
+  }
+];
 
   return (
     <>

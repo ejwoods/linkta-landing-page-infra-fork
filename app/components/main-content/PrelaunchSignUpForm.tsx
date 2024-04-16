@@ -78,11 +78,13 @@ const TEXT_INPUT_CONFIG = [
     field: 'name',
     label: 'Name',
     placeholder: 'Enter your name',
+    validate: (value : string) => (value.length < 2 ? 'Name must have at least 2 letters. Please try again.' : null),
   },
   {
     field: 'email',
     label: 'Email',
     placeholder: 'Enter your email',
+    validate: (value : string) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address.'),
   },
   {
     field: 'interests',

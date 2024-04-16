@@ -73,7 +73,14 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     setFlowState('confirmed')
   }
 
-const TEXT_INPUT_CONFIG = [
+interface TextInputConfig {
+  field: string;
+  label: string;
+  placeholder: string;
+  validate?: (value: string) => string | null;
+}
+
+const TEXT_INPUT_CONFIG: TextInputConfig[] = [
   {
     field: 'name',
     label: 'Name',

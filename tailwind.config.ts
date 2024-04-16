@@ -57,6 +57,7 @@ const config: Config = {
       },
       screens: {
         sm: '390px',
+        'input-text-breakpoint': '391px'
       },
     },
     fontFamily: {

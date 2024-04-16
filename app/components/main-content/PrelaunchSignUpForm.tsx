@@ -73,6 +73,14 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     setFlowState('confirmed')
   }
 
+const validateMinLength = (minLength: number, field: string) => (value: string) => {
+  return value.length < minLength ? `${field} must have at least ${minLength} letters. Please try again.` : null;
+}
+
+const validateEmail = (value: string) => {
+  return /^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address.';
+}
+
 interface TextInputConfig {
   field: string;
   label: string;
@@ -87,32 +95,32 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
     label: 'Name',
     placeholder: 'Enter your name',
     required: true,
-    validate: (value : string) => (value.length < 2 ? 'Name must have at least 2 letters. Please try again.' : null),
+    validate: validateMinLength(2, 'Name'),
   },
   {
     field: 'email',
     label: 'Email',
     placeholder: 'Enter your email',
     required: true,
-    validate: (value : string) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address.'),
+    validate: validateEmail,
   },
   {
     field: 'interests',
     label: 'Interests',
     placeholder: 'Enter your interests',
-    validate: (value : string) => (value.length < 2 ? 'Interests must have at least 2 letters. Please try again.' : null),
+    validate: validateMinLength(2, 'Interests'),
   },
   {
     field: 'source',
     label: 'How did you hear about us?',
     placeholder: 'Enter your source',
-    validate: (value : string) => (value.length < 2 ? 'Source must have at least 2 letters. Please try again.' : null),
+    validate: validateMinLength(2, 'Source'),
   },
   {
     field: 'features',
     label: 'What features are you most interested in?',
     placeholder: 'Describe features',
-    validate: (value : string) => (value.length < 2 ? 'Feature must have at least 2 letters. Please try again.' : null),
+    validate: validateMinLength(2, 'Features'),
   }
 ];
 

@@ -77,6 +77,7 @@ interface TextInputConfig {
   field: string;
   label: string;
   placeholder: string;
+  required?: boolean;
   validate?: (value: string) => string | null;
 }
 
@@ -85,28 +86,33 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
     field: 'name',
     label: 'Name',
     placeholder: 'Enter your name',
+    required: true,
     validate: (value : string) => (value.length < 2 ? 'Name must have at least 2 letters. Please try again.' : null),
   },
   {
     field: 'email',
     label: 'Email',
     placeholder: 'Enter your email',
+    required: true,
     validate: (value : string) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address.'),
   },
   {
     field: 'interests',
     label: 'Interests',
     placeholder: 'Enter your interests',
+    validate: (value : string) => (value.length < 2 ? 'Interests must have at least 2 letters. Please try again.' : null),
   },
   {
     field: 'source',
     label: 'How did you hear about us?',
     placeholder: 'Enter your source',
+    validate: (value : string) => (value.length < 2 ? 'Source must have at least 2 letters. Please try again.' : null),
   },
   {
     field: 'features',
     label: 'What features are you most interested in?',
     placeholder: 'Describe features',
+    validate: (value : string) => (value.length < 2 ? 'Feature must have at least 2 letters. Please try again.' : null),
   }
 ];
 

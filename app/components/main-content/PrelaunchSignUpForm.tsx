@@ -95,7 +95,7 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
     label: 'Name',
     placeholder: 'Enter your name',
     required: true,
-    validate: validateMinLength(2, 'Name'),
+    validate: validateMinLength(1, 'Name'),
   },
   {
     field: 'email',
@@ -108,19 +108,19 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
     field: 'interests',
     label: 'Interests',
     placeholder: 'Enter your interests',
-    validate: validateMinLength(2, 'Interests'),
+    validate: validateMinLength(3, 'Interests'),
   },
   {
     field: 'source',
     label: 'How did you hear about us?',
     placeholder: 'Enter your source',
-    validate: validateMinLength(2, 'Source'),
+    validate: validateMinLength(3, 'Source'),
   },
   {
     field: 'features',
     label: 'What features are you most interested in?',
     placeholder: 'Describe features',
-    validate: validateMinLength(2, 'Features'),
+    validate: validateMinLength(5, 'Features'),
   }
 ];
 

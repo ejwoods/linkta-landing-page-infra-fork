@@ -1,5 +1,6 @@
 import { validateEmail, validateMinLength } from "../utils/formValidation";
 import type { ValidationFunction } from '../types/signupForm';
+
 interface TextInputConfig {
   field: string;
   label: string;
@@ -13,13 +14,13 @@ function createConfigItem(
   field: string,
   label: string,
   placeholder: string,
-  validate: (value: string) => string | null | undefined,
+  validate: ValidationFunction,
   required = false
 ): TextInputConfig {
   return { field, label, placeholder, validate, required };
 }
 
-const TEXT_INPUT_CONFIG: TextInputConfig[] = [
+const textInputConfig: TextInputConfig[] = [
   createConfigItem('name', 'Name', 'Enter your name', validateMinLength(1, 'Name'), true),
   createConfigItem('email', 'Email', 'Enter your email', validateEmail, true),
   createConfigItem('interests', 'Interests', 'Enter your interests', validateMinLength(3, 'Interests')),
@@ -27,4 +28,4 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
   createConfigItem('features', 'What features are you most interested in?', 'Describe features', validateMinLength(5, 'Features'))
 ];
 
-export default TEXT_INPUT_CONFIG;
+export default textInputConfig;

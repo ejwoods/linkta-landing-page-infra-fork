@@ -13,8 +13,8 @@ import {
 } from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
-import TEXT_INPUT_CONFIG from '../../config/signupForm';
 import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
+import textInputConfig from '../../config/signupForm';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -87,12 +87,12 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>
-            {TEXT_INPUT_CONFIG.map((input, index) => (
+            {textInputConfig.map((input, index) => (
               <TextInput
                 key={`${input.field}-${index}`}
-                required={input.required}
                 label={input.label}
                 placeholder={input.placeholder}
+                required={input.required}
                 {...form.getInputProps(input.field)}
               />
             ))}

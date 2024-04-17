@@ -13,7 +13,7 @@ import {
 } from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
-import TEXT_INPUT_CONFIG from '../../utils/textInputConfig';
+import TEXT_INPUT_CONFIG from '../../config/prelaunchSignUpForm';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;

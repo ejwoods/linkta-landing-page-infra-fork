@@ -1,4 +1,4 @@
-import { validateEmail, validateMinLength } from "./validationUtils";
+import { validateEmail, validateMinLength } from "../utils/validationUtils";
 
 interface TextInputConfig {
   field: string;

@@ -6,7 +6,7 @@ export const validateMinLength = (minLength: number, field: string) => (value: s
  * Validates the format of an email address.
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email format is invalid (local-part@domain.TLD, with optional subdomains), otherwise null.
- */
+ **/
 export const validateEmail = (value: string) => {
   if (value.trim().length < 3) {
     return 'Email must have at least 3 letters. Pleaes try again.';

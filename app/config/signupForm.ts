@@ -11,7 +11,7 @@ interface TextInputConfig {
 
 /**
  * Factory function to create text input configurations
- */
+ **/
 function createConfigItem(
   field: string,
   label: string,
@@ -25,7 +25,7 @@ function createConfigItem(
 /**
  * Configuration for text input fields in PreLaunchSignUpForm.
  * Each item represents a text input field with its properties.
- */
+ **/
 const textInputConfig: TextInputConfig[] = [
   createConfigItem('name', 'Name (required)', 'Enter your name', validateMinLength(1, 'Name'), true),
   createConfigItem('email', 'Email (required)', 'Enter your email', validateEmail, true),

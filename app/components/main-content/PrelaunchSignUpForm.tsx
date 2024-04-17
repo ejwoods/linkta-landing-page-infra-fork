@@ -90,7 +90,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
             {TEXT_INPUT_CONFIG.map((input, index) => (
               <TextInput
                 key={`${input.field}-${index}`}
-                required={input.required ?? false}
+                required={input.required}
                 label={input.label}
                 placeholder={input.placeholder}
                 {...form.getInputProps(input.field)}

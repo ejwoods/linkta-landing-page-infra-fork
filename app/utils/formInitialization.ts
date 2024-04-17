@@ -10,14 +10,18 @@ export const generateInitialValues = (config: ConfigItem[]): Record<string, stri
   config.forEach(item => {
     initialValues[item.field] = '';
   });
+
   return initialValues;
 }
 
-export const generateValidationRules = (config: ConfigItem[]): Record<string, ((value: string) => string | null) | undefined> => {
-  const validationRules: Record<string, ((value: string) => string | null) | undefined> = {};
+export const generateValidationRules = (config: ConfigItem[]): Record<string, ValidationFunction> => {
+  const validationRules: Record<string, ValidationFunction> = {};
 
   config.forEach(item => {
-    validationRules[item.field] = item.validate;
+    if(item.validate){
+      validationRules[item.field] = item.validate;
+    }
   });
+
   return validationRules;
 }

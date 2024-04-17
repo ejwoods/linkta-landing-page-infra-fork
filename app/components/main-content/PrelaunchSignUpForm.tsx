@@ -14,6 +14,7 @@ import {
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import TEXT_INPUT_CONFIG from '../../config/prelaunchSignUpForm';
+import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -27,14 +28,8 @@ interface FormValues {
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
   const form = useForm({
-    initialValues: {
-      name: '',
-      email: '',
-    },
-
-    validate: {
-      email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address')
-    },
+    initialValues: generateInitialValues(TEXT_INPUT_CONFIG),
+    validate: generateValidationRules(TEXT_INPUT_CONFIG)
   });
 
   useEffect(() => {

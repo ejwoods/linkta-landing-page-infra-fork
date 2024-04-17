@@ -87,9 +87,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>
-            {TEXT_INPUT_CONFIG.map((input) => (
+            {TEXT_INPUT_CONFIG.map((input, index) => (
               <TextInput
-                key={input.field}
+                key={`${input.field}-${index}`}
                 required={input.required ?? false}
                 label={input.label}
                 placeholder={input.placeholder}

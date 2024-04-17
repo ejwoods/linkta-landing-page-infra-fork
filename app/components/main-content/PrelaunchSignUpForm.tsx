@@ -27,8 +27,8 @@ interface FormValues {
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
-  const initialValues = useMemo(() => generateInitialValues(textInputConfig), [textInputConfig]);
-  const validationRules = useMemo(() => generateValidationRules(textInputConfig), [textInputConfig]);
+  const initialValues = useMemo(() => generateInitialValues(textInputConfig), []);
+  const validationRules = useMemo(() => generateValidationRules(textInputConfig), []);
 
   const form = useForm({
     initialValues,

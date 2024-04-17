@@ -49,7 +49,8 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   }, [setFlowState]);
 
   async function handleSubmit(values: Record<string, string>) {
-    const { email, name } = values as unknown as FormValues; // temp solution
+    const { email, name } = values;
+
     setFlowState('processing')
 
     // creates user document reference using email as document id

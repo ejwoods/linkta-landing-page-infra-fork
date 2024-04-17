@@ -1,1 +1,1 @@
-export type ValidationFunction = (value: string) => string | null;
+export type ValidationFunction = (value: string) => string | null | undefined;

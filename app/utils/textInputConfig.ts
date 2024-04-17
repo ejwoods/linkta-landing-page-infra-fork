@@ -43,3 +43,4 @@ const TEXT_INPUT_CONFIG: TextInputConfig[] = [
   }
 ]
 
+export default TEXT_INPUT_CONFIG;

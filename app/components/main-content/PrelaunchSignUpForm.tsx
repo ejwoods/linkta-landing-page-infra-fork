@@ -49,23 +49,23 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     const { email, name } = values as unknown as FormValues; // temp solution
     setFlowState('processing')
 
-    // // creates user document reference using email as document id
-    // const userDocRef = doc(db, 'users', email);
-    // // checks if document exists in db
-    // const userSnapShot = await getDoc(userDocRef);
+    // creates user document reference using email as document id
+    const userDocRef = doc(db, 'users', email);
+    // checks if document exists in db
+    const userSnapShot = await getDoc(userDocRef);
 
-    // // creates a new document if none exists already
-    // if (!userSnapShot.exists()) {
-    //   try {
-    //     await setDoc(userDocRef, {
-    //       name,
-    //       email,
-    //       createdAt: serverTimestamp()
-    //     })
-    //   } catch (error) {
-    //     console.error('An error occurred during account creation.');
-    //   }
-    // }
+    // creates a new document if none exists already
+    if (!userSnapShot.exists()) {
+      try {
+        await setDoc(userDocRef, {
+          name,
+          email,
+          createdAt: serverTimestamp()
+        })
+      } catch (error) {
+        console.error('An error occurred during account creation.');
+      }
+    }
 
     setFlowState('confirmed')
   }

@@ -13,7 +13,7 @@ import {
 } from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
-import TEXT_INPUT_CONFIG from '../../config/prelaunchSignUpForm';
+import TEXT_INPUT_CONFIG from '../../config/signupForm';
 import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
 
 interface PrelaunchSignUpFormProps {

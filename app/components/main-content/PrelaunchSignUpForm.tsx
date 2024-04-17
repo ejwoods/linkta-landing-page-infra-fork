@@ -13,6 +13,7 @@ import {
 } from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
+import TEXT_INPUT_CONFIG from '../../utils/textInputConfig';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -90,18 +91,15 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>
-            <TextInput
-              required
-              label="Name"
-              {...form.getInputProps('name')}
-            />
-
-            <TextInput
-              required
-              label="Email"
-              {...form.getInputProps('email')}
-            />
-
+            {TEXT_INPUT_CONFIG.map((input) => (
+              <TextInput
+                key={input.field}
+                required={input.required ?? false}
+                label={input.label}
+                placeholder={input.placeholder}
+                {...form.getInputProps(input.field)}
+              />
+            ))}
             <Button type="submit">Join Waiting List</Button>
             <p>Privacy statement placeholder</p>
           </section>

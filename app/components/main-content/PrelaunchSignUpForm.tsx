@@ -78,7 +78,7 @@ const validateMinLength = (minLength: number, field: string) => (value: string) 
 }
 
 const validateEmail = (value: string) => {
-  return /^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address.';
+  return /^\S+@\S+\.\S+$/.test(value) ? null : 'Invalid email format. Please enter a valid email address.';
 }
 
 interface TextInputConfig {

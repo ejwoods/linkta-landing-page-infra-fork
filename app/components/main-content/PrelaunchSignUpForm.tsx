@@ -2,7 +2,7 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction } from 'react';
+import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
 import { getRedirectResult } from 'firebase/auth';
 import {
@@ -27,9 +27,12 @@ interface FormValues {
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
+  const initialValues = useMemo(() => generateInitialValues(textInputConfig), [textInputConfig]);
+  const validationRules = useMemo(() => generateValidationRules(textInputConfig), [textInputConfig]);
+
   const form = useForm({
-    initialValues: generateInitialValues(textInputConfig),
-    validate: generateValidationRules(textInputConfig)
+    initialValues,
+    validate: validationRules
   });
 
   useEffect(() => {

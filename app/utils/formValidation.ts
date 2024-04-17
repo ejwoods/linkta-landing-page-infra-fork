@@ -12,7 +12,7 @@ export const validateEmail = (value: string) => {
     return 'Email must have at least 3 letters. Pleaes try again.';
   }
 
-  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   if (!emailRegex.test(value)) {
     return 'Invalid email format. Please check for missing "@" or "." symbols, or invalid characters and try again';

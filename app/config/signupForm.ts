@@ -9,7 +9,9 @@ interface TextInputConfig {
   required?: boolean;
 }
 
-// Factory function to create text input configurations
+/**
+ * Factory function to create text input configurations
+ */
 function createConfigItem(
   field: string,
   label: string,

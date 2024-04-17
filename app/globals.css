@@ -11,10 +11,6 @@
   }
 
   /* The following is for handling form elements with Mantine */
-  div:has( > label) {
-    @apply w-full sm:w-fit;
-  }
-
   .button-primary {
     @apply bg-[#ffa51b] shadow-md my-2 m-auto rounded-full w-full p-2 sm:w-fit;
   }
@@ -23,12 +19,12 @@
     @apply font-sans text-sm font-semibold text-left mt-2 w-full pl-2;
   }
 
-  .input-primary {
-    @apply rounded-lg border border-black px-2 w-full sm:w-fit;
+  div:has(.input-primary) {
+    @apply w-full sm:w-fit;
   }
 
-  .mantine-Input-wrapper {
-    @apply w-full px-0;
+  .input-primary {
+    @apply rounded-lg border border-black px-2 w-full sm:w-fit;
   }
   /* End of Mantine form elements */
 }

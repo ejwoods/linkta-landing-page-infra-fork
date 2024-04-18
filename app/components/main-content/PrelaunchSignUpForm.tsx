@@ -77,7 +77,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="text-center">
+      <Box className="text-center max-w-screen-sm sm:px-4">
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
@@ -87,7 +87,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
           <section
             aria-label="Sign Up with Google or Github"
-            className="text-sm pb-2"
+            className="text-sm px-2 pb-2"
           >
             <h3>Sign up with Google or GitHub</h3>
             <Button
@@ -110,7 +110,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             </Button>
           </section>
 
-          <section aria-label="Sign Up with Email">
+          <section aria-label="Sign Up with Email" className="flex-col justify-center mx-auto">
             <span className="w-full flex items-center line text-sm">
               <hr className="flex-1 mx-1" />
               or sign up with email
@@ -125,7 +125,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               {...form.getInputProps(input.field)}
               className='sm:dark:text-dark-accent'
               classNames={{
-                root: 'w-full sm:w-fit',
+                root: 'w-full',
                 label: 'label-primary',
                 input: 'input-primary'
               }}

@@ -9,7 +9,7 @@ interface ConfigItem {
 * Generates initial form values based on the provided config.
 * @param config - Array of ConfigItem objects.
 * @returns Object with field names as keys and empty strings as values.
-**/
+*/
 export const generateInitialValues = (config: ConfigItem[]): Record<string, string> => {
   const initialValues: Record<string, string> = {};
 
@@ -24,7 +24,7 @@ export const generateInitialValues = (config: ConfigItem[]): Record<string, stri
 * Generates validation rules based on the provided config.
 * @param config - Array of ConfigItem objects.
 * @returns Object with field names as keys and validation functions as values.
-**/
+*/
 export const generateValidationRules = (config: ConfigItem[]): Record<string, ValidationFunction> => {
   const validationRules: Record<string, ValidationFunction> = {};
 

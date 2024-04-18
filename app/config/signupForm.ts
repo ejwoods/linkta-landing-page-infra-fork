@@ -1,8 +1,8 @@
 import { validateEmail, validateMinLength } from "../utils/formValidation";
-import type { ValidationFunction } from '../types/signupForm';
+import type { FormValues, ValidationFunction } from '../types/signupForm';
 
 interface TextInputConfig {
-  field: string;
+  field: keyof FormValues;
   label: string;
   placeholder: string;
   validate?: ValidationFunction;
@@ -19,7 +19,7 @@ interface TextInputConfig {
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 function createConfigItem(
-  field: string,
+  field: keyof FormValues,
   label: string,
   placeholder: string,
   validate: ValidationFunction,

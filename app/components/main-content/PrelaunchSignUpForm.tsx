@@ -15,14 +15,10 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
 import textInputConfig from '../../config/signupForm';
+import { FormValues } from '@/app/types/signupForm';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
-}
-
-interface FormValues {
-  name: string;
-  email: string;
 }
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
@@ -30,7 +26,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   const initialValues = useMemo(() => generateInitialValues(textInputConfig), []);
   const validationRules = useMemo(() => generateValidationRules(textInputConfig), []);
 
-  const form = useForm({
+  const form = useForm<FormValues>({
     initialValues,
     validate: validationRules
   });
@@ -48,7 +44,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit(values: Record<string, string>) {
+  async function handleSubmit(values: FormValues) {
     const { email, name } = values;
 
     setFlowState('processing')

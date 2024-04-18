@@ -1,7 +1,7 @@
-import type { ValidationFunction } from '../types/signupForm';
+import type { FormValues, ValidationFunction } from '../types/signupForm';
 
 interface ConfigItem {
-  field: string;
+  field: keyof FormValues;
   validate?: ValidationFunction;
 }
 
@@ -10,8 +10,8 @@ interface ConfigItem {
 * @param config - Array of ConfigItem objects.
 * @returns Object with field names as keys and empty strings as values.
 */
-export const generateInitialValues = (config: ConfigItem[]): Record<string, string> => {
-  const initialValues: Record<string, string> = {};
+export const generateInitialValues = (config: ConfigItem[]): FormValues => {
+  const initialValues = {} as FormValues;
 
   config.forEach(item => {
     initialValues[item.field] = '';

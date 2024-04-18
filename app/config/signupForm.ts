@@ -10,8 +10,14 @@ interface TextInputConfig {
 }
 
 /**
- * Factory function to create text input configurations
- **/
+ * Creates a text input configuration object for form fields.
+ * @param {string} field - The name of the field.
+ * @param {string} label - The label text for the field.
+ * @param {string} placeholder - The placeholder text for the field.
+ * @param {ValidationFunction} validate - The validation function to apply to the field.
+ * @param {boolean} [required=false] - Indicates if the field is required.
+ * @returns {TextInputConfig} The configuration object for a text input field.
+ */
 function createConfigItem(
   field: string,
   label: string,
@@ -23,9 +29,10 @@ function createConfigItem(
 }
 
 /**
- * Configuration for text input fields in PreLaunchSignUpForm.
- * Each item represents a text input field with its properties.
- **/
+ * Configuration array for text input fields used in the PreLaunchSignUpForm.
+ * It includes configuration for various fields such as name, email, interests, etc.
+ * @type {TextInputConfig[]}
+ */
 const textInputConfig: TextInputConfig[] = [
   createConfigItem('name', 'Name (required)', 'Enter your name', validateMinLength(1, 'Name'), true),
   createConfigItem('email', 'Email (required)', 'Enter your email', validateEmail, true),

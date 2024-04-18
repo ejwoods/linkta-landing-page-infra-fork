@@ -57,7 +57,7 @@ const textInputConfig: TextInputConfig[] = [
   createConfigItem(
     'interests',
     'Interests (optional)',
-    'Enter your interests',
+    'Enter your interests, separated by commas (e.g., Design, Programming)',
     validateMinLength(3, 'Interests')
   ),
   createConfigItem(
@@ -69,7 +69,7 @@ const textInputConfig: TextInputConfig[] = [
   createConfigItem(
     'features',
     'What features are you most interested in? (optional)',
-    'Describe features',
+    'Describe features, separated by commas (e.g., Collaboration, Sharing)',
     validateMinLength(5, 'Features')
   ),
 ];

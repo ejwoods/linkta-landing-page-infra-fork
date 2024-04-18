@@ -1,5 +1,9 @@
 export const validateMinLength = (minLength: number, field: string) => (value: string) => {
-  return value.trim().length < minLength ? `${field} must have at least ${minLength} letters. Please try again.` : null;
+  if (value.trim().length < minLength) {
+    const pluralSuffix = minLength > 1 ? 's' : '';
+    return `${field} must have at least ${minLength} letter${pluralSuffix}. Please try again.`;
+  }
+  return null;
 }
 
 export const validateEmailFormat = (value: string) => {

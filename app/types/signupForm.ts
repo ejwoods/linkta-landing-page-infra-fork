@@ -5,9 +5,9 @@ export type ValidationFunction = (
 export interface FormValues {
   name: string;
   email: string;
-  interests?: string;
-  source?: string;
-  features?: string;
+  interests: string;
+  source: string;
+  features: string;
 }
 
 export interface ConfigItem {

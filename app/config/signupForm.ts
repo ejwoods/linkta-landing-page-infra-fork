@@ -1,14 +1,9 @@
 import { validateEmail, validateMinLength } from '../utils/formValidation';
-import type { FormValues, ValidationFunction } from '../types/signupForm';
-
-interface TextInputConfig {
-  field: keyof FormValues;
-  label: string;
-  placeholder: string;
-  validate?: ValidationFunction;
-  required: boolean;
-  maxLength: number;
-}
+import type {
+  FormValues,
+  TextInputConfig,
+  ValidationFunction,
+} from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.

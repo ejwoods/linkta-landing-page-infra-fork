@@ -1,9 +1,8 @@
-import type { FormValues, ValidationFunction } from '../types/signupForm';
-
-interface ConfigItem {
-  field: keyof FormValues;
-  validate?: ValidationFunction;
-}
+import type {
+  ConfigItem,
+  FormValues,
+  ValidationFunction,
+} from '../types/signupForm';
 
 /**
  * Generates initial form values based on the provided config.
@@ -11,7 +10,13 @@ interface ConfigItem {
  * @returns Object with field names as keys and empty strings as values.
  */
 export const generateInitialValues = (config: ConfigItem[]): FormValues => {
-  const initialValues = {} as FormValues;
+  const initialValues: FormValues = {
+    name: '',
+    email: '',
+    interests: '',
+    source: '',
+    features: '',
+  };
 
   config.forEach((item) => {
     initialValues[item.field] = '';
@@ -27,13 +32,20 @@ export const generateInitialValues = (config: ConfigItem[]): FormValues => {
  */
 export const generateValidationRules = (
   config: ConfigItem[]
-): Record<string, ValidationFunction> => {
-  const validationRules: Record<string, ValidationFunction> = {};
+): Record<keyof FormValues, ValidationFunction | undefined> => {
+  const validationRules: Record<
+    keyof FormValues,
+    ValidationFunction | undefined
+  > = {
+    name: undefined,
+    email: undefined,
+    interests: undefined,
+    source: undefined,
+    features: undefined,
+  };
 
   config.forEach((item) => {
-    if (item.validate) {
-      validationRules[item.field] = item.validate;
-    }
+    validationRules[item.field] = item.validate ?? undefined;
   });
 
   return validationRules;

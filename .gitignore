@@ -18,6 +18,7 @@ cypress/reports/
 
 # production
 /build
+.firebase/
 
 # misc
 .DS_Store

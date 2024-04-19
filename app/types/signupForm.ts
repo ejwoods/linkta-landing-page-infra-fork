@@ -12,7 +12,7 @@ export interface FormValues {
 
 export interface ConfigItem {
   field: keyof FormValues;
-  validate: ValidationFunction;
+  validate?: ValidationFunction;
 }
 
 export interface TextInputConfig extends ConfigItem {

@@ -45,7 +45,7 @@ export const generateValidationRules = (
   };
 
   config.forEach((item) => {
-    validationRules[item.field] = item.validate ?? undefined;
+    validationRules[item.field] = item.validate;
   });
 
   return validationRules;

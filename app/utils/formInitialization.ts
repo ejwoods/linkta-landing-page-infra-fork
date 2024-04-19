@@ -10,19 +10,11 @@ import type {
  * @returns {FormValues} Object with field names as keys and empty strings as values.
  */
 export const generateInitialValues = (config: ConfigItem[]): FormValues => {
-  const initialValues: FormValues = {
-    name: '',
-    email: '',
-    interests: '',
-    source: '',
-    features: '',
-  };
-
-  config.forEach((item) => {
+  
+  return config.reduce((initialValues, item) => {
     initialValues[item.field] = '';
-  });
-
-  return initialValues;
+    return initialValues;
+  }, {} as FormValues);
 };
 
 /**

@@ -1,3 +1,5 @@
+import { ValidationFunction } from "../types/signupForm";
+
 /**
  * Validates if the string meets the minimum length requirement.
  * @param {number} minLength - The minimum number of characters required.
@@ -6,11 +8,7 @@
  */
 export const validateMinLength =
   (minLength: number, field: string) =>
-  (value: string | undefined): string | null | undefined => {
-    if (value === undefined || value.trim() === '') {
-      return undefined;
-    }
-
+  (value: string ): string | null  => {
     if (value.trim().length < minLength) {
       const pluralSuffix = minLength > 1 ? 's' : '';
       return `${field} must have at least ${minLength} letter${pluralSuffix}. Please try again.`;
@@ -23,9 +21,7 @@ export const validateMinLength =
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email format is invalid, otherwise null.
  */
-const validateEmailFormat = (value: string | undefined): string | null => {
-  if (value === undefined) return null;
-
+const validateEmailFormat = (value: string ): string | null => {
   const emailRegex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -39,6 +35,16 @@ const validateEmailFormat = (value: string | undefined): string | null => {
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email fails either min length or format validation, otherwise null.
  */
-export const validateEmail = (value: string | undefined): string | null => {
+export const validateEmail = (value: string ): string | null => {
   return validateMinLength(3, 'Email')(value) || validateEmailFormat(value);
+};
+
+export const validateOptionalMinLength = (minLength: number, field: string): ValidationFunction => {
+  return (value: string | undefined) => {
+    if (value === undefined || value.trim() === '') {
+      return null;
+    }
+
+    return validateMinLength(minLength, field)(value);
+  };
 };

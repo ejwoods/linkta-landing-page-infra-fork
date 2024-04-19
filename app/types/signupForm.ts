@@ -1,6 +1,6 @@
 export type ValidationFunction = (
-  value: string | undefined
-) => string | null | undefined;
+  value: string
+) => string | null ;
 
 export interface FormValues {
   name: string;
@@ -12,7 +12,7 @@ export interface FormValues {
 
 export interface ConfigItem {
   field: keyof FormValues;
-  validate?: ValidationFunction;
+  validate: ValidationFunction;
 }
 
 export interface TextInputConfig extends ConfigItem {

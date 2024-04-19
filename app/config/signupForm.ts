@@ -1,4 +1,4 @@
-import { validateEmail, validateMinLength } from '../utils/formValidation';
+import { validateEmail, validateMinLength, validateOptionalMinLength } from '../utils/formValidation';
 import type {
   FormValues,
   TextInputConfig,
@@ -58,7 +58,7 @@ const textInputConfig: TextInputConfig[] = [
     'interests',
     'Interests (optional)',
     'Enter your interests, separated by commas (e.g., Design, Programming)',
-    validateMinLength(3, 'Interests'),
+    validateOptionalMinLength(3, 'Interests'),
     false,
     150
   ),
@@ -66,7 +66,7 @@ const textInputConfig: TextInputConfig[] = [
     'source',
     'How did you hear about us? (optional)',
     'Enter your source',
-    validateMinLength(3, 'Source'),
+    validateOptionalMinLength(3, 'Source'),
     false,
     50
   ),
@@ -74,7 +74,7 @@ const textInputConfig: TextInputConfig[] = [
     'features',
     'What features are you most interested in? (optional)',
     'Describe features, separated by commas (e.g., Collaboration, Sharing)',
-    validateMinLength(5, 'Features'),
+    validateOptionalMinLength(5, 'Features'),
     false,
     200
   ),

@@ -2,8 +2,8 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction } from 'react';
-import { FlowState } from '../../early-access/page';
+import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
+import { FlowState } from '../../early-access/page'
 import { getRedirectResult } from 'firebase/auth';
 import {
   auth,
@@ -18,23 +18,20 @@ import {
   generateValidationRules,
 } from '@/app/utils/formInitialization';
 import textInputConfig from '../../config/signupForm';
-import PrivacyAgreement from '../common/PrivacyAgreement';
+import { FormValues } from '@/app/types/signupForm';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-interface FormValues {
-  name: string;
-  email: string;
-}
+const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
-const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
-  setFlowState,
-}) => {
-  const form = useForm({
-    initialValues: generateInitialValues(textInputConfig),
-    validate: generateValidationRules(textInputConfig),
+  const initialValues = useMemo(() => generateInitialValues(textInputConfig), []);
+  const validationRules = useMemo(() => generateValidationRules(textInputConfig), []);
+
+  const form = useForm<FormValues>({
+    initialValues,
+    validate: validationRules
   });
 
   useEffect(() => {
@@ -50,9 +47,10 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit(values: Record<string, string>) {
-    const { email, name } = values as unknown as FormValues; // temp solution
-    setFlowState('processing');
+  async function handleSubmit(values: FormValues) {
+    const { email, name } = values;
+
+    setFlowState('processing')
 
     // creates user document reference using email as document id
     const userDocRef = doc(db, 'users', email);

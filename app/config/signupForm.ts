@@ -1,6 +1,5 @@
 import {
   validateEmail,
-  validateMinLength,
   validateName,
   validateOptionalMinLength,
 } from '../utils/formValidation';
@@ -12,11 +11,12 @@ import type {
 
 /**
  * Creates a text input configuration object for form fields.
- * @param {string} field - The name of the field.
+ * @param {keyof FormValues} field - The name of the field.
  * @param {string} label - The label text for the field.
  * @param {string} placeholder - The placeholder text for the field.
  * @param {ValidationFunction} validate - The validation function to apply to the field.
- * @param {boolean} [required=false] - Indicates if the field is required.
+ * @param {boolean} required - Indicates if the field is required.
+ * @param {number} maxLength - The maximum allowed length for the field value.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 const createConfigItem: (

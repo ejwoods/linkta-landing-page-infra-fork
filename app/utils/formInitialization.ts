@@ -6,8 +6,8 @@ import type {
 
 /**
  * Generates initial form values based on the provided config.
- * @param config - Array of ConfigItem objects.
- * @returns Object with field names as keys and empty strings as values.
+ * @param {ConfigItem[]} config - Array of ConfigItem objects.
+ * @returns {FormValues} Object with field names as keys and empty strings as values.
  */
 export const generateInitialValues = (config: ConfigItem[]): FormValues => {
   const initialValues: FormValues = {
@@ -27,8 +27,8 @@ export const generateInitialValues = (config: ConfigItem[]): FormValues => {
 
 /**
  * Generates validation rules based on the provided config.
- * @param config - Array of ConfigItem objects.
- * @returns Object with field names as keys and validation functions as values.
+ * @param {ConfigItem[]} config - Array of ConfigItem objects.
+ * @returns {Record<keyof FormValues, ValidationFunction | undefined>} Object with field names as keys and validation functions as values.
  */
 export const generateValidationRules = (
   config: ConfigItem[]

@@ -6,7 +6,8 @@ interface TextInputConfig {
   label: string;
   placeholder: string;
   validate?: ValidationFunction;
-  required?: boolean;
+  required: boolean;
+  maxLength: number;
 }
 
 /**
@@ -23,15 +24,17 @@ const createConfigItem: (
   label: string,
   placeholder: string,
   validate: ValidationFunction,
-  required?: boolean
+  required: boolean,
+  maxLength: number
 ) => TextInputConfig = (
   field,
   label,
   placeholder,
   validate,
-  required = false
+  required,
+  maxLength
 ) => {
-  return { field, label, placeholder, validate, required };
+  return { field, label, placeholder, validate, required, maxLength };
 };
 
 /**
@@ -45,32 +48,40 @@ const textInputConfig: TextInputConfig[] = [
     'Name (required)',
     'Enter your name',
     validateMinLength(1, 'Name'),
-    true
+    true,
+    50
   ),
   createConfigItem(
     'email',
     'Email (required)',
     'Enter your email',
     validateEmail,
-    true
+    true,
+    254
   ),
   createConfigItem(
     'interests',
     'Interests (optional)',
     'Enter your interests, separated by commas (e.g., Design, Programming)',
-    validateMinLength(3, 'Interests')
+    validateMinLength(3, 'Interests'),
+    false,
+    150
   ),
   createConfigItem(
     'source',
     'How did you hear about us? (optional)',
     'Enter your source',
-    validateMinLength(3, 'Source')
+    validateMinLength(3, 'Source'),
+    false,
+    50
   ),
   createConfigItem(
     'features',
     'What features are you most interested in? (optional)',
     'Describe features, separated by commas (e.g., Collaboration, Sharing)',
-    validateMinLength(5, 'Features')
+    validateMinLength(5, 'Features'),
+    false,
+    200
   ),
 ];
 

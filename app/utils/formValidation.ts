@@ -39,6 +39,12 @@ export const validateEmail = (value: string): string | null => {
   return validateMinLength(3, 'Email')(value) || validateEmailFormat(value);
 };
 
+/**
+ * Validates a string for optional minimum length.
+ * @param {number} minLength - The minimum number of characters required.
+ * @param {string} field - The name of the field to validate.
+ * @returns {ValidationFunction} A validation function that takes a string value and returns an error message if validation fails, otherwise null.
+ */
 export const validateOptionalMinLength = (
   minLength: number,
   field: string
@@ -52,6 +58,11 @@ export const validateOptionalMinLength = (
   };
 };
 
+/**
+ * Validates a name string for allowed characters.
+ * @param {string} value - The name string to validate.
+ * @returns {string|null} An error message if validation fails, otherwise null.
+ */
 const validateNameFormat = (value: string): string | null => {
   const nameRegex = /^[\p{Letter}\s\-.']+$/u;
 
@@ -60,6 +71,11 @@ const validateNameFormat = (value: string): string | null => {
     : null;
 };
 
+/**
+ * Validates a name string for both minimum length and allowed characters.
+ * @param {string} value - The name string to validate.
+ * @returns {string|null} An error message if validation fails, otherwise null.
+ */
 export const validateName = (value: string): string | null => {
   return validateMinLength(1, 'Name')(value) || validateNameFormat(value);
 };

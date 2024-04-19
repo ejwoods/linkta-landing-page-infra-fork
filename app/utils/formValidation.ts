@@ -26,7 +26,7 @@ const validateEmailFormat = (value: string): string | null => {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   return !emailRegex.test(value)
-    ? 'Invalid email format. Please check for missing "@" or "." symbols, or invalid characters and try again'
+    ? 'Email address can only contain letters, digits, periods (.), and special characters in the username, followed by (@) and a domain name or IP address. The domain name can contain letters, digits, hyphens (-), and periods (.). Please remove any invalid characters and try again.'
     : null;
 };
 

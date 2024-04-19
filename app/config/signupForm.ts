@@ -1,4 +1,9 @@
-import { validateEmail, validateMinLength, validateOptionalMinLength } from '../utils/formValidation';
+import {
+  validateEmail,
+  validateMinLength,
+  validateName,
+  validateOptionalMinLength,
+} from '../utils/formValidation';
 import type {
   FormValues,
   TextInputConfig,
@@ -42,7 +47,7 @@ const textInputConfig: TextInputConfig[] = [
     'name',
     'Name (required)',
     'Enter your name',
-    validateMinLength(1, 'Name'),
+    validateName,
     true,
     50
   ),

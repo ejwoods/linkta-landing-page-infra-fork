@@ -1,4 +1,4 @@
-import { ValidationFunction } from "../types/signupForm";
+import { ValidationFunction } from '../types/signupForm';
 
 /**
  * Validates if the string meets the minimum length requirement.
@@ -8,7 +8,7 @@ import { ValidationFunction } from "../types/signupForm";
  */
 export const validateMinLength =
   (minLength: number, field: string) =>
-  (value: string ): string | null  => {
+  (value: string): string | null => {
     if (value.trim().length < minLength) {
       const pluralSuffix = minLength > 1 ? 's' : '';
       return `${field} must have at least ${minLength} letter${pluralSuffix}. Please try again.`;
@@ -21,7 +21,7 @@ export const validateMinLength =
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email format is invalid, otherwise null.
  */
-const validateEmailFormat = (value: string ): string | null => {
+const validateEmailFormat = (value: string): string | null => {
   const emailRegex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -35,11 +35,14 @@ const validateEmailFormat = (value: string ): string | null => {
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email fails either min length or format validation, otherwise null.
  */
-export const validateEmail = (value: string ): string | null => {
+export const validateEmail = (value: string): string | null => {
   return validateMinLength(3, 'Email')(value) || validateEmailFormat(value);
 };
 
-export const validateOptionalMinLength = (minLength: number, field: string): ValidationFunction => {
+export const validateOptionalMinLength = (
+  minLength: number,
+  field: string
+): ValidationFunction => {
   return (value: string | undefined) => {
     if (value === undefined || value.trim() === '') {
       return null;
@@ -47,4 +50,16 @@ export const validateOptionalMinLength = (minLength: number, field: string): Val
 
     return validateMinLength(minLength, field)(value);
   };
+};
+
+const validateNameFormat = (value: string): string | null => {
+  const nameRegex = /^[\p{Letter}\s\-.']+$/u;
+
+  return !nameRegex.test(value)
+    ? 'First name can only contain letters from any language, whitespace characters, hyphens (-), periods (.), apostrophes (\'), and right single quotation marks (\'). Please remove any other characters and try again.'
+    : null;
+};
+
+export const validateName = (value: string): string | null => {
+  return validateMinLength(1, 'Name')(value) || validateNameFormat(value);
 };

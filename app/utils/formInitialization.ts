@@ -10,7 +10,6 @@ import type {
  * @returns {FormValues} Object with field names as keys and empty strings as values.
  */
 export const generateInitialValues = (config: ConfigItem[]): FormValues => {
-  
   return config.reduce((initialValues, item) => {
     initialValues[item.field] = '';
     return initialValues;
@@ -25,20 +24,11 @@ export const generateInitialValues = (config: ConfigItem[]): FormValues => {
 export const generateValidationRules = (
   config: ConfigItem[]
 ): Record<keyof FormValues, ValidationFunction | undefined> => {
-  const validationRules: Record<
-    keyof FormValues,
-    ValidationFunction | undefined
-  > = {
-    name: undefined,
-    email: undefined,
-    interests: undefined,
-    source: undefined,
-    features: undefined,
-  };
-
-  config.forEach((item) => {
-    validationRules[item.field] = item.validate;
-  });
-
-  return validationRules;
+  return config.reduce(
+    (validationRules, item) => {
+      validationRules[item.field] = item.validate ?? undefined;
+      return validationRules;
+    },
+    {} as Record<keyof FormValues, ValidationFunction | undefined>
+  );
 };

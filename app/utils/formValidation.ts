@@ -5,7 +5,12 @@
  * @returns {string|null} An error message if validation fails, otherwise null.
  */
 export const validateMinLength =
-  (minLength: number, field: string) => (value: string) => {
+  (minLength: number, field: string) =>
+  (value: string | undefined): string | null | undefined => {
+    if (value === undefined || value.trim() === '') {
+      return undefined;
+    }
+
     if (value.trim().length < minLength) {
       const pluralSuffix = minLength > 1 ? 's' : '';
       return `${field} must have at least ${minLength} letter${pluralSuffix}. Please try again.`;
@@ -18,7 +23,9 @@ export const validateMinLength =
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email format is invalid, otherwise null.
  */
-export const validateEmailFormat = (value: string) => {
+const validateEmailFormat = (value: string | undefined): string | null => {
+  if (value === undefined) return null;
+
   const emailRegex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -32,6 +39,6 @@ export const validateEmailFormat = (value: string) => {
  * @param {string} value - The email address to validate.
  * @returns {string|null} An error message if the email fails either min length or format validation, otherwise null.
  */
-export const validateEmail = (value: string) => {
+export const validateEmail = (value: string | undefined): string | null => {
   return validateMinLength(3, 'Email')(value) || validateEmailFormat(value);
 };

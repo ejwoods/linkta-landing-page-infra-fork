@@ -19,7 +19,7 @@ export const generateInitialValues = (config: ConfigItem[]): FormValues => {
 /**
  * Generates validation rules based on the provided config.
  * @param {ConfigItem[]} config - Array of ConfigItem objects.
- * @returns {Record<keyof FormValues, ValidationFunction | undefined>} Object with field names as keys and validation functions as values.
+ * @returns {Record<keyof FormValues, ValidationFunction | undefined>} Object with field names as mantine keys and validation functions as values.
  */
 export const generateValidationRules = (
   config: ConfigItem[]

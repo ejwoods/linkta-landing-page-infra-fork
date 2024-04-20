@@ -8,21 +8,21 @@ const userInputSchema = z.object({
   name: z
     .string()
     .trim()
-    .max(50, { message: 'Name must be no more than 50 characters long.' })
+    .max(50, { message: 'Name can be up to 50 characters.' })
     .refine((val) => val.length > 50 || nameRegex.test(val), {
       message:
-        "First name can only contain letters from any language, whitespace characters, hyphens (-), periods (.), apostrophes ('), and right single quotation marks ('). Please remove any other characters and try again.",
+        'Looks like your name contains some special characters. Could you check it again?',
     }),
   email: z
     .string()
     .trim()
     .min(6, {
-      message: 'Email must have at least 6 letters. Please try again.',
+      message: 'Hmm, that email seems a bit short. Could you check it again?',
     })
-    .max(254, { message: 'Email must be no more than 254 characters long.' })
+    .max(254, { message: 'Email can be up to 254 characters.' })
     .refine((val) => val.length > 254 || emailRegex.test(val), {
       message:
-        'Email address can only contain letters, digits, periods (.), and special characters in the username, followed by (@) and a domain name or IP address.',
+        'Oops, the email address seems incorrect. Could you check it again?',
     }),
   interests: z.string().optional(),
   source: z.string().optional(),

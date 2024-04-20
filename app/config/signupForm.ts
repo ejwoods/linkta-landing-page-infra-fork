@@ -33,19 +33,19 @@ const textInputConfig: TextInputConfig[] = [
   createConfigItem(
     'interests',
     'What would you love to learn?',
-    'Enter your interests, separated by commas (e.g., design, programming)',
+    'Enter your interests, separated by commas (e.g., design, programming etc.)',
     false
   ),
   createConfigItem(
     'source',
     'How did you discover us?',
-    'Enter your source',
+    'E.g.LinkedIn, Instagram etc.',
     false
   ),
   createConfigItem(
     'features',
     'Any specific features you\'re excited about?',
-    'Describe features, separated by commas (e.g., collaboration, sharing)',
+    'Describe features, separated by commas (e.g., collaboration, sharing etc.)',
     false
   ),
 ];

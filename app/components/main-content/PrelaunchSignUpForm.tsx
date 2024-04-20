@@ -16,6 +16,7 @@ import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
+import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -50,12 +51,13 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   }, [setFlowState]);
 
   async function handleSubmit(values: UserDataValidation) {
-    const { email, name } = values;
 
     setFlowState('processing')
 
+     const userData = userDataSanitizationSchema.parse(values);
+
     // creates user document reference using email as document id
-    const userDocRef = doc(db, 'users', email);
+    const userDocRef = doc(db, 'users', userData.email);
     // checks if document exists in db
     const userSnapShot = await getDoc(userDocRef);
 
@@ -63,8 +65,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     if (!userSnapShot.exists()) {
       try {
         await setDoc(userDocRef, {
-          name,
-          email,
+          ...userData,
           createdAt: serverTimestamp()
         })
       } catch (error) {

@@ -1,11 +1,11 @@
-import { FormValues } from "../schemas/userInputSchema";
+import { UserDataValidation } from "../schemas/userDataValidationSchema";
 
 export type ValidationFunction = (
   value: string
 ) => string | null ;
 
 export interface ConfigItem {
-  field: keyof FormValues;
+  field: keyof UserDataValidation;
   validate?: ValidationFunction;
 }
 

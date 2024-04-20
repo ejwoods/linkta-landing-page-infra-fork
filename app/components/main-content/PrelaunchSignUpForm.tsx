@@ -15,7 +15,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import userInputSchema, { FormValues } from '@/app/schemas/userInputSchema';
+import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -33,7 +33,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
   const form = useForm({
     initialValues: initialFormValues,
-    validate: zodResolver(userInputSchema)
+    validate: zodResolver(userDataValidationSchema)
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit(values: FormValues) {
+  async function handleSubmit(values: UserDataValidation) {
     const { email, name } = values;
 
     setFlowState('processing')

@@ -10,7 +10,7 @@ const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const nameRegex = /^[\p{Letter}\s\-.']+$/u;
 
-const userInputSchema = z.object({
+const userDataValidationSchema = z.object({
   name: z
     .string()
     .trim()
@@ -35,6 +35,6 @@ const userInputSchema = z.object({
   features: z.string().optional(),
 });
 
-export type FormValues = z.infer<typeof userInputSchema>;
+export type UserDataValidation = z.infer<typeof userDataValidationSchema>;
 
-export default userInputSchema;
+export default userDataValidationSchema;

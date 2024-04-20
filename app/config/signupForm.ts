@@ -1,16 +1,16 @@
-import { FormValues } from '../schemas/userInputSchema';
+import { UserDataValidation } from '../schemas/userDataValidationSchema';
 import type { TextInputConfig } from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.
- * @param {keyof FormValues} field - The name of the field.
+ * @param {keyof UserDataValidation} field - The name of the field.
  * @param {string} label - The label text for the field.
  * @param {string} placeholder - The placeholder text for the field.
  * @param {boolean} required - Indicates if the field is required.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 const createConfigItem: (
-  field: keyof FormValues,
+  field: keyof UserDataValidation,
   label: string,
   placeholder: string,
   required: boolean

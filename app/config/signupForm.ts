@@ -1,4 +1,5 @@
-import type { FormValues, TextInputConfig } from '../types/signupForm';
+import { FormValues } from '../schemas/userInputSchema';
+import type { TextInputConfig } from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.

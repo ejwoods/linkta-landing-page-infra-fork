@@ -2,7 +2,7 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction } from 'react';
+import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
 import { getRedirectResult } from 'firebase/auth';
 import {
@@ -10,36 +10,31 @@ import {
   signUpWithGitHub,
   signUpWithGoogle,
   createUserDoc,
-} from '@/app/config/firebase'; 
+} from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
+import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
+import textInputConfig from '../../config/signupForm';
+import { FormValues } from '@/app/types/signupForm';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-interface FormValues {
-  name: string;
-  email: string;
-}
-
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
-  const form = useForm({
-    initialValues: {
-      name: '',
-      email: '',
-    },
+  const initialValues = useMemo(() => generateInitialValues(textInputConfig), []);
+  const validationRules = useMemo(() => generateValidationRules(textInputConfig), []);
 
-    validate: {
-      email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Please enter a valid email address')
-    },
+  const form = useForm<FormValues>({
+    initialValues,
+    validate: validationRules
   });
 
   useEffect(() => {
     async function checkRedirectResult() {
       const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
-      
+
       if (res) {
         setFlowState('processing');
         await createUserDoc(res.user);
@@ -49,7 +44,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit({ email, name }: FormValues) {
+  async function handleSubmit(values: FormValues) {
+    const { email, name } = values;
+
     setFlowState('processing')
 
     // creates user document reference using email as document id
@@ -69,7 +66,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         console.error('An error occurred during account creation.');
       }
     }
-    
+
     setFlowState('confirmed')
   }
 
@@ -90,18 +87,15 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>
-            <TextInput
-              required
-              label="Name"
-              {...form.getInputProps('name')}
-            />
-
-            <TextInput
-              required
-              label="Email"
-              {...form.getInputProps('email')}
-            />
-
+            {textInputConfig.map((input, index) => (
+              <TextInput
+                key={`${input.field}-${index}`}
+                label={input.label}
+                placeholder={input.placeholder}
+                required={input.required}
+                {...form.getInputProps(input.field)}
+              />
+            ))}
             <Button type="submit">Join Waiting List</Button>
             <p>Privacy statement placeholder</p>
           </section>

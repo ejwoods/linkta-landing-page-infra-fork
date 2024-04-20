@@ -1,5 +1,10 @@
 import { z } from 'zod';
-import { ALLOWED_COMMON_CHARS, parseAndCleanInput, removeExtraWhiteSpaces, removeSpecialCharacters } from '../utils/formInputSanitization';
+import {
+  ALLOWED_COMMON_CHARS,
+  parseAndCleanInput,
+  removeExtraWhiteSpaces,
+  removeSpecialCharacters,
+} from '../utils/formInputSanitization';
 
 const userDataSanitizationSchema = z.object({
   name: z.string().transform(removeExtraWhiteSpaces),

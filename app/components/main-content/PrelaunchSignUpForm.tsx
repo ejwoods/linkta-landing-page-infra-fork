@@ -2,7 +2,7 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
+import { useEffect, Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page'
 import { getRedirectResult } from 'firebase/auth';
 import {
@@ -14,9 +14,8 @@ import {
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
-import { FormValues } from '@/app/types/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import userInputSchema from '@/app/schemas/userInputSchema';
+import userInputSchema, { FormValues } from '@/app/schemas/userInputSchema';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;

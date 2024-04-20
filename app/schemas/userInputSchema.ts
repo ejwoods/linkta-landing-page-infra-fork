@@ -1,5 +1,11 @@
 import { z } from 'zod';
 
+/**
+ * Zod schema for user input validation:
+ * - `name`: Trimmed string, must be ≤ 50 characters and match allowed characters.
+ * - `email`: Trimmed string, must be 6-254 characters and comply with the email regex.
+ * - `interests`, `source`, `features`: Optional string fields.
+ */
 const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const nameRegex = /^[\p{Letter}\s\-.']+$/u;

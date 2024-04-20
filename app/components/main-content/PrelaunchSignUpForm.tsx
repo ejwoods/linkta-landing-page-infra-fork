@@ -17,7 +17,7 @@ import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
-import { checkDocumentExists, createUserDocument } from '@/app/services/firestore';
+import { checkUserExists, storeUserData } from '@/app/services/firestore';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -51,18 +51,18 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit(userData: UserDataValidation) {
+  async function handleSignupSubmit(rawUserData: UserDataValidation) {
 
     setFlowState('processing')
 
-    const cleanUserData = userDataSanitizationSchema.parse(userData);
+    const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
-    const userDocRef = doc(db, 'users', cleanUserData.email);
+    const userDocRef = doc(db, 'users', sanitizedUserData.email);
 
     try {
-      const documentExists = await checkDocumentExists(userDocRef);
-      if (!documentExists) {
-        await createUserDocument(userDocRef, cleanUserData);
+      const useExists = await checkUserExists(userDocRef);
+      if (!useExists) {
+        await storeUserData(userDocRef, sanitizedUserData);
       }
     } catch (error) {
       console.error('An error occurred during the user data process');
@@ -76,7 +76,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   return (
     <>
       <Box>
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+        <form onSubmit={form.onSubmit(handleSignupSubmit)}>
 
           <h1>Shape Our Future with Your Vision</h1>
 

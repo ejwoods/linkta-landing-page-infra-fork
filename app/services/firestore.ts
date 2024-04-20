@@ -6,7 +6,7 @@ import type { userDataSanitization } from '../schemas/userDataSanitizationSchema
  * @param {DocumentReference} docRef - Reference to the Firestore document.
  * @returns {Promise<boolean>} True if the document exists, false otherwise or if an error occurs.
  */
-export const checkDocumentExists = async (
+export const checkUserExists = async (
   docRef: DocumentReference
 ): Promise<boolean> => {
   try {
@@ -25,7 +25,7 @@ export const checkDocumentExists = async (
  * @param {UserData} userData - The user data to store, conforming to the UserData interface.
  * @returns {Promise<void>} Resolves on successful write, logs error on failure.
  */
-export const createUserDocument = async (
+export const storeUserData = async (
   docRef: DocumentReference,
   cleanUserData: userDataSanitization
 ): Promise<void> => {

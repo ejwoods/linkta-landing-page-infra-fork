@@ -89,7 +89,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
                 key={`${input.field}-${index}`}
                 label={input.label}
                 placeholder={input.placeholder}
-                required={input.required?? false}
+                required={input.required}
                 maxLength={input.maxLength}
                 {...form.getInputProps(input.field)}
               />

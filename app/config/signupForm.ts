@@ -23,29 +23,29 @@ const createConfigItem: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
+  createConfigItem('name', "What's your name?", 'Enter your name here', true),
   createConfigItem(
-    'name',
-    'What\'s your name?',
-    'Enter your name here',
+    'email',
+    'Where can we email you?',
+    'Email address goes here',
     true
   ),
-  createConfigItem('email', 'Where can we email you?', 'Email address goes here', true),
   createConfigItem(
     'interests',
     'What would you love to learn?',
-    'Tell us your interests, e.g. design, coding...',
+    'Tell us your interests, e.g., design, coding... (separate with commas)',
     false
   ),
   createConfigItem(
     'source',
-    'How did you discover us?',
+    'How did you find us?',
     'Where did you hear about us?',
     false
   ),
   createConfigItem(
     'features',
-    'Any specific features you\'re excited about?',
-    'Exciting features? Let us know!',
+    "Any exciting features in mind?",
+    'Exciting features? Let us know! (separate with commas)',
     false
   ),
 ];

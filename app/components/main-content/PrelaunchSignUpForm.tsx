@@ -23,7 +23,7 @@ interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-const initialFormValues = {
+const defaultFormValues = {
   name: '',
   email: '',
   interests: '',
@@ -34,7 +34,7 @@ const initialFormValues = {
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
   const form = useForm({
-    initialValues: initialFormValues,
+    initialValues: defaultFormValues,
     validate: zodResolver(userDataValidationSchema)
   });
 

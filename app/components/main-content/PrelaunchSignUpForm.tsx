@@ -21,13 +21,13 @@ interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-const initialFieldValues = generateInitialValues(textInputConfig);
+const initialFormValues = generateInitialValues(textInputConfig);
 const validationRules = generateValidationRules(textInputConfig);
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
   const form = useForm<FormValues>({
-    initialValues: initialFieldValues,
+    initialValues: initialFormValues,
     validate: validationRules
   });
 

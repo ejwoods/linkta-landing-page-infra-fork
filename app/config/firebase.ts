@@ -2,10 +2,7 @@ import { initializeApp } from 'firebase/app';
 import {
   type Auth,
   type User,
-  getAuth,
-  signInWithRedirect,
-  GoogleAuthProvider,
-  GithubAuthProvider,
+  getAuth
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -37,22 +34,10 @@ if (
     'Firebase configuration error: Missing essential configuration values'
   );
 }
-//initialize firebase app
+
 const firebaseApp = initializeApp(firebaseConfig);
-
 export const auth: Auth = getAuth(firebaseApp); //initialize Firebase Authentication service
-auth.useDeviceLanguage(); //detecting/using user perferrd languague on their devices
 export const db = getFirestore(firebaseApp); //initialize Firestore service
-
-const googleProvider = new GoogleAuthProvider();
-const ghProvider = new GithubAuthProvider();
-googleProvider.setCustomParameters({
-  prompt: 'select_account',
-});
-
-export const signUpWithGoogle = () => signInWithRedirect(auth, googleProvider);
-export const signUpWithGitHub = () => signInWithRedirect(auth, ghProvider);
-
 
 export const createUserDoc = async (userAuth: ExtendedUser) => {
   // when using createUserDoc, user email must be available on userAuth object

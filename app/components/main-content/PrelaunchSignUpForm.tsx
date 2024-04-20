@@ -11,7 +11,7 @@ import {
   signUpWithGoogle,
   createUserDoc,
 } from '@/app/config/firebase';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';

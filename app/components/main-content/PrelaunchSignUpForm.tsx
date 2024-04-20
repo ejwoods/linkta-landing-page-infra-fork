@@ -4,7 +4,6 @@ import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
-import { getRedirectResult } from 'firebase/auth';
 import {
   auth,
   createUserDoc,
@@ -29,10 +28,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     validate: validationRules
   });
 
-  useEffect(() => {
-// Needed to access user data after redirect during OAuth sign in
-
-  }, []);
 
   async function handleSubmit(values: FormValues) {
     const { email, name, interests, source, features } = values;

@@ -13,22 +13,28 @@ import {
 } from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
-import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
 import textInputConfig from '../../config/signupForm';
 import { FormValues } from '@/app/types/signupForm';
+import { zodResolver } from 'mantine-form-zod-resolver';
+import userInputSchema from '@/app/schemas/userInputSchema';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-const initialFormValues = generateInitialValues(textInputConfig);
-const validationRules = generateValidationRules(textInputConfig);
+const initialFormValues = {
+  name: '',
+  email: '',
+  interests: '',
+  source: '',
+  features: '',
+};
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
 
-  const form = useForm<FormValues>({
+  const form = useForm({
     initialValues: initialFormValues,
-    validate: validationRules
+    validate: zodResolver(userInputSchema)
   });
 
   useEffect(() => {
@@ -93,7 +99,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
                 label={input.label}
                 placeholder={input.placeholder}
                 required={input.required}
-                maxLength={input.maxLength}
                 {...form.getInputProps(input.field)}
               />
             ))}

@@ -2,12 +2,8 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
-import {
-  auth,
-  createUserDoc,
-} from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';

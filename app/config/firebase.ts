@@ -1,12 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import {
   type Auth,
-  type User,
   getAuth
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
 import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { FormValues } from '../types/signupForm';
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,

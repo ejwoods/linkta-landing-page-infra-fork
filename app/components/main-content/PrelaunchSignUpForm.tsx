@@ -64,7 +64,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
           <h2>Get exclusive early access to try our product</h2>
 
           <section aria-label="Sign Up with Email">
-            <h3>or sign up with email</h3>
+            <h3>Sign up with email</h3>
             {textInputConfig.map((input, index) => (
               <TextInput
                 key={`${input.field}-${index}`}

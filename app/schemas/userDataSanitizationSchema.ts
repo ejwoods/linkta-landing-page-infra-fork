@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import {
-  ALLOWED_COMMON_CHARS,
   parseAndCleanInput,
   removeExtraWhiteSpaces,
   removeSpecialCharacters,
@@ -13,21 +12,21 @@ const userDataSanitizationSchema = z.object({
     .string()
     .optional()
     .transform((input) =>
-      input ? parseAndCleanInput(input, ALLOWED_COMMON_CHARS) : []
+      input ? parseAndCleanInput(input) : []
     ),
   source: z
     .string()
     .optional()
     .transform((input) =>
       input
-        ? removeSpecialCharacters(input, ALLOWED_COMMON_CHARS)
+        ? removeSpecialCharacters(input)
         : 'not provided'
     ),
   features: z
     .string()
     .optional()
     .transform((input) =>
-      input ? parseAndCleanInput(input, ALLOWED_COMMON_CHARS) : []
+      input ? parseAndCleanInput(input) : []
     ),
 });
 

@@ -9,19 +9,17 @@ export const removeExtraWhiteSpaces = (input: string) => {
 };
 
 export const removeSpecialCharacters = (
-  text: string,
-  allowedChars: string
+  text: string
 ): string => {
-  const allowedCharsRegex = new RegExp(`[^${allowedChars}]`, 'gu');
+  const allowedCharsRegex = new RegExp(`[^${ALLOWED_COMMON_CHARS}]`, 'gu');
   return text.replace(allowedCharsRegex, '').trim();
 };
 
 export const parseAndCleanInput = (
-  input: string | null | undefined,
-  allowedChars: string
+  input: string | null | undefined
 ): string[] => {
   const parsedInput = input?.split(',') ?? [];
   return removeEmptyItems(
-    parsedInput.map((item) => removeSpecialCharacters(item, allowedChars))
+    parsedInput.map((item) => removeSpecialCharacters(item))
   );
 };

@@ -1,40 +1,20 @@
-import {
-  validateEmail,
-  validateName,
-  validateOptionalMinLength,
-} from '../utils/formValidation';
-import type {
-  FormValues,
-  TextInputConfig,
-  ValidationFunction,
-} from '../types/signupForm';
+import type { FormValues, TextInputConfig } from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.
  * @param {keyof FormValues} field - The name of the field.
  * @param {string} label - The label text for the field.
  * @param {string} placeholder - The placeholder text for the field.
- * @param {ValidationFunction} validate - The validation function to apply to the field.
  * @param {boolean} required - Indicates if the field is required.
- * @param {number} maxLength - The maximum allowed length for the field value.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 const createConfigItem: (
   field: keyof FormValues,
   label: string,
   placeholder: string,
-  validate: ValidationFunction,
-  required: boolean,
-  maxLength: number
-) => TextInputConfig = (
-  field,
-  label,
-  placeholder,
-  validate,
-  required,
-  maxLength
-) => {
-  return { field, label, placeholder, validate, required, maxLength };
+  required: boolean
+) => TextInputConfig = (field, label, placeholder, required) => {
+  return { field, label, placeholder, required };
 };
 
 /**
@@ -47,41 +27,26 @@ const textInputConfig: TextInputConfig[] = [
     'name',
     'First Name (required)',
     'Enter your first name',
-    validateName,
-    true,
-    50
+    true
   ),
-  createConfigItem(
-    'email',
-    'Email (required)',
-    'Enter your email',
-    validateEmail,
-    true,
-    254
-  ),
+  createConfigItem('email', 'Email (required)', 'Enter your email', true),
   createConfigItem(
     'interests',
     'Interests (optional)',
     'Enter your interests, separated by commas (e.g., Design, Programming)',
-    validateOptionalMinLength(3, 'Interests'),
-    false,
-    150
+    false
   ),
   createConfigItem(
     'source',
     'How did you hear about us? (optional)',
     'Enter your source',
-    validateOptionalMinLength(3, 'Source'),
-    false,
-    50
+    false
   ),
   createConfigItem(
     'features',
     'What features are you most interested in? (optional)',
     'Describe features, separated by commas (e.g., Collaboration, Sharing)',
-    validateOptionalMinLength(5, 'Features'),
-    false,
-    200
+    false
   ),
 ];
 

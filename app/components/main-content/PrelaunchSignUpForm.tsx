@@ -17,6 +17,7 @@ import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
+import { checkDocumentExists, createUserDocument } from '@/app/services/firestore';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -50,30 +51,26 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     checkRedirectResult();
   }, [setFlowState]);
 
-  async function handleSubmit(values: UserDataValidation) {
+  async function handleSubmit(userData: UserDataValidation) {
 
     setFlowState('processing')
 
-     const userData = userDataSanitizationSchema.parse(values);
+    const cleanUserData = userDataSanitizationSchema.parse(userData);
 
-    // creates user document reference using email as document id
-    const userDocRef = doc(db, 'users', userData.email);
-    // checks if document exists in db
-    const userSnapShot = await getDoc(userDocRef);
+    const userDocRef = doc(db, 'users', cleanUserData.email);
 
-    // creates a new document if none exists already
-    if (!userSnapShot.exists()) {
-      try {
-        await setDoc(userDocRef, {
-          ...userData,
-          createdAt: serverTimestamp()
-        })
-      } catch (error) {
-        console.error('An error occurred during account creation.');
+    try {
+      const documentExists = await checkDocumentExists(userDocRef);
+      if (!documentExists) {
+        await createUserDocument(userDocRef, cleanUserData);
       }
+    } catch (error) {
+      console.error('An error occurred during the user data process');
+      //TODO: add error state to render error component
     }
 
-    setFlowState('confirmed')
+    setFlowState('confirmed');
+    form.reset();
   }
 
   return (

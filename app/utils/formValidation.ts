@@ -36,7 +36,7 @@ const validateEmailFormat = (value: string): string | null => {
  * @returns {string|null} An error message if the email fails either min length or format validation, otherwise null.
  */
 export const validateEmail = (value: string): string | null => {
-  return validateMinLength(3, 'Email')(value) || validateEmailFormat(value);
+  return validateMinLength(6, 'Email')(value) || validateEmailFormat(value);
 };
 
 /**

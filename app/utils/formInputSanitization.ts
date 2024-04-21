@@ -2,7 +2,7 @@
  * Regex that allows letters from any language, numbers, spaces,
  * commas, periods, hyphens, square brackets, and parentheses.
  */
-export const ALLOWED_COMMON_CHARS = '\\p{Letter}0-9 ,.\\-&\\[\\]()';
+const ALLOWED_COMMON_CHARS = '\\p{Letter}0-9 ,.\\-&\\[\\]()';
 
 /**
  * Removes empty strings from an array.
@@ -27,10 +27,11 @@ export const removeExtraWhiteSpaces = (input: string):string => {
  * @param {string} text - The string to sanitize.
  * @returns {string} The sanitized string.
  */
+const allowedCharsRegex = new RegExp(`[^${ALLOWED_COMMON_CHARS}]`, 'gu');
+
 export const removeSpecialCharacters = (
   text: string
 ): string => {
-  const allowedCharsRegex = new RegExp(`[^${ALLOWED_COMMON_CHARS}]`, 'gu');
   return text.replace(allowedCharsRegex, '').trim();
 };
 

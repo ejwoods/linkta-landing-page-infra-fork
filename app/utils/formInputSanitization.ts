@@ -1,4 +1,10 @@
 /**
+ * Regex that disallows characters other than letters from any language, numbers, spaces,
+ * commas, periods, hyphens, square brackets, and parentheses.
+ */
+const charsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
+
+/**
  * Removes empty strings from an array.
  * @param {string[]} array - Array to filter.
  * @returns {string[]} Filtered array with non-empty strings.
@@ -21,18 +27,11 @@ export const removeExtraWhiteSpaces = (input: string):string => {
  * @param {string} text - The string to sanitize.
  * @returns {string} The sanitized string.
  */
-
-/**
- * Regex that disallows characters other than letters from any language, numbers, spaces,
- * commas, periods, hyphens, square brackets, and parentheses.
- */
-const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
-
 export const removeSpecialCharacters = (
   text: string,
-  regex: RegExp = allowedCharsRegex
+  allowedRegex: RegExp = charsRegex
 ): string => {
-  return text.replace(regex, '').trim();
+  return text.replace(allowedRegex, '').trim();
 };
 
 /**

@@ -1,8 +1,8 @@
 /**
- * Regex that disallows characters other than letters from any language, numbers, spaces,
+ * Regex disallowing characters other than letters from any language, numbers, spaces,
  * commas, periods, hyphens, square brackets, and parentheses.
  */
-const charsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
+const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
 
 /**
  * Removes empty strings from an array.
@@ -25,11 +25,12 @@ export const removeExtraWhiteSpaces = (input: string):string => {
 /**
  * Removes characters that are not allowed from a string.
  * @param {string} text - The string to sanitize.
+ * @param {RegExp} allowedRegex - The regex pattern used to determine allowed characters. Defaults to allowedCharsRegex.
  * @returns {string} The sanitized string.
  */
 export const removeSpecialCharacters = (
   text: string,
-  allowedRegex: RegExp = charsRegex
+  allowedRegex: RegExp = allowedCharsRegex
 ): string => {
   return text.replace(allowedRegex, '').trim();
 };

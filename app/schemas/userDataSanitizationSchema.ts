@@ -2,7 +2,7 @@ import { z } from 'zod';
 import {
   parseAndCleanInput,
   removeExtraWhiteSpaces,
-  removeSpecialCharacters,
+  sanitizeAndTrimText,
 } from '../utils/formInputSanitization';
 
 const userDataSanitizationSchema = z.object({
@@ -19,7 +19,7 @@ const userDataSanitizationSchema = z.object({
     .optional()
     .transform((input) =>
       input
-        ? removeSpecialCharacters(input)
+        ? sanitizeAndTrimText(input)
         : 'not provided'
     ),
   features: z

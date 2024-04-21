@@ -50,7 +50,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   }, [setFlowState]);
 
   async function handleSignupSubmit(rawUserData: UserDataValidation) {
-
     setFlowState('processing')
 
     const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
@@ -59,7 +58,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
       await storeUserDataIfNew(sanitizedUserData.email, sanitizedUserData);
     } catch (error) {
       console.error('Failed to store user data:', error);
-      //TODO: add error state to render error component
     }
 
     setFlowState('confirmed');

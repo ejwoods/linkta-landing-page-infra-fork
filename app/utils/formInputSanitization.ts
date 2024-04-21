@@ -22,17 +22,15 @@ export const removeExtraWhiteSpaces = (input: string): string => {
   return input.trim().replace(/\s+/g, ' ');
 };
 
-/**
- * Removes characters not allowed from a string & extra white spaces.
- * @param {string} text - The string to sanitize and optimize whitespace.
- * @param {RegExp} allowedRegex - The regex pattern used to determine allowed characters. Defaults to allowedCharsRegex.
- * @returns {string} The sanitized and whitespace-optimized string.
- */
-export const sanitizeAndTrimText = (
+export const sanitizeText = (
   text: string,
   allowedRegex: RegExp = allowedCharsRegex
 ): string => {
-  const sanitizedText = text.replace(allowedRegex, ' ');
+  return text.replace(allowedRegex, ' ');
+};
+
+export const sanitizeAndTrimText = (text: string): string => {
+  const sanitizedText = sanitizeText(text);
   return removeExtraWhiteSpaces(sanitizedText);
 };
 
@@ -44,6 +42,9 @@ export const sanitizeAndTrimText = (
 export const parseAndCleanInput = (
   input: string | null | undefined
 ): string[] => {
-  const parsedInput = input?.split(',') ?? [];
+  if (!input) return [];
+
+  const parsedInput = input.split(',');
+
   return removeEmptyItems(parsedInput.map((item) => sanitizeAndTrimText(item)));
 };

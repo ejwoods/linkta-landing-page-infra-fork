@@ -28,6 +28,7 @@ if (
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth: Auth = getAuth(firebaseApp); //initialize Firebase Authentication service
+auth.useDeviceLanguage(); //detecting/using user perferrd languague on their devices
 export const db = getFirestore(firebaseApp); //initialize Firestore service
 
 

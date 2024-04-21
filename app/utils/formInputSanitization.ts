@@ -14,10 +14,9 @@ export const removeExtraWhiteSpaces = (input: string): string => {
 };
 
 /**
- * Replaces characters not allowed by the provided regex
- *
+ * Replaces characters not allowed by the provided regex with spaces
  * @param {string} text - The string to be sanitized.
- * @param {RegExp} allowedRegex - A regex pattern that defines characters to retain. 
+ * @param {RegExp} allowedRegex - A regex pattern that defines characters to retain.
  * @returns {string} The sanitized string with disallowed characters replaced by spaces.
  */
 export const sanitizeText = (
@@ -28,8 +27,7 @@ export const sanitizeText = (
 };
 
 /**
- * Cleans a string by removing special characters and extra white spaces
- *
+ * Cleans a string by removing special characters and removes extra white spaces
  * @param {string} text - The string to sanitize and trim.
  * @returns {string} The fully sanitized and whitespace-optimized string.
  */

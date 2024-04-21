@@ -1,3 +1,7 @@
+/**
+ * Regex that allows letters from any language, numbers, spaces,
+ * commas, periods, hyphens, square brackets, and parentheses.
+ */
 export const ALLOWED_COMMON_CHARS = '\\p{Letter}0-9 ,.\\-&\\[\\]()';
 
 /**

@@ -1,37 +1,40 @@
-import { DocumentReference, getDoc, setDoc } from 'firebase/firestore';
+import {
+  DocumentReference,
+  doc,
+  getDoc,
+  setDoc,
+} from 'firebase/firestore';
 import type { userDataSanitization } from '../schemas/userDataSanitizationSchema';
+import { db } from '../config/firebase';
 /**
  * Asynchronously checks the existence of a Firestore document.
  *
  * @param {DocumentReference} docRef - Reference to the Firestore document.
  * @returns {Promise<boolean>} True if the document exists, false otherwise or if an error occurs.
  */
-export const checkUserExists = async (
-  docRef: DocumentReference
+export const doesUserDataExist = async (
+  userDocRef: DocumentReference
 ): Promise<boolean> => {
   try {
-    const docSnapshot = await getDoc(docRef);
-    return docSnapshot.exists();
+    const documentSnapshot = await getDoc(userDocRef);
+    return documentSnapshot.exists();
   } catch (error) {
-    console.error('Failed to check document existence.');
+    console.error('Error checking user data existence.');
     return false;
   }
 };
 
-/**
- * Creates or updates a user document in Firestore with the provided data.
- *
- * @param {DocumentReference} docRef - Reference to where the user data should be stored.
- * @param {UserData} userData - The user data to store, conforming to the UserData interface.
- * @returns {Promise<void>} Resolves on successful write, logs error on failure.
- */
-export const storeUserData = async (
-  docRef: DocumentReference,
-  cleanUserData: userDataSanitization
+export const storeUserDataIfNew = async (
+  userId: string,
+  userData: userDataSanitization
 ): Promise<void> => {
   try {
-    await setDoc(docRef, cleanUserData);
+    const userDocRef = doc(db, 'users', userId);
+    const userExists = await doesUserDataExist(userDocRef);
+    if (!userExists) {
+      await setDoc(userDocRef, userData);
+    }
   } catch (error) {
-    console.error('Failed to create user document.');
+    console.error('Failed to store user data.');
   }
 };

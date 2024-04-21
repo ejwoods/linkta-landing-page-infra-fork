@@ -11,13 +11,11 @@ import {
   signUpWithGoogle,
   createUserDoc,
 } from '@/app/config/firebase';
-import { doc } from 'firebase/firestore';
-import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
-import { checkUserExists, storeUserData } from '@/app/services/firestore';
+import { storeUserDataIfNew } from '@/app/services/firestore';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -57,15 +55,10 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
     const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
-    const userDocRef = doc(db, 'users', sanitizedUserData.email);
-
     try {
-      const useExists = await checkUserExists(userDocRef);
-      if (!useExists) {
-        await storeUserData(userDocRef, sanitizedUserData);
-      }
+      await storeUserDataIfNew(sanitizedUserData.email, sanitizedUserData);
     } catch (error) {
-      console.error('An error occurred during the user data process');
+      console.error('Failed to store user data:', error);
       //TODO: add error state to render error component
     }
 

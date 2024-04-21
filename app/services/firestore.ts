@@ -1,5 +1,5 @@
 import {
-  DocumentReference,
+  type DocumentReference,
   doc,
   getDoc,
   setDoc,

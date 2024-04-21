@@ -18,9 +18,7 @@ const config: Config = {
 
   // Resolve module path aliases to ensure modules are correctly imported during tests
   moduleNameMapper: {
-    // Handle module aliases (if you have them in your Next.js config)
-    '^components/(.*)$': '<rootDir>/components/$1',
-    '^public/(.*)$': '<rootDir>/public/$1',
+    '^@/(.*)$': '<rootDir>/$1',
   },
 
   // Using TypeScript preset to handle TypeScript files

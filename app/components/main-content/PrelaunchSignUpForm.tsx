@@ -26,7 +26,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
 
 
   async function handleSubmit(values: FormValues) {
-    const { email, name, interests, source, features } = values;
+    const { email, name } = values;
 
     setFlowState('processing')
 
@@ -41,9 +41,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         await setDoc(userDocRef, {
           name,
           email,
-          interests,
-          source,
-          features,
           createdAt: serverTimestamp()
         })
       } catch (error) {
@@ -64,7 +61,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
           <h2>Get exclusive early access to try our product</h2>
 
           <section aria-label="Sign Up with Email">
-            <h3>Sign up with email</h3>
+            <h3>or sign up with email</h3>
             {textInputConfig.map((input, index) => (
               <TextInput
                 key={`${input.field}-${index}`}

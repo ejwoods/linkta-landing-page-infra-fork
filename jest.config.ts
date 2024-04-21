@@ -7,12 +7,6 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
-  // Using TypeScript preset to handle TypeScript files
-  preset: 'ts-jest',
-
-  // Load additional Jest setup configuration from a separate file
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-
   // Enable collection of test coverage statistics
   collectCoverage: true,
 
@@ -22,19 +16,25 @@ const config: Config = {
   // Define which coverage provider to use for code instrumentation
   coverageProvider: 'v8',
 
+  // Resolve module path aliases to ensure modules are correctly imported during tests
+  moduleNameMapper: {
+    // Handle module aliases (if you have them in your Next.js config)
+    '^components/(.*)$': '<rootDir>/components/$1',
+    '^public/(.*)$': '<rootDir>/public/$1',
+  },
+
+  // Using TypeScript preset to handle TypeScript files
+  preset: 'ts-jest',
+
+  // Load additional Jest setup configuration from a separate file
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
 
   // Define how TypeScript files should be transformed using ts-jest
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
-
-// Resolve module path aliases to ensure modules are correctly imported during tests
-  moduleNameMapper: {
-    // Handle module aliases (if you have them in your Next.js config)
-    '^components/(.*)$': '<rootDir>/components/$1',
-    '^public/(.*)$': '<rootDir>/public/$1',
   },
 };
 

@@ -14,10 +14,15 @@ const config: Config = {
   coverageDirectory: "coverage",
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "babel",
+  coverageProvider: "v8",
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
+
+  // Transform TypeScript files using ts-jest
+  transform: {
+  '^.+\\.(ts|tsx)$': 'ts-jest',
+  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

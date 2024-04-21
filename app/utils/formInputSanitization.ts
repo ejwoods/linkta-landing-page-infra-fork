@@ -5,15 +5,6 @@
 const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
 
 /**
- * Removes empty strings from an array.
- * @param {string[]} array - Array to filter.
- * @returns {string[]} Filtered array with non-empty strings.
- */
-export const removeEmptyItems = (array: string[]): string[] => {
-  return array.length ? array.filter((item) => item.length > 0) : [];
-};
-
-/**
  * Trims and replaces multiple whitespace characters with a single space.
  * @param {string} input - The string to process.
  * @returns {string} The processed string.
@@ -44,7 +35,8 @@ export const parseAndCleanInput = (
 ): string[] => {
   if (!input) return [];
 
-  const parsedInput = input.split(',');
-
-  return removeEmptyItems(parsedInput.map((item) => sanitizeAndTrimText(item)));
+  return input
+    .split(',')
+    .map((item) => sanitizeAndTrimText(item))
+    .filter((item) => item.length > 0);
 };

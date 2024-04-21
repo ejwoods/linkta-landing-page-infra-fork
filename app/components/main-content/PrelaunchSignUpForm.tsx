@@ -57,7 +57,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     try {
       await storeUserDataIfNew(sanitizedUserData.email, sanitizedUserData);
     } catch (error) {
-      console.error('Failed to store user data:');
+      console.error('Error cheking user data existence of store user data.');
     }
 
     setFlowState('confirmed');

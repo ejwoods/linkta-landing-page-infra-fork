@@ -4,7 +4,7 @@ import {
   getAuth
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
-import { getFirestore} from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,

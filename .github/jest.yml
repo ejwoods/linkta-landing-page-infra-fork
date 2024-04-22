@@ -1,0 +1,34 @@
+name: Jest Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - dev  # Only trigger on pull requests to the dev branch
+
+jobs:
+  run-jest-tests:
+    runs-on: ubuntu-latest  # Specify the runner environment
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Use v4 of the checkout action
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'    # Match the Node.js version with other workflows
+          cache: 'npm'          # Use npm for caching
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci  # Using npm ci to install dependencies for cleaner installs
+
+      - name: Run Jest tests
+        run: npm test  # Run tests as defined in package.json

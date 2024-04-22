@@ -16,6 +16,13 @@ const config: Config = {
   // Define which coverage provider to use for code instrumentation
   coverageProvider: 'v8',
 
+// Specify the path to the custom TypeScript configuration file to be used by ts-jest.
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.jest.json'
+    }
+  },
+
   // Resolve module path aliases to ensure modules are correctly imported during tests
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',

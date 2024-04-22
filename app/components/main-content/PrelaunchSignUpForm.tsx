@@ -2,15 +2,8 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
-import { getRedirectResult } from 'firebase/auth';
-import {
-  auth,
-  signUpWithGitHub,
-  signUpWithGoogle,
-  createUserDoc,
-} from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
@@ -31,18 +24,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     validate: validationRules
   });
 
-  useEffect(() => {
-    async function checkRedirectResult() {
-      const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
-
-      if (res) {
-        setFlowState('processing');
-        await createUserDoc(res.user);
-        setFlowState('confirmed')
-      }
-    }
-    checkRedirectResult();
-  }, [setFlowState]);
 
   async function handleSubmit(values: FormValues) {
     const { email, name } = values;
@@ -78,12 +59,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
           <h1>Shape Our Future with Your Vision</h1>
 
           <h2>Get exclusive early access to try our product</h2>
-
-          <section aria-label="Sign Up with Google or Github">
-            <h3>sign up with google or github</h3>
-            <Button onClick={signUpWithGoogle}>Continue with Google</Button><br/>
-            <Button onClick={signUpWithGitHub}>Continue with Github</Button>
-          </section>
 
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>

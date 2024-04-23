@@ -23,6 +23,6 @@ jobs:
       - name: Run Jest tests
         run: npm test
 
-        name: Fail on test errors
+      - name: Fail on test errors
         if: ${{ failure() }}
         run: exit 1

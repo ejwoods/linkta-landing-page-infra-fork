@@ -6,9 +6,9 @@ import { z } from 'zod';
  * - `email`: Trimmed string, must be 6-254 characters and comply with the email regex.
  * - `interests`, `source`: Optional string fields.
  */
-const emailRegex =
+export const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const nameRegex = /^[\p{Letter}\s\-.']+$/u;
+export const nameRegex = /^[\p{Letter}\s\-.']+$/u;
 
 const userDataValidationSchema = z.object({
   name: z

@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, Dispatch, SetStateAction } from 'react';
-import { FlowState } from '../../early-access/page'
+import { FlowState } from '../../early-access/page';
 import { getRedirectResult } from 'firebase/auth';
 import {
   auth,
@@ -15,7 +15,9 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import userDataValidationSchema, { UserDataValidation } from '@/app/schemas/userDataValidationSchema';
+import userDataValidationSchema, { type
+  UserDataValidation,
+} from '@/app/schemas/userDataValidationSchema';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -26,24 +28,24 @@ const defaultFormValues = {
   email: '',
   interests: '',
   source: '',
-  features: '',
 };
 
-const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
-
+const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
+  setFlowState,
+}) => {
   const form = useForm({
     initialValues: defaultFormValues,
-    validate: zodResolver(userDataValidationSchema)
+    validate: zodResolver(userDataValidationSchema),
   });
 
   useEffect(() => {
     async function checkRedirectResult() {
-      const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
+      const res = await getRedirectResult(auth); // Needed to access user data after redirect during OAuth sign in
 
       if (res) {
         setFlowState('processing');
         await createUserDoc(res.user);
-        setFlowState('confirmed')
+        setFlowState('confirmed');
       }
     }
     checkRedirectResult();
@@ -52,7 +54,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
   async function handleSubmit(values: UserDataValidation) {
     const { email, name } = values;
 
-    setFlowState('processing')
+    setFlowState('processing');
 
     // creates user document reference using email as document id
     const userDocRef = doc(db, 'users', email);
@@ -65,28 +67,28 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         await setDoc(userDocRef, {
           name,
           email,
-          createdAt: serverTimestamp()
-        })
+          createdAt: serverTimestamp(),
+        });
       } catch (error) {
         console.error('An error occurred during account creation.');
       }
     }
 
-    setFlowState('confirmed')
+    setFlowState('confirmed');
   }
 
   return (
     <>
       <Box>
         <form onSubmit={form.onSubmit(handleSubmit)}>
-
           <h1>Shape Our Future with Your Vision</h1>
 
           <h2>Get exclusive early access to try our product</h2>
 
           <section aria-label="Sign Up with Google or Github">
             <h3>sign up with google or github</h3>
-            <Button onClick={signUpWithGoogle}>Continue with Google</Button><br/>
+            <Button onClick={signUpWithGoogle}>Continue with Google</Button>
+            <br />
             <Button onClick={signUpWithGitHub}>Continue with Github</Button>
           </section>
 
@@ -96,8 +98,8 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
               <TextInput
                 key={`${input.field}-${index}`}
                 label={input.label}
-                placeholder={input.placeholder}
                 required={input.required}
+                description={input.description ?? undefined}
                 {...form.getInputProps(input.field)}
               />
             ))}
@@ -107,7 +109,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
         </form>
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default PrelaunchSignUpForm;

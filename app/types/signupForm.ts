@@ -1,8 +1,6 @@
-import { UserDataValidation } from "../schemas/userDataValidationSchema";
+import { UserDataValidation } from '../schemas/userDataValidationSchema';
 
-export type ValidationFunction = (
-  value: string
-) => string | null ;
+export type ValidationFunction = (value: string) => string | null;
 
 export interface ConfigItem {
   field: keyof UserDataValidation;
@@ -11,6 +9,6 @@ export interface ConfigItem {
 
 export interface TextInputConfig extends ConfigItem {
   label: string;
-  placeholder: string;
+  description?: string;
   required: boolean;
 }

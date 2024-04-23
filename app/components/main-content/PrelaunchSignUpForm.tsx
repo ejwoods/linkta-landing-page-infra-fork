@@ -2,15 +2,8 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 import { FlowState } from '../../early-access/page'
-import { getRedirectResult } from 'firebase/auth';
-import {
-  auth,
-  signUpWithGitHub,
-  signUpWithGoogle,
-  createUserDoc,
-} from '@/app/config/firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/config/firebase';
 import {
@@ -35,18 +28,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
     validate: validationRules
   });
 
-  useEffect(() => {
-    async function checkRedirectResult() {
-      const res = await getRedirectResult(auth); // Needed to access user data after redirect during OAuth sign in
-
-      if (res) {
-        setFlowState('processing');
-        await createUserDoc(res.user);
-        setFlowState('confirmed');
-      }
-    }
-    checkRedirectResult();
-  }, [setFlowState]);
 
   async function handleSubmit(values: FormValues) {
     const { email, name } = values;
@@ -84,37 +65,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
             Get exclusive early access to try our product
           </h2>
 
-          <section
-            aria-label="Sign Up with Google or Github"
-            className="text-sm px-2 pb-2"
-          >
-            <h3>Sign up with Google or GitHub</h3>
-            <Button
-              className="bg-white border border-[#ffa51b] dark:text-dark-black"
-              classNames={{
-                root: 'button-primary',
-              }}
-              onClick={signUpWithGoogle}
-            >
-              Continue with Google
-            </Button>
-            <br />
-            <Button
-              classNames={{
-                root: 'button-primary',
-              }}
-              onClick={signUpWithGitHub}
-            >
-              Continue with GitHub
-            </Button>
-          </section>
-
           <section aria-label="Sign Up with Email" className="flex-col justify-center mx-auto">
-            <span className="w-full flex items-center line text-sm">
-              <hr className="flex-1 mx-1" />
-              or sign up with email
-              <hr className="flex-1 mx-1" />
-            </span>
             {textInputConfig.map((input, index) => (
               <TextInput
               key={`${input.field}-${index}`}

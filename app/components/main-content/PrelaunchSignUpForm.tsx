@@ -122,7 +122,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState 
               placeholder={input.placeholder}
               required={input.required}
               {...form.getInputProps(input.field)}
-              className='sm:dark:text-dark-accent'
               classNames={{
                 root: 'w-full',
                 label: 'label-primary',

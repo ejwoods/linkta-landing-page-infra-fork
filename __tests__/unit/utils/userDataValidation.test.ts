@@ -40,6 +40,34 @@ describe('Email Regex', () => {
   it('should reject email with special characters outside quotes', () => {
     expect(emailRegex.test('link.ta@link<ta.org')).toBe(false);
   });
+
+  it('should reject email addresses that contain script tags', () => {
+    expect(
+      emailRegex.test('user@linkta.org<script>alert("XSS")</script>')
+    ).toBe(false);
+  });
+
+  it('should reject email addresses that include javascript code', () => {
+    expect(emailRegex.test('user@linkta.org<svg onload=alert("XSS")>')).toBe(
+      false
+    );
+  });
+
+  it('should reject email addresses with HTML comments that could hide malicious content', () => {
+    expect(emailRegex.test('user@linkta.org<!-- comment -->')).toBe(false);
+  });
+
+  it('should reject email addresses that use data URLs to execute JavaScript', () => {
+    expect(
+      emailRegex.test(
+        'user@linkta.org"data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4="'
+      )
+    ).toBe(false);
+  });
+
+  it('should reject email addresses containing embedded commands within backticks', () => {
+    expect(emailRegex.test('user@linkta.org`rm -rf /`')).toBe(false);
+  });
 });
 
 describe('Name Regex', () => {
@@ -89,6 +117,8 @@ describe('Name Regex', () => {
 
   it('should reject names that contain script tags or JavaScript code', () => {
     expect(nameRegex.test('<script>alert("XSS")</script>')).toBe(false);
-    expect(nameRegex.test('Chen Shen <img src=x onerror=alert("XSS")>')).toBe(false);
+    expect(nameRegex.test('Chen Shen <img src=x onerror=alert("XSS")>')).toBe(
+      false
+    );
   });
 });

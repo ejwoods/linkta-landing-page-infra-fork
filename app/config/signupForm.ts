@@ -24,17 +24,17 @@ const createConfigItem: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
-  createConfigItem('name', 'What is your name?', true),
-  createConfigItem('email', 'Where can we email you?', true),
+  createConfigItem('name', 'What is your name? (required)', true),
+  createConfigItem('email', 'Where can we email you? (required)', true),
   createConfigItem(
     'interests',
-    'What would you love to learn?',
+    'What would you love to learn? (optional)',
     false,
     'List any topics you are interested in learning with Linkta, such as design or coding. Please separate your interests with commas.'
   ),
   createConfigItem(
     'source',
-    'How did you find us?',
+    'How did you find us? (optional)',
     false,
     'Let us know how you heard about us, for example, through LinkedIn or from a friend.'
   ),

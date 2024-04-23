@@ -98,7 +98,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             <h3>or sign up with email</h3>
             {textInputConfig.map((input, index) => (
               input.tooltipLabel ? (
-                <Tooltip key={`${input.field}-${index}`} label={input.tooltipLabel}>
+                <Tooltip key={`${input.field}-${index}`} label={input.tooltipLabel} position="bottom">
                   <TextInput
                     label={input.label}
                     required={input.required}

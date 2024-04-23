@@ -24,7 +24,7 @@
   }
 
   .input-primary {
-    @apply rounded-lg border border-black px-2 w-full;
+    @apply rounded-lg border border-black px-2 w-full dark:text-black;
   }
   /* End of Mantine form elements */
 }

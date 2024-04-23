@@ -1,6 +1,6 @@
 'use client';
 
-// import { TextInput, Button, Box } from '@mantine/core';
+import { TextInput, Button, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page'
@@ -11,7 +11,6 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { type
   UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
-import { TextInput, Button, Box, Tooltip } from '@mantine/core';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;

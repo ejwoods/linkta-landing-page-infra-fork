@@ -6,16 +6,16 @@ import type { TextInputConfig } from '../types/signupForm';
  * @param {keyof UserDataValidation} field - The name of the field.
  * @param {string} label - The label text for the field.
  * @param {boolean} required - Indicates if the field is required.
- * @param {string} description - The description text for the field.
+ * @param {string} tooltipLabel - The label text for Tooltip component.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 const createConfigItem: (
   field: keyof UserDataValidation,
   label: string,
   required: boolean,
-  description?: string
-) => TextInputConfig = (field, label, required, description) => {
-  return { field, label, required, description };
+  tooltipLabel?: string
+) => TextInputConfig = (field, label, required, tooltipLabel) => {
+  return { field, label, required, tooltipLabel };
 };
 
 /**

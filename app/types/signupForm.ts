@@ -9,6 +9,6 @@ export interface ConfigItem {
 
 export interface TextInputConfig extends ConfigItem {
   label: string;
-  description?: string;
+  tooltipLabel?: string;
   required: boolean;
 }

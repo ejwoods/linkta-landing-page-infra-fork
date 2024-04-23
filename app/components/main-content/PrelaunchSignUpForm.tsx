@@ -101,6 +101,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 label={input.label}
                 required={input.required}
                 description={input.description ?? undefined}
+                aria-required={input.required ? 'true' : 'false'}
                 {...form.getInputProps(input.field)}
               />
             ))}

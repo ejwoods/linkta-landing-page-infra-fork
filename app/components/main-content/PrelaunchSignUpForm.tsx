@@ -1,6 +1,6 @@
 'use client';
 
-import { TextInput, Button, Box } from '@mantine/core';
+// import { TextInput, Button, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page';
@@ -18,6 +18,7 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, { type
   UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
+import { TextInput, Button, Box, Tooltip } from '@mantine/core';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -96,14 +97,24 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
           <section aria-label="Sign Up with Email">
             <h3>or sign up with email</h3>
             {textInputConfig.map((input, index) => (
-              <TextInput
-                key={`${input.field}-${index}`}
-                label={input.label}
-                required={input.required}
-                description={input.description ?? undefined}
-                aria-required={input.required ? 'true' : 'false'}
+              input.tooltipLabel ? (
+                <Tooltip key={`${input.field}-${index}`} label={input.tooltipLabel}>
+                  <TextInput
+                    label={input.label}
+                    required={input.required}
+                    aria-required={input.required ? 'true' : 'false'}
+                    {...form.getInputProps(input.field)}
+                  />
+                  </Tooltip>
+                  ) : (
+                <TextInput
+                  key={`${input.field}-${index}`}
+                  label={input.label}
+                  required={input.required}
+                  aria-required={input.required ? 'true' : 'false'}
                 {...form.getInputProps(input.field)}
-              />
+                  />
+              )
             ))}
             <Button type="submit">Join Waiting List</Button>
             <p>Privacy statement placeholder</p>

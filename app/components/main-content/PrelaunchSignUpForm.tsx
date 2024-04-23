@@ -34,6 +34,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   setFlowState,
 }) => {
   const form = useForm({
+    validateInputOnBlur: ['name', 'email'],
     initialValues: defaultFormValues,
     validate: zodResolver(userDataValidationSchema),
   });

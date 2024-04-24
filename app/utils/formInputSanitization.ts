@@ -2,7 +2,7 @@
  * Regex disallowing characters other than letters from any language, numbers, spaces,
  * commas, periods, hyphens, square brackets, and parentheses.
  */
-export const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
+export const disallowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
 
 /**
  * Trims and replaces multiple whitespace characters with a single space.
@@ -16,14 +16,14 @@ export const removeExtraWhiteSpaces = (input: string): string => {
 /**
  * Replaces characters not allowed by the provided regex with spaces
  * @param {string} text - The string to be sanitized.
- * @param {RegExp} allowedRegex - A regex pattern that defines characters to retain.
+ * @param {RegExp} disallowedRegex - A regex pattern that defines disallowed characters.
  * @returns {string} The sanitized string with disallowed characters replaced by spaces.
  */
 export const sanitizeText = (
   text: string,
-  allowedRegex: RegExp = allowedCharsRegex
+  disallowedRegex: RegExp = disallowedCharsRegex
 ): string => {
-  return text.replace(allowedRegex, ' ');
+  return text.replace(disallowedRegex, ' ');
 };
 
 /**

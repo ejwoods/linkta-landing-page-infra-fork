@@ -1,48 +1,52 @@
 import {
-  allowedCharsRegex,
+  disallowedCharsRegex,
   removeExtraWhiteSpaces,
   sanitizeText,
 } from '../../../app/utils/formInputSanitization';
 
 describe('User Data Sanitization Utility Functions', () => {
-  describe('allowedChars Regex', () => {
+  describe('disallowedChars Regex', () => {
     it('should not match letters, numbers, and allowed punctuation', () => {
       const validInput = 'Linkta, Org. -  ';
-      expect(validInput.match(allowedCharsRegex)).toBeNull();
+      expect(validInput.match(disallowedCharsRegex)).toBeNull();
     });
 
-    it('should match special characters not included in the allowed list', () => {
-      const invalidInput = 'Linkta@Org#$';
-      const matches = invalidInput.match(allowedCharsRegex);
-      expect(matches).toEqual(['@', '#', '$']);
-    });
+    it('should match disallowed characters correctly in various scenarios', () => {
+      const testCases = [
+        {
+          input: '@#$1',
+          expected: ['@', '#', '$'],
+        },
+        {
+          input: '✓✕〄',
+          expected: ['✓', '✕', '〄'],
+        },
+        {
+          input: 'Linkta; Org^*',
+          expected: [';', '^', '*'],
+        },
+      ];
 
-    it('should match unicode characters outside of the normal alphabets and numbers', () => {
-      const invalidUnicode = 'Linkta✓✕〄';
-      const matches = invalidUnicode.match(allowedCharsRegex);
-      expect(matches).toEqual(['✓', '✕', '〄']);
-    });
-
-    it('should match correctly in strings with both allowed and disallowed characters', () => {
-      const mixedInput = 'Linkta; Org^*';
-      const matches = mixedInput.match(allowedCharsRegex);
-      expect(matches).toEqual([';', '^', '*']);
+      testCases.forEach((testCase) => {
+        const matches = testCase.input.match(disallowedCharsRegex);
+        expect(matches).toEqual(testCase.expected);
+      });
     });
 
     it('should handle empty strings correctly', () => {
       const emptyString = '';
-      const matches = emptyString.match(allowedCharsRegex);
+      const matches = emptyString.match(disallowedCharsRegex);
       expect(matches).toBeNull();
     });
 
     it('should not match entirely valid strings with multiple allowed characters', () => {
       const complexValidInput = '1234, Linkta - (2024)';
-      expect(complexValidInput.match(allowedCharsRegex)).toBeNull();
+      expect(complexValidInput.match(disallowedCharsRegex)).toBeNull();
     });
 
     it('should not match when there are no disallowed characters', () => {
       const noSpecialChars = 'Linkta Org 123';
-      const matches = noSpecialChars.match(allowedCharsRegex);
+      const matches = noSpecialChars.match(disallowedCharsRegex);
       expect(matches).toBeNull();
     });
   });
@@ -86,13 +90,13 @@ describe('User Data Sanitization Utility Functions', () => {
   });
 
   describe('sanitizeText', () => {
-    const allowedRegexMock = /[@#$]/g;
+    const disallowedCharsRegexMock = /[@#$]/g;
 
     it('should handle empty strings', () => {
       const input = '';
       const expected = '';
 
-      const result = sanitizeText(input, allowedRegexMock);
+      const result = sanitizeText(input, disallowedCharsRegexMock);
 
       expect(result).toBe(expected);
     });
@@ -101,7 +105,7 @@ describe('User Data Sanitization Utility Functions', () => {
       const input = 'Hello, Linkta!@#$';
       const expected = 'Hello, Linkta!   ';
 
-      const result = sanitizeText(input, allowedRegexMock);
+      const result = sanitizeText(input, disallowedCharsRegexMock);
 
       expect(result).toBe(expected);
     });
@@ -110,7 +114,7 @@ describe('User Data Sanitization Utility Functions', () => {
       const input = 'Hello, Linkta!';
       const expected = 'Hello, Linkta!';
 
-      const result = sanitizeText(input, allowedRegexMock);
+      const result = sanitizeText(input, disallowedCharsRegexMock);
 
       expect(result).toBe(expected);
     });

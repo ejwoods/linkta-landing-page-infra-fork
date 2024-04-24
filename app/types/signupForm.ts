@@ -1,9 +1,14 @@
-export type ValidationFunction = (value: string) => string | null | undefined;
+import { UserDataValidation } from '../schemas/userDataValidationSchema';
 
-export interface FormValues {
-  name: string;
-  email: string;
-  interests?: string;
-  source?: string;
-  features?: string;
+export type ValidationFunction = (value: string) => string | null;
+
+export interface ConfigItem {
+  field: keyof UserDataValidation;
+  validate?: ValidationFunction;
+}
+
+export interface TextInputConfig extends ConfigItem {
+  label: string;
+  required: boolean;
+  tooltipLabel?: string;
 }

@@ -2,6 +2,7 @@ import {
   sanitizeText,
   removeExtraWhiteSpaces,
   sanitizeAndTrimText,
+  parseAndCleanInput
 } from '../../../app/utils/formInputSanitization';
 
 jest.mock('../../../app/utils/formInputSanitization', () => ({

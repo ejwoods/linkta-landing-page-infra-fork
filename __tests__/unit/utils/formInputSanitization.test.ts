@@ -4,7 +4,7 @@ import {
   sanitizeText,
 } from '../../../app/utils/formInputSanitization';
 
-describe('Utility Functions', () => {
+describe('User Data Sanitization Utility Functions', () => {
   describe('allowedChars Regex', () => {
     it('should not match letters, numbers, and allowed punctuation', () => {
       const validInput = 'Linkta, Org. -  ';

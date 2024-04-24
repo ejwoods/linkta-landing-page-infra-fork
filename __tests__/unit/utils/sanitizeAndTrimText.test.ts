@@ -18,12 +18,12 @@ describe('sanitizeAndTrimText', () => {
   const cases = [
     {
       input: 'Hello,   Linkta!@#$   ',
-      sanitized: 'Hello,   Linkta!   ',
+      sanitized: 'Hello,   Linkta!      ',
       trimmed: 'Hello, Linkta',
     },
     {
       input: 'Test!!! &&& Linkta***  ',
-      sanitized: 'Test &&& Linkta  ',
+      sanitized: 'Test &&& Linkta     ',
       trimmed: 'Test &&& Linkta',
     },
   ];

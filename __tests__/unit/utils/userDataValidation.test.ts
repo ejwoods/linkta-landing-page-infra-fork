@@ -108,6 +108,14 @@ describe('User Data Validation Utility Functions', () => {
       expect(nameRegex.test('Chên Shên')).toBe(true);
     });
 
+    it('should accept names in Cyrillic', () => {
+      expect(nameRegex.test('Чен Шен')).toBe(true);
+    });
+
+    it('should reject names with emojis', () => {
+      expect(nameRegex.test('Chen Shen 😊')).toBe(false);
+    });
+
     it('should reject names that include numbers', () => {
       expect(nameRegex.test('Chen Shen 2')).toBe(false);
     });

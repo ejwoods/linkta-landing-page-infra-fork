@@ -1,20 +1,8 @@
 import {
-  sanitizeText,
-  removeExtraWhiteSpaces,
-  sanitizeAndTrimText,
   parseAndCleanInput,
 } from '../../../app/utils/formInputSanitization';
 
-jest.mock('../../../app/utils/formInputSanitization', () => ({
-  ...jest.requireActual('../../../app/utils/formInputSanitization'),
-  sanitizeAndTrimText: jest.fn(),
-}));
-
 describe('parseAndCleanInput', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('returns an empty array when input is null or undefined', () => {
     expect(parseAndCleanInput(null)).toEqual([]);
     expect(parseAndCleanInput(undefined)).toEqual([]);

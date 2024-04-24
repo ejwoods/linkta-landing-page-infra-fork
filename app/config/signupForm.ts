@@ -1,21 +1,21 @@
-import { UserDataValidation } from '../schemas/userDataValidationSchema';
+import type { UserDataValidation } from '../schemas/userDataValidationSchema';
 import type { TextInputConfig } from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.
  * @param {keyof UserDataValidation} field - The name of the field.
  * @param {string} label - The label text for the field.
- * @param {string} placeholder - The placeholder text for the field.
  * @param {boolean} required - Indicates if the field is required.
+ * @param {string} tooltipLabel - The label text for Tooltip component.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
 const createConfigItem: (
   field: keyof UserDataValidation,
   label: string,
-  placeholder: string,
-  required: boolean
-) => TextInputConfig = (field, label, placeholder, required) => {
-  return { field, label, placeholder, required };
+  required: boolean,
+  tooltipLabel?: string
+) => TextInputConfig = (field, label, required, tooltipLabel) => {
+  return { field, label, required, tooltipLabel };
 };
 
 /**
@@ -24,30 +24,19 @@ const createConfigItem: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
-  createConfigItem('name', "What's your name?", 'Enter your name here', true),
-  createConfigItem(
-    'email',
-    'Where can we email you?',
-    'Email address goes here',
-    true
-  ),
+  createConfigItem('name', 'What is your name? (required)', true),
+  createConfigItem('email', 'Where can we email you? (required)', true),
   createConfigItem(
     'interests',
-    'What would you love to learn?',
-    'Tell us your interests, e.g., design, coding... (separate with commas)',
-    false
+    'What would you love to learn? (optional)',
+    false,
+    'List any topics you are interested in learning with Linkta, such as design or coding. Please separate your interests with commas.'
   ),
   createConfigItem(
     'source',
-    'How did you find us?',
-    'Where did you hear about us?',
-    false
-  ),
-  createConfigItem(
-    'features',
-    "Any exciting features in mind?",
-    'Exciting features? Let us know! (separate with commas)',
-    false
+    'How did you find us? (optional)',
+    false,
+    'Let us know how you heard about us, for example, through LinkedIn or from a friend.'
   ),
 ];
 

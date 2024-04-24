@@ -1,19 +1,13 @@
-import LandingPageMainHero from './components/main-content/LandingPageMainHero';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
-import Footer from './components/layout/Footer';
+import LandingPageMainHero from './components/main-content/LandingPageMainHero';
 
 export default function Home() {
   return (
     <div>
-      <header>
-        <LinktaLogoWithText />
-      </header>
-      <main>
+        <div className="sm:hidden ml-0">
+          <LinktaLogoWithText />
+        </div>
         <LandingPageMainHero />
-      </main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }

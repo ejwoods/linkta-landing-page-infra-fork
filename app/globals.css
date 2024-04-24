@@ -1,5 +1,33 @@
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@tailwind base;
+
+
+@layer base {  
+  main div { /* This will apply all of these values to <div> elements under main */
+    @apply flex flex-col items-center justify-center m-auto;
+  }
+
+  h1 {
+    @apply font-serif font-semibold text-3xl;
+  }
+
+  /* The following is for handling form elements with Mantine */
+  .button-primary {
+    @apply bg-[#ffa51b] shadow-md my-2 m-auto rounded-full w-full p-2;
+  }
+  
+  .label-primary {
+    @apply font-sans text-sm font-semibold mt-2 w-full pl-2 text-left;
+  }
+
+  div:has( > .input-primary) {
+    @apply w-full;
+  }
+
+  .input-primary {
+    @apply rounded-lg border border-black px-2 w-full dark:text-black;
+  }
+  /* End of Mantine form elements */
 }
+
+@tailwind components;
+@tailwind utilities;

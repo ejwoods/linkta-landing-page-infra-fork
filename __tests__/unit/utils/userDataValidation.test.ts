@@ -34,7 +34,7 @@ describe('User Data Validation Utility Functions', () => {
       expect(emailRegex.test('linkta@')).toBe(false);
     });
 
-    it('should reject email with more than 2 dots in a row', () => {
+    it('should reject email with more than 1 dot in a row', () => {
       expect(emailRegex.test('linkta..linkta@linkta.org')).toBe(false);
     });
 

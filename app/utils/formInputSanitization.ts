@@ -2,7 +2,7 @@
  * Regex disallowing characters other than letters from any language, numbers, spaces,
  * commas, periods, hyphens, square brackets, and parentheses.
  */
-const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
+export const allowedCharsRegex = new RegExp(`[^\\p{Letter}0-9 ,.\\-&\\[\\]()]`, 'gu');
 
 /**
  * Trims and replaces multiple whitespace characters with a single space.

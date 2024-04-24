@@ -22,12 +22,6 @@ const userDataSanitizationSchema = z.object({
         ? sanitizeAndTrimText(input)
         : 'not provided'
     ),
-  features: z
-    .string()
-    .optional()
-    .transform((input) =>
-      input ? parseAndCleanInput(input) : []
-    ),
 });
 
 export type userDataSanitization = z.infer<typeof userDataSanitizationSchema>;

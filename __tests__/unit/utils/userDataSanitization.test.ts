@@ -1,4 +1,8 @@
-import { allowedCharsRegex, removeExtraWhiteSpaces } from '../../../app/utils/formInputSanitization';
+import {
+  allowedCharsRegex,
+  removeExtraWhiteSpaces,
+  sanitizeText,
+} from '../../../app/utils/formInputSanitization';
 
 describe('allowedChars Regex', () => {
   it('should not match letters, numbers, and allowed punctuation', () => {
@@ -77,5 +81,36 @@ describe('removeExtraWhiteSpaces', () => {
     const input = '    ';
     const expected = '';
     expect(removeExtraWhiteSpaces(input)).toBe(expected);
+  });
+});
+
+describe('sanitizeText', () => {
+  const allowedRegexMock = /[@#$]/g;
+
+  it('should handle empty strings', () => {
+    const input = '';
+    const expected = '';
+
+    const result = sanitizeText(input, allowedRegexMock);
+
+    expect(result).toBe(expected);
+  });
+
+  it('should replace disallowed characters with spaces using the provided regex', () => {
+    const input = 'Hello, Linkta!@#$';
+    const expected = 'Hello, Linkta!   ';
+
+    const result = sanitizeText(input, allowedRegexMock);
+
+    expect(result).toBe(expected);
+  });
+
+  it('should handle strings with only allowed characters', () => {
+    const input = 'Hello, Linkta!';
+    const expected = 'Hello, Linkta!';
+
+    const result = sanitizeText(input, allowedRegexMock);
+
+    expect(result).toBe(expected);
   });
 });

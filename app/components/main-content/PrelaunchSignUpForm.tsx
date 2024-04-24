@@ -37,9 +37,10 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
     const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
     try {
-      await storeUserDataIfNew(sanitizedUserData.email, sanitizedUserData);
+      const userId = sanitizedUserData.email; // use user email as user Id to ensure user uniqueness
+      await storeUserDataIfNew(userId, sanitizedUserData);
     } catch (error) {
-      console.error('Error cheking user data existence or store user data.');
+      console.error('Error checking user data existence or storing user data.');
     }
 
     setFlowState('confirmed');

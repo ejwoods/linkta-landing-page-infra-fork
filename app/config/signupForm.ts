@@ -9,7 +9,7 @@ import type { TextInputConfig } from '../types/signupForm';
  * @param {string} tooltipLabel - The label text for Tooltip component.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
-const createConfigItem: (
+const createTextInputConfig: (
   field: keyof UserDataValidation,
   label: string,
   required: boolean,
@@ -24,15 +24,15 @@ const createConfigItem: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
-  createConfigItem('name', 'What is your name? (required)', true),
-  createConfigItem('email', 'Where can we email you? (required)', true),
-  createConfigItem(
+  createTextInputConfig('name', 'What is your name? (required)', true),
+  createTextInputConfig('email', 'Where can we email you? (required)', true),
+  createTextInputConfig(
     'interests',
     'What would you love to learn? (optional)',
     false,
     'List any topics you are interested in learning with Linkta, such as design or coding. Please separate your interests with commas.'
   ),
-  createConfigItem(
+  createTextInputConfig(
     'source',
     'How did you find us? (optional)',
     false,

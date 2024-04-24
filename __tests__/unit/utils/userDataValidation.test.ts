@@ -34,7 +34,7 @@ describe('User Data Validation Utility Functions', () => {
       expect(emailRegex.test('linkta@')).toBe(false);
     });
 
-    it('should reject email with more than 2 dots in a row', () => {
+    it('should reject email with more than 1 dot in a row', () => {
       expect(emailRegex.test('linkta..linkta@linkta.org')).toBe(false);
     });
 
@@ -106,6 +106,14 @@ describe('User Data Validation Utility Functions', () => {
 
     it('should accept names with extended Latin characters', () => {
       expect(nameRegex.test('Chên Shên')).toBe(true);
+    });
+
+    it('should accept names in Cyrillic', () => {
+      expect(nameRegex.test('Чен Шен')).toBe(true);
+    });
+
+    it('should reject names with emojis', () => {
+      expect(nameRegex.test('Chen Shen 😊')).toBe(false);
     });
 
     it('should reject names that include numbers', () => {

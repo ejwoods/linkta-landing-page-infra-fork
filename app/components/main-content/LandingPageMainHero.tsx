@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useRouter } from 'next/navigation';
 import UniversalButton from '../common/UniversalButton';
 import LandingPageTreeVisualizationPanel from './LandingPageTreeVisualizationPanel';
@@ -11,9 +11,17 @@ export default function LandingPageMainHero() {
   };
 
   return (
-    <main>
-      <LandingPageTreeVisualizationPanel/>
-      <UniversalButton onClick={handleClick} label='Join Our Journey'/>
+    <main className="flex flex-col sm:flex-row-reverse justify-center">
+      <LandingPageTreeVisualizationPanel />
+      <div className='sm:mb-2 p-2'>
+        <UniversalButton
+          onClick={handleClick}
+          label="Join Our Journey"
+          classNames={{
+            root: 'button-primary sm:flex-o sm:align-self-end',
+          }}
+        />
+      </div>
     </main>
-  )
+  );
 }

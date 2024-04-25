@@ -3,11 +3,11 @@
 import { TextInput, Button, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Dispatch, SetStateAction } from 'react';
-import { FlowState } from '../../early-access/page'
+import { FlowState } from '../../early-access/page';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import userDataValidationSchema, { type
-  UserDataValidation,
+import userDataValidationSchema, {
+  type UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
 import { storeUserDataIfNew } from '@/app/services/firestore';
 import PrivacyAgreement from '../common/PrivacyAgreement';
@@ -34,7 +34,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   });
 
   async function handleSignupSubmit(rawUserData: UserDataValidation) {
-    setFlowState('processing')
+    setFlowState('processing');
 
     const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
@@ -59,27 +59,35 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             Get exclusive early access to try our product
           </h2>
 
-          <section aria-label="Sign Up with Email" className="flex-col justify-center mx-auto">
-            {textInputConfig.map((input, index) => (
+          <section
+            aria-label="Sign Up with Email"
+            className="flex-col justify-center mx-auto"
+          >
+            {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
-                <Tooltip key={`${input.field}-${index}`} label={input.tooltipLabel} position="bottom">
+                <Tooltip
+                  key={`${input.field}-${index}`}
+                  label={input.tooltipLabel}
+                  position="bottom"
+                >
                   <TextInput
                     label={input.label}
                     required={input.required}
                     aria-required={input.required ? 'true' : 'false'}
                     {...form.getInputProps(input.field)}
                   />
-                  </Tooltip>
-                  ) : (
+                </Tooltip>
+              ) : (
                 <TextInput
                   key={`${input.field}-${index}`}
+                  id={`${input.field}-input`}
                   label={input.label}
                   required={input.required}
                   aria-required={input.required ? 'true' : 'false'}
-                {...form.getInputProps(input.field)}
-                  />
+                  {...form.getInputProps(input.field)}
+                />
               )
-            ))}
+            )}
             <Button
               type="submit"
               classNames={{

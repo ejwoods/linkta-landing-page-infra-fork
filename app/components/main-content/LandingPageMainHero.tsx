@@ -15,14 +15,13 @@ export default function LandingPageMainHero() {
       <LandingPageTreeVisualizationPanel />
       <div className="p-2 sm:mb-2">
         <UniversalButton
+          id="early-access-button"
           type="button"
           onClick={handleClick}
           label="Join Our Journey"
           classNames={{
             root: 'button-primary sm:flex-o sm:align-self-end',
           }}
-          label="Join Our Journey"
-          onClick={handleClick}
         />
       </div>
     </main>

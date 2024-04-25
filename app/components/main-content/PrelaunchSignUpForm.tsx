@@ -90,6 +90,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               )
             )}
             <UniversalButton
+              id="join-waiting-list-button"
               type="submit"
               label="Join Waiting List"
               classNames={{

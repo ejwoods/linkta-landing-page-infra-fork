@@ -92,7 +92,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               type="submit"
               label="Join Waiting List"
               classNames={{
-                root: 'button-primary-light',
+                root: 'button-primary button-accent',
               }}
             />
 

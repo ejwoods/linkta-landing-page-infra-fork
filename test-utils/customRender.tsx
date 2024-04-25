@@ -9,3 +9,8 @@ const MantineProviderWrapper = ({ children }: { children: React.ReactNode }) => 
     </MantineProvider>
   )
 };
+
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>,
+) => render(ui, {wrapper: MantineProviderWrapper, ...options});

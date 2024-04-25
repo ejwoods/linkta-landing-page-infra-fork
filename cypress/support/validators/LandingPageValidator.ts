@@ -1,13 +1,13 @@
-import LoginPage from '../pageObjects/LandingPage';
+import LandingPage from '../pageObjects/LandingPage';
 
-export default class LoginPageValidator {
-  private readonly loginPage: LoginPage;
+export default class LandingPageValidator {
+  private readonly landingPage: LandingPage;
 
-  public constructor(loginPage: LoginPage) {
-    this.loginPage = loginPage;
+  public constructor(landingPage: LandingPage) {
+    this.landingPage = landingPage;
   }
 
   public expectHeaderTitleToBe(expectedTitle: string): void {
-    this.loginPage.getHeaderTitle().should('have.text', expectedTitle);
+    this.landingPage.getHeaderTitle().should('have.text', expectedTitle);
   }
 }

@@ -13,7 +13,7 @@ export default function LandingPageMainHero() {
   return (
     <main className="flex flex-col sm:flex-row-reverse justify-center">
       <LandingPageTreeVisualizationPanel />
-      <div className='sm:mb-2 p-2'>
+      <div className="sm:mb-2 p-2">
         <UniversalButton
           onClick={handleClick}
           label="Join Our Journey"

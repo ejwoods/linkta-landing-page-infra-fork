@@ -1,6 +1,6 @@
 'use client';
 
-import { TextInput, Button, Box, Tooltip } from '@mantine/core';
+import { TextInput, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page';

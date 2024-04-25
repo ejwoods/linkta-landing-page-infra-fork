@@ -1,16 +1,30 @@
 import { Button } from '@mantine/core';
 
 interface UniversalButtonProps {
-  onClick: () => void;
-  label: string;
+  id: string;
   classNames: Record<string, string>;
+  label: string;
+  onClick: () => void;
 }
 /**
- * - `onClick`: A function to call when the button is clicked.
  * - `label`: The text to display on the button.
+ * - `onClick`: A function to call when the button is clicked.
  * This allows the component to be reused for different actions and labels.
  */
-export default function UniversalButton({ onClick, label, classNames } : UniversalButtonProps) {
-  classNames = Object.assign({root: 'button-primary'}, classNames);
-  return <Button onClick={onClick} classNames={classNames}>{label}</Button>;
+export default function UniversalButton({
+  id,
+  classNames,
+  label,
+  onClick,
+}: UniversalButtonProps) {
+  classNames = Object.assign({ root: 'button-primary' }, classNames);
+  return (
+    <Button
+      id={id}
+      classNames={classNames}
+      onClick={onClick}
+    >
+      {label}
+    </Button>
+  );
 }

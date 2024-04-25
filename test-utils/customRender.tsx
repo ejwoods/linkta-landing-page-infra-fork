@@ -33,6 +33,4 @@ const customRender = (
   options?: Omit<RenderOptions, 'wrapper'>,
 ) => render(ui, {wrapper: MantineProviderWrapper, ...options});
 
-// Allows for convenient access to standard React Testing Library utilities when importing customRender
-export * from '@testing-library/react';
 export {customRender as render};

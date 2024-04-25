@@ -13,7 +13,7 @@ import { storeUserDataIfNew } from '@/app/services/firestore';
 import PrivacyAgreement from '../common/PrivacyAgreement';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
 
-interface PrelaunchSignUpFormProps {
+export interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 

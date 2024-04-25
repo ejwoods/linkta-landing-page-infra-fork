@@ -1,6 +1,6 @@
 'use client';
 
-import { TextInput, Button, Box, Tooltip } from '@mantine/core';
+import { TextInput, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Dispatch, SetStateAction } from 'react';
 import { FlowState } from '../../early-access/page';
@@ -12,6 +12,7 @@ import userDataValidationSchema, {
 import { storeUserDataIfNew } from '@/app/services/firestore';
 import PrivacyAgreement from '../common/PrivacyAgreement';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
+import UniversalButton from '../common/UniversalButton';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
@@ -51,7 +52,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="text-center max-w-screen-sm sm:px-4">
+      <Box className="max-w-screen-sm text-center sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
           <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
@@ -61,7 +62,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
           <section
             aria-label="Sign Up with Email"
-            className="flex-col justify-center mx-auto"
+            className="mx-auto flex-col justify-center"
           >
             {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
@@ -88,14 +89,14 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 />
               )
             )}
-            <Button
+            <UniversalButton
               type="submit"
+              label="Join Waiting List"
               classNames={{
-                root: 'button-primary',
+                root: 'button-primary button-accent',
               }}
-            >
-              Join Waiting List
-            </Button>
+            />
+
             <footer className="pt-2">
               <PrivacyAgreement />
             </footer>

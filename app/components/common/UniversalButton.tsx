@@ -1,28 +1,26 @@
 import { Button } from '@mantine/core';
+import { ButtonHTMLAttributes } from 'react';
 
-interface UniversalButtonProps {
-  id: string;
-  classNames: Record<string, string>;
+interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  onClick: () => void;
+  classNames: Record<string, string>;
+  type: 'submit' | 'button' | 'reset';
 }
 /**
- * - `label`: The text to display on the button.
  * - `onClick`: A function to call when the button is clicked.
+ * - `label`: The text to display on the button.
  * This allows the component to be reused for different actions and labels.
  */
 export default function UniversalButton({
-  id,
-  classNames,
   label,
-  onClick,
+  classNames,
+  ...props
 }: UniversalButtonProps) {
   classNames = Object.assign({ root: 'button-primary' }, classNames);
   return (
     <Button
-      id={id}
       classNames={classNames}
-      onClick={onClick}
+      {...props}
     >
       {label}
     </Button>

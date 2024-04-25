@@ -11,11 +11,13 @@ export default function LandingPageMainHero() {
   };
 
   return (
-    <main className="flex flex-col sm:flex-row-reverse justify-center">
+    <main className="flex flex-col justify-center sm:flex-row-reverse">
       <LandingPageTreeVisualizationPanel />
-      <div className="sm:mb-2 p-2">
+      <div className="p-2 sm:mb-2">
         <UniversalButton
-          id="early-access-button"
+          type="button"
+          onClick={handleClick}
+          label="Join Our Journey"
           classNames={{
             root: 'button-primary sm:flex-o sm:align-self-end',
           }}

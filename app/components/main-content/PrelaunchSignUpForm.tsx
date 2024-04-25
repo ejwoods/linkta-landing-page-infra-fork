@@ -52,7 +52,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="text-center max-w-screen-sm sm:px-4">
+      <Box className="max-w-screen-sm text-center sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
           <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
@@ -62,7 +62,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
           <section
             aria-label="Sign Up with Email"
-            className="flex-col justify-center mx-auto"
+            className="mx-auto flex-col justify-center"
           >
             {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
@@ -92,7 +92,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               type="submit"
               label="Join Waiting List"
               classNames={{
-                root: 'button-primary',
+                root: 'button-primary-light',
               }}
             />
 

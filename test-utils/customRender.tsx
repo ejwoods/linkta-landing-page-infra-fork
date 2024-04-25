@@ -14,3 +14,6 @@ const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>,
 ) => render(ui, {wrapper: MantineProviderWrapper, ...options});
+
+export * from '@testing-library/react';
+export {customRender as render};

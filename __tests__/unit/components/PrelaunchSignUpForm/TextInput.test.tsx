@@ -1,6 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import PrelaunchSignUpForm, { PrelaunchSignUpFormProps } from '../../../../app/components/main-content/PrelaunchSignUpForm'
 
+jest.mock('@/app/services/firestore', () => ({
+  storeUserDataIfNew: jest.fn(() => Promise.resolve())
+}));
+
 describe('TextInput components in PrelaunchSignUpForm', () => {
   beforeEach(() => {
     const mockSetFlowState: jest.Mock = jest.fn();

@@ -27,7 +27,7 @@ const defaultFormValues = {
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   handleSuccessfulSubmit,
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm({
     validateInputOnBlur: ['name', 'email'],

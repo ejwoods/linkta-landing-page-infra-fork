@@ -8,10 +8,10 @@ import Loading from './loading';
 const LandingPageTreeVisualizationPanel = lazy(() => import('./components/main-content/LandingPageTreeVisualizationPanel'));
 
 export default function Home() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const handleSuccessfulSubmit = () => setIsSubmitted(true);
-  
+  const handleSuccessfulSubmit = (): void => setIsSubmitted(true);
+
   /**
    * useEffect to manage the display of submission status.
    * Sets a timer to reset the submission status after 3 seconds of display.

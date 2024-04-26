@@ -42,15 +42,15 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
   it('allows users to enter text into the name TextInput', async () => {
     const { user } = setup();
     const input = screen.getByRole('textbox', { name: 'What is your name? (required)' }) as HTMLInputElement;
-    await user.type(input, 'Chen Shen');
-    expect(input.value).toBe('Chen Shen');
+    await user.type(input, 'Mabel Wuckert');
+    expect(input.value).toBe('Mabel Wuckert');
   });
 
   it('allows users to enter text into the email TextInput', async () => {
     const { user } = setup();
     const input = screen.getByRole('textbox', { name: 'Where can we email you? (required)'}) as HTMLInputElement;
-    await user.type(input, 'chen@linkta.org');
-    expect(input.value).toBe('chen@linkta.org');
+    await user.type(input, 'mabel.w@gmail.com');
+    expect(input.value).toBe('mabel.w@gmail.com');
   });
 
   it('allows users to enter text into the interests TextInput', async () => {

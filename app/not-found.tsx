@@ -1,13 +1,12 @@
+'use client';
 import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col m-auto">
-      <h2 className="font-bold flex flex-col m-auto">Error 404</h2>
-      <p>Oops! This page was not found</p>
-      <button className="border-2">
-        <Link href="/">Return Home</Link>
-      </button>
+    <div className="">
+      <h1 className="mb-8">Oops!</h1>
+      <p className="mb-32">Something went wrong!</p>
+      <p className="">Please <a href="#" className="text-light-text underline hover" onClick={() => window.location.reload()}>click here</a> to refresh the page or contact us at info@linkta.org</p>
     </div>
   )
 }

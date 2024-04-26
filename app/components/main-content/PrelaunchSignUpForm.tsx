@@ -1,108 +1,111 @@
-'use client'
+'use client';
 
-import { TextInput, Button, Box } from '@mantine/core';
+import { TextInput, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
-import { FlowState } from '../../early-access/page'
-import { getRedirectResult } from 'firebase/auth';
-import {
-  auth,
-  signUpWithGitHub,
-  signUpWithGoogle,
-  createUserDoc,
-} from '@/app/config/firebase';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '@/app/config/firebase';
-import { generateInitialValues, generateValidationRules } from '@/app/utils/formInitialization';
+import { Dispatch, SetStateAction } from 'react';
+import { FlowState } from '../../early-access/page';
 import textInputConfig from '../../config/signupForm';
-import { FormValues } from '@/app/types/signupForm';
+import { zodResolver } from 'mantine-form-zod-resolver';
+import userDataValidationSchema, {
+  type UserDataValidation,
+} from '@/app/schemas/userDataValidationSchema';
+import { storeUserDataIfNew } from '@/app/services/firestore';
+import PrivacyAgreement from '../common/PrivacyAgreement';
+import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
+import UniversalButton from '../common/UniversalButton';
 
 interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 
-const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({ setFlowState }) => {
+const defaultFormValues = {
+  name: '',
+  email: '',
+  interests: '',
+  source: '',
+};
 
-  const initialValues = useMemo(() => generateInitialValues(textInputConfig), []);
-  const validationRules = useMemo(() => generateValidationRules(textInputConfig), []);
-
-  const form = useForm<FormValues>({
-    initialValues,
-    validate: validationRules
+const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
+  setFlowState,
+}) => {
+  const form = useForm({
+    validateInputOnBlur: ['name', 'email'],
+    initialValues: defaultFormValues,
+    validate: zodResolver(userDataValidationSchema),
   });
 
-  useEffect(() => {
-    async function checkRedirectResult() {
-      const res = await getRedirectResult(auth);  // Needed to access user data after redirect during OAuth sign in
+  async function handleSignupSubmit(rawUserData: UserDataValidation) {
+    setFlowState('processing');
 
-      if (res) {
-        setFlowState('processing');
-        await createUserDoc(res.user);
-        setFlowState('confirmed')
-      }
-    }
-    checkRedirectResult();
-  }, [setFlowState]);
+    const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
-  async function handleSubmit(values: FormValues) {
-    const { email, name } = values;
-
-    setFlowState('processing')
-
-    // creates user document reference using email as document id
-    const userDocRef = doc(db, 'users', email);
-    // checks if document exists in db
-    const userSnapShot = await getDoc(userDocRef);
-
-    // creates a new document if none exists already
-    if (!userSnapShot.exists()) {
-      try {
-        await setDoc(userDocRef, {
-          name,
-          email,
-          createdAt: serverTimestamp()
-        })
-      } catch (error) {
-        console.error('An error occurred during account creation.');
-      }
+    try {
+      const userId = sanitizedUserData.email; // use user email as user Id to ensure user uniqueness
+      await storeUserDataIfNew(userId, sanitizedUserData);
+    } catch (error) {
+      console.error('Error checking user data existence or storing user data.');
     }
 
-    setFlowState('confirmed')
+    setFlowState('confirmed');
+    form.reset();
   }
 
   return (
     <>
-      <Box>
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+      <Box className="max-w-screen-sm text-center sm:px-4">
+        <form onSubmit={form.onSubmit(handleSignupSubmit)}>
+          <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
-          <h1>Shape Our Future with Your Vision</h1>
+          <h2 className="text-sm">
+            Get exclusive early access to try our product
+          </h2>
 
-          <h2>Get exclusive early access to try our product</h2>
+          <section
+            aria-label="Sign Up with Email"
+            className="mx-auto flex-col justify-center"
+          >
+            {textInputConfig.map((input, index) =>
+              input.tooltipLabel ? (
+                <Tooltip
+                  key={`${input.field}-${index}`}
+                  label={input.tooltipLabel}
+                  position="bottom"
+                >
+                  <TextInput
+                    label={input.label}
+                    required={input.required}
+                    aria-required={input.required ? 'true' : 'false'}
+                    {...form.getInputProps(input.field)}
+                  />
+                </Tooltip>
+              ) : (
+                <TextInput
+                  key={`${input.field}-${index}`}
+                  id={`${input.field}-input`}
+                  label={input.label}
+                  required={input.required}
+                  aria-required={input.required ? 'true' : 'false'}
+                  {...form.getInputProps(input.field)}
+                />
+              )
+            )}
+            <UniversalButton
+              id="join-waiting-list-button"
+              type="submit"
+              label="Join Waiting List"
+              classNames={{
+                root: 'button-primary button-accent',
+              }}
+            />
 
-          <section aria-label="Sign Up with Google or Github">
-            <h3>sign up with google or github</h3>
-            <Button onClick={signUpWithGoogle}>Continue with Google</Button><br/>
-            <Button onClick={signUpWithGitHub}>Continue with Github</Button>
-          </section>
-
-          <section aria-label="Sign Up with Email">
-            <h3>or sign up with email</h3>
-            {textInputConfig.map((input, index) => (
-              <TextInput
-                key={`${input.field}-${index}`}
-                label={input.label}
-                placeholder={input.placeholder}
-                required={input.required}
-                {...form.getInputProps(input.field)}
-              />
-            ))}
-            <Button type="submit">Join Waiting List</Button>
-            <p>Privacy statement placeholder</p>
+            <footer className="pt-2">
+              <PrivacyAgreement />
+            </footer>
           </section>
         </form>
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default PrelaunchSignUpForm;

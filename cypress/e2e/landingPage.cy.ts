@@ -1,17 +1,17 @@
-import LoginPage from '../support/pageObjects/LandingPage';
-import LoginPageValidator from '../support/validators/LandingPageValidator';
+import LandingPage from '../support/pageObjects/LandingPage';
+import LandingPageValidator from '../support/validators/LandingPageValidator';
 
 describe('Landing Page', () => {
-  let loginPage: LoginPage;
-  let loginPageValidator: LoginPageValidator;
+  let landingPage: LandingPage;
+  let landingPageValidator: LandingPageValidator;
 
   before(() => {
-    loginPage = new LoginPage();
-    loginPageValidator = new LoginPageValidator(loginPage);
+    landingPage = new LandingPage();
+    landingPageValidator = new LandingPageValidator(landingPage);
   });
 
   it('should contain a header with the title Linkta', () => {
-    loginPage.open();
-    loginPageValidator.expectHeaderTitleToBe('Linkta');
+    landingPage.open();
+    landingPageValidator.expectHeaderTitleToBe('Linkta');
   });
 });

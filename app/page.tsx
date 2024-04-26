@@ -11,7 +11,11 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSuccessfulSubmit = () => setIsSubmitted(true);
-
+  
+  /**
+   * useEffect to manage the display of submission status.
+   * Sets a timer to reset the submission status after 3 seconds of display.
+   */
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;;
     if (isSubmitted) {

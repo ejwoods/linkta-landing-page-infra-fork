@@ -1,4 +1,4 @@
-import { render, screen } from 'test-utils';
+import { render, screen, userEvent } from 'test-utils';
 import PrelaunchSignUpForm, { PrelaunchSignUpFormProps } from '../../../../app/components/main-content/PrelaunchSignUpForm'
 
 jest.mock('@/app/services/firestore', () => ({
@@ -12,8 +12,9 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
       setFlowState: mockSetFlowState,
     };
 
+    const user = userEvent.setup();
     const renderResult = render(<PrelaunchSignUpForm {...props} />)
-    return { ...renderResult }
+    return { user, ...renderResult }
   };
 
   it('renders the name TextInput accessibly and with the correct label', () => {
@@ -34,5 +35,33 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
   it('renders the source TextInput accessibly and with the correct label', () => {
     setup();
     expect(screen.getByRole('textbox', { name: 'How did you find us? (optional)' })).toBeInTheDocument();
+  });
+
+  it('allows users to enter text into the name TextInput', async () => {
+    const { user } = setup();
+    const input = screen.getByRole('textbox', { name: 'What is your name? (required)' }) as HTMLInputElement;
+    await user.type(input, 'Chen Shen');
+    expect(input.value).toBe('Chen Shen');
+  });
+
+  it('allows users to enter text into the email TextInput', async () => {
+    const { user } = setup();
+    const input = screen.getByRole('textbox', { name: 'Where can we email you? (required)'}) as HTMLInputElement;
+    await user.type(input, 'chen@linkta.org');
+    expect(input.value).toBe('chen@linkta.org');
+  });
+
+  it('allows users to enter text into the interests TextInput', async () => {
+    const { user } = setup();
+    const input = screen.getByRole('textbox', { name: 'What would you love to learn? (optional)'}) as HTMLInputElement;
+    await user.type(input, 'Coding, Design, Learning');
+    expect(input.value).toBe('Coding, Design, Learning');
+  });
+
+  it('allows users to enter text into the source TextInput', async () => {
+    const { user } = setup();
+    const input = screen.getByRole('textbox', { name: 'How did you find us? (optional)'}) as HTMLInputElement;
+    await user.type(input, 'LinkedIn');
+    expect(input.value).toBe('LinkedIn');
   });
 });

@@ -14,7 +14,7 @@ import PrivacyAgreement from '../common/PrivacyAgreement';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
 import UniversalButton from '../common/UniversalButton';
 
-interface PrelaunchSignUpFormProps {
+export interface PrelaunchSignUpFormProps {
   setFlowState: Dispatch<SetStateAction<FlowState>>;
 }
 

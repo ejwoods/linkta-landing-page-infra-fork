@@ -94,7 +94,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             <UniversalButton
               id="join-waiting-list-button"
               type="submit"
-              label={isLoading ? "Loading..." : "Join Waiting List"}
+              label={isLoading ? "Adding..." : "Join Waiting List"}
               classNames={{
                 root: 'button-primary button-accent',
               }}

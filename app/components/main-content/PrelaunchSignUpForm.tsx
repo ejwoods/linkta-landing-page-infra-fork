@@ -27,6 +27,7 @@ const defaultFormValues = {
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   handleSuccessfulSubmit,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm({
     validateInputOnBlur: ['name', 'email'],
@@ -35,6 +36,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   });
 
   async function handleSignupSubmit(rawUserData: UserDataValidation) {
+    setIsLoading(true);
 
     const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
@@ -47,6 +49,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
     handleSuccessfulSubmit();
     form.reset();
+    setIsLoading(false);
   }
 
   return (
@@ -91,10 +94,11 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             <UniversalButton
               id="join-waiting-list-button"
               type="submit"
-              label="Join Waiting List"
+              label={isLoading ? "Loading..." : "Join Waiting List"}
               classNames={{
                 root: 'button-primary button-accent',
               }}
+              disabled={isLoading}
             />
 
             <footer className="pt-2">

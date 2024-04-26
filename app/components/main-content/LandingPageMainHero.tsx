@@ -15,6 +15,7 @@ export default function LandingPageMainHero() {
       <LandingPageTreeVisualizationPanel />
       <div className="p-2 sm:mb-2">
         <UniversalButton
+          id="early-access-button"
           type="button"
           onClick={handleClick}
           label="Join Our Journey"

@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import LandingPageMainHero from './components/main-content/LandingPageMainHero';

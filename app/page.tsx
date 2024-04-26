@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import SubmissionStatus from './components/main-content/SubmissionStatus';
 import PrelaunchSignUpForm from './components/main-content/PrelaunchSignUpForm';
@@ -11,6 +11,17 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSuccessfulSubmit = () => setIsSubmitted(true);
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;;
+    if (isSubmitted) {
+      timeoutId = setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [isSubmitted]);
 
   return (
     <>

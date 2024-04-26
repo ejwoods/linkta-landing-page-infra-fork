@@ -81,6 +81,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               ) : (
                 <TextInput
                   key={`${input.field}-${index}`}
+                  id={`${input.field}-input`}
                   label={input.label}
                   required={input.required}
                   aria-required={input.required ? 'true' : 'false'}
@@ -89,6 +90,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               )
             )}
             <UniversalButton
+              id="join-waiting-list-button"
               type="submit"
               label="Join Waiting List"
               classNames={{

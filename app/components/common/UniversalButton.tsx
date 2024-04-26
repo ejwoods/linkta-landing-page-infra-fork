@@ -2,6 +2,7 @@ import { Button } from '@mantine/core';
 import { ButtonHTMLAttributes } from 'react';
 
 interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  id: string;
   label: string;
   classNames: Record<string, string>;
   type: 'submit' | 'button' | 'reset';
@@ -12,6 +13,7 @@ interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * This allows the component to be reused for different actions and labels.
  */
 export default function UniversalButton({
+  id,
   label,
   classNames,
   ...props
@@ -19,6 +21,7 @@ export default function UniversalButton({
   classNames = Object.assign({ root: 'button-primary' }, classNames);
   return (
     <Button
+      id={id}
       classNames={classNames}
       {...props}
     >

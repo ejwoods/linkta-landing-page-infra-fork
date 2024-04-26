@@ -13,7 +13,7 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
     };
 
     const renderResult = render(<PrelaunchSignUpForm {...props} />)
-    return { renderResult }
+    return { ...renderResult }
   };
 
   it('renders the name TextInput accessibly and with the correct label', () => {

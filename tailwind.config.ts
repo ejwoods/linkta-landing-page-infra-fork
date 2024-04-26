@@ -42,7 +42,7 @@ const config: Config = {
           transparent: 'transparent',
           current: 'currentColor',
           black: '#2C1D15',
-          white: '#000000',
+          white: '#FDFEFE',
         },
         dark: {
           primary: '#013B3F',

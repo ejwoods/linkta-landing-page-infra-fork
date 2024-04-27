@@ -20,16 +20,16 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className="w-10/12 min-w-[200px] sm:w-full flex flex-col mx-auto mt-0 p-2 sm:px-0 bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text h-svh">
-        <header className="hidden sm:block sm:pl-10">
+      <body className='max-w-full'>
+        <header>
           <LinktaLogoWithText />
         </header>
         <MantineProvider>
-          <main className="flex flex-col my-3 flex-grow">
+          <main className="container h-svh">
             {children}
           </main>
         </MantineProvider>
-        <footer className="hidden text-xs sm:flex sm:flex-col border-t w-[100vw] border-t-light-text dark:border-t-dark-text">
+        <footer className="hidden text-xs sm:flex sm:flex-col border-t mb-2 border-t-light-text dark:border-t-dark-text">
           <Footer />
         </footer>
       </body>

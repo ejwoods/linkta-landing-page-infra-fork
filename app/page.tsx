@@ -1,6 +1,5 @@
 'use client';
 import { Suspense, lazy, useEffect, useState } from 'react';
-import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import KeyValueProposition from './components/main-content/KeyValueProposition';
 import SubmissionStatus from './components/main-content/SubmissionStatus';
 import PrelaunchSignUpForm from './components/main-content/PrelaunchSignUpForm';
@@ -30,15 +29,12 @@ export default function Home() {
 
   return (
     <>
-      <header className="sm:hidden ml-0">
-        <LinktaLogoWithText />
-      </header>
       <main>
         <div>
           <KeyValueProposition />
           {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
         </div>
-          <div className="flex flex-col justify-center sm:flex-row-reverse">
+          <div>
             <Suspense fallback={<Loading />}>
               <LandingPageTreeVisualizationPanel />
             </Suspense>

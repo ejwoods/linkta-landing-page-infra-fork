@@ -9,12 +9,8 @@ const config: Config = {
   // darkMode: 'selector', // enable this for manually toggling dark mode
   theme: {
     screens: {
-      // defaults from https://tailwindcss.com/docs/theme
-      sm: '431px', // 430px is the width of the iPhone 14 Pro Max
-      // We currently have web and mobile breakpoints
-      // md: '768px',
-      // lg: '976px',
-      // xl: '1440px',
+      sm: '431px',
+      xl: '1440px',
     },
     fontFamily: {
       sans: ['Inter, sans-serif'],

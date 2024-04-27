@@ -13,7 +13,7 @@ const config: Config = {
     },
     fontFamily: {
       sans: ['Inter, sans-serif'],
-      serif: ['EB Garamond'],
+      serif: ['EB Garamond', 'Garamond', 'serif'],
     },
     container:{
       padding:{

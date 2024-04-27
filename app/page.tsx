@@ -28,16 +28,18 @@ export default function Home() {
   }, [isSubmitted]);
 
   return (
-    <>
-      <div>
-        <KeyValueProposition />
-        {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
-      </div>
-      <div>
+    <div className='flex flex-row flew-wrap-reverse -mt-6'>
+      <section className="flex flex-col w-1/3">
+        <KeyValueProposition/>
+        <article className='border shadow-md px-4 rounded h-4/5'>
+          {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
+        </article>
+      </section>
+      <section className='ml-24 w-2/3 h-4/6'>
         <Suspense fallback={<Loading />}>
           <LandingPageTreeVisualizationPanel />
         </Suspense>
-      </div>
-    </>
+      </section>
+    </div>
   );
 }

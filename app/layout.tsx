@@ -20,12 +20,12 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className='max-w-full'>
-        <header>
+      <body className='max-w-full h-svh'>
+        <header className="h-1/6">
           <LinktaLogoWithText />
         </header>
         <MantineProvider>
-          <main className="container h-svh">
+          <main className="container h-5/6">
             {children}
           </main>
         </MantineProvider>

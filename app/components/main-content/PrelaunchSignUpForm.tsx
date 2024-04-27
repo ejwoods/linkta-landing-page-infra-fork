@@ -12,6 +12,7 @@ import { storeUserDataIfNew } from '@/app/services/firestore';
 import PrivacyAgreement from '../common/PrivacyAgreement';
 import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
 import UniversalButton from '../common/UniversalButton';
+import classes from '../../PrelaunchSignUpForm.module.css'
 
 export interface PrelaunchSignUpFormProps {
   handleSuccessfulSubmit: () => void;
@@ -54,14 +55,12 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="max-w-screen-sm text-center sm:px-4">
+      <Box className="max-w-screen-sm text-center my-6 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h1 className="pb-4">Shape Our Future with Your Vision</h1>
-
-          <h2 className="text-sm">
+          <h3 className="font-serif pb-1 text-2xl">Shape Our Future with Your Vision</h3>
+          <h4 className="text-sm">
             Get exclusive early access to try our product
-          </h2>
-
+          </h4>
           <section
             aria-label="Sign Up with Email"
             className="mx-auto flex-col justify-center"
@@ -69,11 +68,17 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
                 <Tooltip
+                  multiline
                   key={`${input.field}-${index}`}
                   label={input.tooltipLabel}
-                  position="bottom"
+                  position="top" offset={5}
                 >
                   <TextInput
+                    classNames={{
+                      root: classes.root,
+                      input: classes.input,
+                      label: classes.label,
+                    }}
                     label={input.label}
                     required={input.required}
                     aria-required={input.required ? 'true' : 'false'}
@@ -84,6 +89,11 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 <TextInput
                   key={`${input.field}-${index}`}
                   id={`${input.field}-input`}
+                  classNames={{
+                    root: classes.root,
+                    input: classes.input,
+                    label: classes.label,
+                  }}
                   label={input.label}
                   required={input.required}
                   aria-required={input.required ? 'true' : 'false'}

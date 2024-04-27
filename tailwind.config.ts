@@ -19,7 +19,7 @@ const config: Config = {
       padding:{
         DEFAULT: '1rem',
         sm: '2rem',
-        xl: '2rem',
+        xl: '0rem',
       },
     },
     extend: {

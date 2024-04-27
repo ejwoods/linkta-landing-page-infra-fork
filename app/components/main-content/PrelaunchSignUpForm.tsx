@@ -95,6 +95,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               id="join-waiting-list-button"
               type="submit"
               label={isLoading ? "Adding..." : "Join Waiting List"}
+              aria-label={isLoading ? "Adding you to our waiting list" : "Join Waiting List"}
               classNames={{
                 root: 'button-primary button-accent',
               }}

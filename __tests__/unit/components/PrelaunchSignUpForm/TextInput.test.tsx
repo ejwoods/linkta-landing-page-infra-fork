@@ -9,9 +9,9 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
   const setup = () => {
     jest.clearAllMocks();
     
-    const mockSetFlowState: jest.Mock = jest.fn();
+    const mockHandleSuccessfulSubmit: jest.Mock = jest.fn();
     const props: PrelaunchSignUpFormProps = {
-      setFlowState: mockSetFlowState,
+      handleSuccessfulSubmit: mockHandleSuccessfulSubmit,
     };
 
     const user = userEvent.setup();

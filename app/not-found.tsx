@@ -6,10 +6,10 @@ import { Player, Controls } from '@lottiefiles/react-lottie-player';
 export default function NotFound() {
   
   return (
-    <div className="">
-      <h2 className="mb-4 text-3xl font-semibold">Oops!</h2>
-      <p className="mb-64">Something went wrong!</p>
-      <div className="">
+    <div>
+      <h2 className="mt-16 text-3xl font-semibold">Oops!</h2>
+      <p className="mt-4">Something went wrong!</p>
+      <div>
         <Player
         autoplay={true}
         loop={false}
@@ -19,7 +19,7 @@ export default function NotFound() {
           <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']}/>
         </Player>
       </div>
-      <p className="mb-32">Please <a href="/" className="text-light-text underline hover">click here</a> to return home or contact us at info@linkta.org</p>
+      <p className="mb-64 text-light-text">Please <a href="/" className="text-light-text underline hover:via-light-hover">click here</a> to return home or contact us at <a href="mailto:info@linkta.org">info@linkta.org</a></p>
     </div>
   )
 };

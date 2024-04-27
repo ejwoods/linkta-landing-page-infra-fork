@@ -1,10 +1,16 @@
 .input{
     width: 100%;
     border-radius: 0.5rem;
-    border: 1px solid black;
+    outline: 1px solid #2C1D15;
     padding: 0.5rem;
-    color: black;
+    color: #2C1D15;
 }
+
 .root {
     margin-bottom:0.5rem;
+}
+.error{
+    color: #E4190C;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
 }

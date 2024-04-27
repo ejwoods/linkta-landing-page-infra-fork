@@ -58,7 +58,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
       <Box className="max-w-screen-sm text-center my-6 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
           <h3 className="font-serif pb-1 text-2xl">Shape Our Future with Your Vision</h3>
-          <h4 className="text-sm">
+          <h4 className="text-light-text">
             Get exclusive early access to try our product
           </h4>
           <section
@@ -67,24 +67,26 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
           >
             {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
-                <Tooltip
+                <Tooltip.Floating
                   multiline
                   key={`${input.field}-${index}`}
                   label={input.tooltipLabel}
-                  position="top" offset={5}
+                  position="top-start"
+                  withinPortal
                 >
                   <TextInput
                     classNames={{
                       root: classes.root,
                       input: classes.input,
                       label: classes.label,
+                      error: classes.error
                     }}
                     label={input.label}
                     required={input.required}
                     aria-required={input.required ? 'true' : 'false'}
                     {...form.getInputProps(input.field)}
                   />
-                </Tooltip>
+                </Tooltip.Floating>
               ) : (
                 <TextInput
                   key={`${input.field}-${index}`}
@@ -93,6 +95,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                     root: classes.root,
                     input: classes.input,
                     label: classes.label,
+                    error: classes.error
                   }}
                   label={input.label}
                   required={input.required}
@@ -112,7 +115,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
               disabled={isLoading}
             />
 
-            <footer className="pt-2">
+            <footer className="pt-2 ">
               <PrivacyAgreement />
             </footer>
           </section>

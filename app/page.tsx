@@ -29,17 +29,15 @@ export default function Home() {
 
   return (
     <>
-      <main>
-        <div>
-          <KeyValueProposition />
-          {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
-        </div>
-          <div>
-            <Suspense fallback={<Loading />}>
-              <LandingPageTreeVisualizationPanel />
-            </Suspense>
-          </div>
-      </main>
+      <div>
+        <KeyValueProposition />
+        {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
+      </div>
+      <div>
+        <Suspense fallback={<Loading />}>
+          <LandingPageTreeVisualizationPanel />
+        </Suspense>
+      </div>
     </>
   );
 }

@@ -6,7 +6,6 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  // darkMode: 'selector', // enable this for manually toggling dark mode
   theme: {
     screens: {
       sm: '431px',
@@ -15,6 +14,13 @@ const config: Config = {
     fontFamily: {
       sans: ['Inter, sans-serif'],
       serif: ['EB Garamond'],
+    },
+    container:{
+      padding:{
+        DEFAULT: '1rem',
+        sm: '2rem',
+        xl: '4rem',
+      }
     },
     extend: {
       colors: {

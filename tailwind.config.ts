@@ -55,7 +55,6 @@ const config: Config = {
           link: '#D9D9D9',
           border: '#938F99',
           placeholder: '#D9D9D9',
-          icon: '',
           hover: '#013539',
           active: '#012F32',
           error: '#D9D9D9',

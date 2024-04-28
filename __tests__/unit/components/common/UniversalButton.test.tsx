@@ -29,7 +29,7 @@ describe('UniversalButton component in isolation', () => {
   });
 
   it('UniversalButton can be clicked', async () => {
-    const mockOnClick = jest.fn();
+    const mockOnClick: jest.Mock = jest.fn();
     const { user } = setup({ onClick: mockOnClick});
     const button = screen.getByRole('button', { name: 'Click Here' });
     await user.click(button);

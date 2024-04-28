@@ -9,7 +9,7 @@ export default function SubmissionStatus() {
   return (
     <article aria-live="polite">
       <h1 className="flex pt-4 h-[60px] align-bottom">
-        <span className="align-text-bottom">
+        <span className="font-serif text-xl align-text-bottom">
           Thank you!
         </span>
         <Player

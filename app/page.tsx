@@ -21,7 +21,7 @@ export default function Home() {
     if (isSubmitted) {
       timeoutId = setTimeout(() => {
         setIsSubmitted(false);
-      }, 3000);
+      }, 20000);
     }
 
     return () => clearTimeout(timeoutId);

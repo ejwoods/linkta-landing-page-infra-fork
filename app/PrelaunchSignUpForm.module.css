@@ -6,6 +6,9 @@
     color: #2C1D15;
     text-align:start;
 }
+.inputError {
+    border: 1px solid #E4190C !important; /* Ensures this style has higher specificity */
+}
 .label {
     text-align:start;
     font-weight: 500;

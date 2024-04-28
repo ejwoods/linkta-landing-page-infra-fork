@@ -2,7 +2,7 @@
 
 import { TextInput, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, {
@@ -24,6 +24,7 @@ const defaultFormValues = {
   interests: '',
   source: '',
 };
+
 
 const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   handleSuccessfulSubmit,
@@ -79,7 +80,8 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                       root: classes.root,
                       input: classes.input,
                       label: classes.label,
-                      error: classes.error
+                      error: classes.error,
+
                     }}
                     label={input.label}
                     required={input.required}

@@ -68,12 +68,21 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
           >
             {textInputConfig.map((input, index) =>
               input.tooltipLabel ? (
-                <Tooltip.Floating
+                <Tooltip
                   multiline
                   key={`${input.field}-${index}`}
                   label={input.tooltipLabel}
-                  position="top-start"
-                  withinPortal
+                  position="bottom-start"
+                  styles={{
+                    tooltip: {
+                      backgroundColor: '#3D5B50',
+                      color: 'white',
+                      padding: '8px 12px',
+                      borderRadius: '4px',
+                      position: 'absolute',
+                      width: '300px',
+                    },
+                  }}
                 >
                   <TextInput
                     classNames={{
@@ -88,7 +97,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                     aria-required={input.required ? 'true' : 'false'}
                     {...form.getInputProps(input.field)}
                   />
-                </Tooltip.Floating>
+                </Tooltip>
               ) : (
                 <TextInput
                   key={`${input.field}-${index}`}

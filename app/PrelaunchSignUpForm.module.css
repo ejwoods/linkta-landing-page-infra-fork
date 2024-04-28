@@ -23,3 +23,12 @@
     font-size: 0.75rem;
     margin-top: 0.25rem;
 }
+.mantine-tooltip {
+    background-color: #2C1D15;
+    color: #FFA51B;
+    border: 1px solid #FFA51B;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}

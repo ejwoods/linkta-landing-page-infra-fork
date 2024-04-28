@@ -13,4 +13,5 @@ const setup = () => {
 
 const user = userEvent.setup();
 const renderResult = render(<UniversalButton {...props} />)
+return { user, ...renderResult }
 };

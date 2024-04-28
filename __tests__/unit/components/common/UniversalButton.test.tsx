@@ -19,3 +19,10 @@ const user = userEvent.setup();
 const renderResult = render(<UniversalButton {...props} />)
 return { user, ...renderResult }
 };
+
+describe('UniversalButton component in isolation', () => {
+  it('renders the UniversalButton accessibly and with the correct label', () => {
+    setup();
+    expect(screen.getByRole('button', { name: 'Click Here' })).toBeInTheDocument();
+  });
+});

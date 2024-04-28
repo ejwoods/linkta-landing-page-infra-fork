@@ -43,4 +43,8 @@
 }
 
 @tailwind components;
+
+@layer components {
+
+}
 @tailwind utilities;

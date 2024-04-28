@@ -8,7 +8,8 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      sm: '431px',
+      sm:'480px',
+      lg: '1024px',
       xl: '1440px',
     },
     fontFamily: {
@@ -19,6 +20,7 @@ const config: Config = {
       padding:{
         DEFAULT: '1rem',
         sm: '2rem',
+        lg: '1rem',
         xl: '0rem',
       },
     },

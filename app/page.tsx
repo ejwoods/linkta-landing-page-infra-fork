@@ -30,13 +30,13 @@ export default function Home() {
   return (
     <div className='flex flex-col sm:flex-row sm:justify-between -mt-6'>
       <Suspense fallback={<Loading />}>
-        <div className="sm:w-2/3 sm:order-2 ">
+        <div className="sm:w-2/3 sm:order-2 z-0">
           <LandingPageTreeVisualizationPanel />
         </div>
       </Suspense>
       <section className="w-full flex flex-col justify-between min-w-[390px] sm:w-1/3 sm:order-1">
         <KeyValueProposition/>
-        <article className='border shadow-md px-4 rounded h-4/5'>
+        <article className='border shadow-md px-4 rounded h-4/5 z-10'>
           {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
         </article>
       </section>

@@ -25,7 +25,7 @@ export default function RootLayout({
           <LinktaLogoWithText />
         </header>
         <MantineProvider>
-          <main className="container h-5/6 xl:mx-auto xl:overflow-x-clip xl:overflow-y-visible">
+          <main className="container h-5/6 xl:mx-auto overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible">
             {children}
           </main>
         </MantineProvider>

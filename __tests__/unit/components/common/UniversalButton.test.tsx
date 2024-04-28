@@ -3,9 +3,10 @@ import UniversalButton, { UniversalButtonProps } from '@/app/components/common/U
 
 /**
  * Sets up UniversalButton for testing by clearing all mocks, setting up userEvent for user interactions, and rendering UniversalButton with test props.
+ * @param {Partial<UniversalButtonProps>} additionalProps - Additional props needed for test.
  * @returns {object} An object containing utilities provided by userEvent and render.
  */
-const setup = () => {
+const setup = (additionalProps?: Partial<UniversalButtonProps>) => {
   jest.clearAllMocks;
 
   const props: UniversalButtonProps = {
@@ -13,6 +14,7 @@ const setup = () => {
     label: 'Click Here',
     classNames: {},
     type: 'button',
+    ...additionalProps,
   };
 
 const user = userEvent.setup();

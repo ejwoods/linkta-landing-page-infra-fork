@@ -55,10 +55,10 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="max-w-screen-sm text-center my-6 sm:px-4">
+      <Box className="max-w-screen-sm my-6 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h3 className="font-serif pb-1 text-2xl">Shape Our Future with Your Vision</h3>
-          <h4 className="text-light-text">
+          <h3 className="font-serif pb-1 font-semibold xl:text-2xl">Shape Our Future with Your Vision</h3>
+          <h4 className="font-semibold xl:text-base mb-2 tracking-tight text-light-border">
             Get exclusive early access to try our product
           </h4>
           <section
@@ -104,20 +104,22 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 />
               )
             )}
-            <UniversalButton
-              id="join-waiting-list-button"
-              type="submit"
-              label={isLoading ? "Adding..." : "Join Waiting List"}
-              aria-label={isLoading ? "Adding you to our waiting list" : "Join Waiting List"}
-              classNames={{
-                root: 'button-primary button-accent',
-              }}
-              disabled={isLoading}
-            />
+            <section className='text-center mt-8'>
+              <UniversalButton
+                id="join-waiting-list-button"
+                type="submit"
+                label={isLoading ? "Adding..." : "Join Waiting List"}
+                aria-label={isLoading ? "Adding you to our waiting list" : "Join Waiting List"}
+                classNames={{
+                  root: 'button-primary button-accent',
+                }}
+                disabled={isLoading}
+              />
 
-            <footer className="pt-2 ">
-              <PrivacyAgreement />
-            </footer>
+              <footer className="pt-2">
+                <PrivacyAgreement />
+              </footer>
+            </section>
           </section>
         </form>
       </Box>

@@ -4,6 +4,12 @@
     outline: 1px solid #2C1D15;
     padding: 0.5rem;
     color: #2C1D15;
+    text-align:start;
+}
+.label {
+    text-align:start;
+    font-weight: 500;
+    font-size: smaller;
 }
 
 .root {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 export default function LinktaLogoWithText() {
   return (
-    <figure className="flex ">
+    <figure className="flex ml-2">
       <Image
         src="/linkta-logo-transparent.svg"
         width={50}

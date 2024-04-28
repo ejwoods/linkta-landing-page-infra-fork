@@ -95,10 +95,11 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                   id={`${input.field}-input`}
                   classNames={{
                     root: classes.root,
-                    input: classes.input,
+                    input: form.errors[input.field] ? `${classes.input} ${classes.inputError}` : classes.input,
                     label: classes.label,
                     error: classes.error
                   }}
+                  error={form.errors[input.field]}
                   label={input.label}
                   required={input.required}
                   aria-required={input.required ? 'true' : 'false'}

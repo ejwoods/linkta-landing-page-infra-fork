@@ -7,7 +7,11 @@
     text-align:start;
 }
 .inputError {
-    border: 1px solid #E4190C !important; /* Ensures this style has higher specificity */
+    border: 2px solid #E4190C !important; /* Ensures this style has higher specificity */
+}
+.input:focus {
+    outline: none; /* Optional: removes the default focus outline */
+    border: 2px solid #307654; /* Change to your preferred focus color */
 }
 .label {
     text-align:start;

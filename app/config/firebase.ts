@@ -34,6 +34,6 @@ export const db = getFirestore(firebaseApp); //initialize Firestore service
 
 
 export const actionCodeSettings = {
-  url: 'http://localhost:3000/thanku', // the URl we want user to be redirecting to eg. 'linkta.io/thankyou' 'https://linkta.io'|| 'http://localhost:3000/early-access'
+  url: 'http://localhost:3000/thank-you', // the URl we want user to be redirecting to eg. 'linkta.io/thankyou' 'https://linkta.io'|| 'http://localhost:3000/early-access'
   handleCodeInApp: true,
 }

@@ -24,7 +24,6 @@ export default function ThankYou() {
             let name = window.localStorage.getItem('userName');
             let interests = window.localStorage.getItem('userInterest');
             let source = window.localStorage.getItem('userSource');
-            let features = window.localStorage.getItem('features');
             const userDocRef = doc(db, 'users', email);
 
             const userSnapShot = await getDoc(userDocRef);
@@ -35,7 +34,6 @@ export default function ThankYou() {
                   email,
                   interests,
                   source,
-                  features,
                   createdAt: serverTimestamp(),
                 });
               } catch (error) {

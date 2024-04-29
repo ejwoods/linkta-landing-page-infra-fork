@@ -1,17 +1,27 @@
-import LoginPage from '../support/pageObjects/LandingPage';
-import LoginPageValidator from '../support/validators/LandingPageValidator';
+import LandingPage from '../support/pageObjects/LandingPage';
+import LandingPageValidator from '../support/validators/LandingPageValidator';
 
 describe('Landing Page', () => {
-  let loginPage: LoginPage;
-  let loginPageValidator: LoginPageValidator;
+  let landingPage: LandingPage;
+  let landingPageValidator: LandingPageValidator;
 
-  before(() => {
-    loginPage = new LoginPage();
-    loginPageValidator = new LoginPageValidator(loginPage);
+  beforeEach(() => {
+    landingPage = new LandingPage();
+    landingPageValidator = new LandingPageValidator(landingPage);
+    landingPage.open();
   });
 
   it('should contain a header with the title Linkta', () => {
-    loginPage.open();
-    loginPageValidator.expectHeaderTitleToBe('Linkta');
+    landingPageValidator.expectHeaderTitleToBe('Linkta');
+  });
+
+  it('should validate if name input contains special characters', () => {
+    landingPage.setName('Fake Name!@#');
+    landingPageValidator.expectErrorNameContainsSpecialCharacters();
+  });
+
+  it('should validate if email input is incorrect', () => {
+    landingPage.setEmail('fake@email');
+    landingPageValidator.expectErrorEmailAddressIncorrect();
   });
 });

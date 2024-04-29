@@ -1,105 +1,110 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { TextInput, Button, Box } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useEffect, Dispatch, SetStateAction, useMemo } from 'react';
-import { FlowState } from '../../early-access/page';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { auth, db, sendEmailLink } from '@/app/config/firebase';
-import {
-  generateInitialValues,
-  generateValidationRules,
-} from '@/app/utils/formInitialization';
-import textInputConfig from '../../config/signupForm';
-import { FormValues } from '@/app/types/signupForm';
-import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
-import { sources } from 'next/dist/compiled/webpack/webpack';
 
-interface PrelaunchSignUpFormProps {
-  setFlowState: Dispatch<SetStateAction<FlowState>>;
+import { TextInput, Box, Tooltip } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { useState } from 'react';
+import textInputConfig from '../../config/signupForm';
+import { zodResolver } from 'mantine-form-zod-resolver';
+import userDataValidationSchema, {
+  type UserDataValidation,
+} from '@/app/schemas/userDataValidationSchema';
+import { storeUserDataIfNew } from '@/app/services/firestore';
+import PrivacyAgreement from '../common/PrivacyAgreement';
+import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
+import UniversalButton from '../common/UniversalButton';
+
+export interface PrelaunchSignUpFormProps {
+  handleSuccessfulSubmit: () => void;
 }
 
-const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
-  setFlowState,
-}) => {
-  const initialValues = useMemo(
-    () => generateInitialValues(textInputConfig),
-    []
-  );
-  const validationRules = useMemo(
-    () => generateValidationRules(textInputConfig),
-    []
-  );
-  const router = useRouter();
+const defaultFormValues = {
+  name: '',
+  email: '',
+  interests: '',
+  source: '',
+};
 
-  const form = useForm<FormValues>({
-    initialValues,
-    validate: validationRules,
+const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
+  handleSuccessfulSubmit,
+}) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const form = useForm({
+    validateInputOnBlur: ['name', 'email'],
+    initialValues: defaultFormValues,
+    validate: zodResolver(userDataValidationSchema),
   });
 
+  async function handleSignupSubmit(rawUserData: UserDataValidation) {
+    setIsLoading(true);
 
-  async function handleSubmit(values: FormValues) {
-    const { email, name, interests, source, features } = values;
+    const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
 
-    // setFlowState('processing')
-
-    // // creates user document reference using email as document id
-    // const userDocRef = doc(db, 'users', email);
-    // // checks if document exists in db
-    // const userSnapShot = await getDoc(userDocRef);
-
-    // // creates a new document if none exists already
-    // if (!userSnapShot.exists()) {
-    //   try {
-    //     await setDoc(userDocRef, {
-    //       name,
-    //       email,
-    //       createdAt: serverTimestamp()
-    //     })
-    //   } catch (error) {
-    //     console.error('An error occurred during account creation.');
-    //   }
-    // }
-
-    // setFlowState('confirmed')
-
-    /* Initial Sign In with Email Link */
-    console.log('inside handleSubmit');
-    console.log('user input values:', values);
-    window.localStorage.setItem('userName', name);
-    if (interests) {
-      window.localStorage.setItem('userInterest', interests);
+    try {
+      const userId = sanitizedUserData.email; // use user email as user Id to ensure user uniqueness
+      await storeUserDataIfNew(userId, sanitizedUserData);
+    } catch (error) {
+      console.error('Error checking user data existence or storing user data.');
     }
-    if (source) {
-      window.localStorage.setItem('userSource', source);
-    }
-    if (features) {
-      window.localStorage.setItem('features', features);
-    }
-    sendEmailLink(email);
+
+    handleSuccessfulSubmit();
+    form.reset();
+    setIsLoading(false);
   }
 
   return (
     <>
-      <Box>
-        <form onSubmit={form.onSubmit(handleSubmit)}>
-          <h1>Shape Our Future with Your Vision</h1>
+      <Box className="max-w-screen-sm text-center sm:px-4">
+        <form onSubmit={form.onSubmit(handleSignupSubmit)}>
+          <h1 className="pb-4">Shape Our Future with Your Vision</h1>
 
-          <h2>Get exclusive early access to try our product</h2>
+          <h2 className="text-sm">
+            Get exclusive early access to try our product
+          </h2>
 
-          <section aria-label="Sign Up with Email">
-            <h3>or sign up with email</h3>
-            {textInputConfig.map((input, index) => (
-              <TextInput
-                key={`${input.field}-${index}`}
-                label={input.label}
-                placeholder={input.placeholder}
-                required={input.required}
-                {...form.getInputProps(input.field)}
-              />
-            ))}
-            <Button type="submit">Join Waiting List</Button>
-            <p>Privacy statement placeholder</p>
+          <section
+            aria-label="Sign Up with Email"
+            className="mx-auto flex-col justify-center"
+          >
+            {textInputConfig.map((input, index) =>
+              input.tooltipLabel ? (
+                <Tooltip
+                  key={`${input.field}-${index}`}
+                  label={input.tooltipLabel}
+                  position="bottom"
+                >
+                  <TextInput
+                    label={input.label}
+                    required={input.required}
+                    aria-required={input.required ? 'true' : 'false'}
+                    {...form.getInputProps(input.field)}
+                  />
+                </Tooltip>
+              ) : (
+                <TextInput
+                  key={`${input.field}-${index}`}
+                  id={`${input.field}-input`}
+                  label={input.label}
+                  required={input.required}
+                  aria-required={input.required ? 'true' : 'false'}
+                  {...form.getInputProps(input.field)}
+                />
+              )
+            )}
+            <UniversalButton
+              id="join-waiting-list-button"
+              type="submit"
+              label={isLoading ? "Adding..." : "Join Waiting List"}
+              aria-label={isLoading ? "Adding you to our waiting list" : "Join Waiting List"}
+              classNames={{
+                root: 'button-primary button-accent',
+              }}
+              disabled={isLoading}
+            />
+
+            <footer className="pt-2">
+              <PrivacyAgreement />
+            </footer>
           </section>
         </form>
       </Box>

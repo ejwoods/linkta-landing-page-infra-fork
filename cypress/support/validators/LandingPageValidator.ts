@@ -1,13 +1,30 @@
-import LoginPage from '../pageObjects/LandingPage';
+import LandingPage from '../pageObjects/LandingPage';
 
-export default class LoginPageValidator {
-  private readonly loginPage: LoginPage;
+enum ErrorMessages {
+  NameContainsSpecialCharacters = 'Looks like your name contains some special characters. Could you check it again?',
+  EmailAddressIncorrect = 'Oops, the email address seems incorrect. Could you check it again?',
+}
 
-  public constructor(loginPage: LoginPage) {
-    this.loginPage = loginPage;
+export default class LandingPageValidator {
+  private readonly landingPage: LandingPage;
+
+  public constructor(landingPage: LandingPage) {
+    this.landingPage = landingPage;
   }
 
   public expectHeaderTitleToBe(expectedTitle: string): void {
-    this.loginPage.getHeaderTitle().should('have.text', expectedTitle);
+    this.landingPage.getHeaderTitle().should('have.text', expectedTitle);
+  }
+
+  public expectErrorNameContainsSpecialCharacters(): void {
+    this.landingPage
+      .getNameErrorMessage()
+      .should('have.text', ErrorMessages.NameContainsSpecialCharacters);
+  }
+
+  public expectErrorEmailAddressIncorrect(): void {
+    this.landingPage
+      .getEmailErrorMessage()
+      .should('have.text', ErrorMessages.EmailAddressIncorrect);
   }
 }

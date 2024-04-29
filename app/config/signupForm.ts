@@ -1,37 +1,21 @@
-import { validateEmail, validateMinLength } from '../utils/formValidation';
-import type { FormValues, ValidationFunction } from '../types/signupForm';
-
-interface TextInputConfig {
-  field: keyof FormValues;
-  label: string;
-  placeholder: string;
-  validate?: ValidationFunction;
-  required?: boolean;
-}
+import type { UserDataValidation } from '../schemas/userDataValidationSchema';
+import type { TextInputConfig } from '../types/signupForm';
 
 /**
  * Creates a text input configuration object for form fields.
- * @param {string} field - The name of the field.
+ * @param {keyof UserDataValidation} field - The name of the field.
  * @param {string} label - The label text for the field.
- * @param {string} placeholder - The placeholder text for the field.
- * @param {ValidationFunction} validate - The validation function to apply to the field.
- * @param {boolean} [required=false] - Indicates if the field is required.
+ * @param {boolean} required - Indicates if the field is required.
+ * @param {string} tooltipLabel - The label text for Tooltip component.
  * @returns {TextInputConfig} The configuration object for a text input field.
  */
-const createConfigItem: (
-  field: keyof FormValues,
+const createTextInputConfig: (
+  field: keyof UserDataValidation,
   label: string,
-  placeholder: string,
-  validate: ValidationFunction,
-  required?: boolean
-) => TextInputConfig = (
-  field,
-  label,
-  placeholder,
-  validate,
-  required = false
-) => {
-  return { field, label, placeholder, validate, required };
+  required: boolean,
+  tooltipLabel?: string
+) => TextInputConfig = (field, label, required, tooltipLabel) => {
+  return { field, label, required, tooltipLabel };
 };
 
 /**
@@ -40,37 +24,19 @@ const createConfigItem: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
-  createConfigItem(
-    'name',
-    'Name (required)',
-    'Enter your name',
-    validateMinLength(1, 'Name'),
-    true
-  ),
-  createConfigItem(
-    'email',
-    'Email (required)',
-    'Enter your email',
-    validateEmail,
-    true
-  ),
-  createConfigItem(
+  createTextInputConfig('name', 'What is your name? (required)', true),
+  createTextInputConfig('email', 'Where can we email you? (required)', true),
+  createTextInputConfig(
     'interests',
-    'Interests (optional)',
-    'Enter your interests, separated by commas (e.g., Design, Programming)',
-    validateMinLength(3, 'Interests')
+    'What would you love to learn? (optional)',
+    false,
+    'List any topics you are interested in learning with Linkta, such as design or coding. Please separate your interests with commas.'
   ),
-  createConfigItem(
+  createTextInputConfig(
     'source',
-    'How did you hear about us? (optional)',
-    'Enter your source',
-    validateMinLength(3, 'Source')
-  ),
-  createConfigItem(
-    'features',
-    'What features are you most interested in? (optional)',
-    'Describe features, separated by commas (e.g., Collaboration, Sharing)',
-    validateMinLength(5, 'Features')
+    'How did you find us? (optional)',
+    false,
+    'Let us know how you heard about us, for example, through LinkedIn or from a friend.'
   ),
 ];
 

@@ -2,7 +2,7 @@
 
 import { TextInput, Box, Tooltip } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import textInputConfig from '../../config/signupForm';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, {
@@ -58,7 +58,6 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
     <>
       <Box className="max-w-screen-sm my-6 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h3 className="font-serif pb-1 font-semibold xl:text-2xl">Shape Our Future with Your Vision</h3>
           <h4 className="font-semibold xl:text-base mb-2 tracking-tight text-light-border">
             Get exclusive early access to try our product
           </h4>

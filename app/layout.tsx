@@ -25,11 +25,11 @@ export default function RootLayout({
           <LinktaLogoWithText />
         </header>
         <MantineProvider>
-          <main className="container h-5/6 xl:mx-auto overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible">
+          <main className="container h-5/6 xl:mx-auto mb-6 overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible">
             {children}
           </main>
         </MantineProvider>
-        <footer className="hidden ">
+        <footer className="hidden">
           <Footer />
         </footer>
       </body>

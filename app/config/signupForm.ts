@@ -24,8 +24,8 @@ const createTextInputConfig: (
  * @type {TextInputConfig[]}
  */
 const textInputConfig: TextInputConfig[] = [
-  createTextInputConfig('name', 'What is your name? (required)', true),
-  createTextInputConfig('email', 'Where can we email you? (required)', true),
+  createTextInputConfig('name', 'Name (required)', true),
+  createTextInputConfig('email', 'Email (required)', true),
   createTextInputConfig(
     'interests',
     'What would you love to learn? (optional)',

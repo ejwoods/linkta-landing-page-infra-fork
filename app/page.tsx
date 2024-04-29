@@ -28,18 +28,20 @@ export default function Home() {
   }, [isSubmitted]);
 
   return (
-    <div className='flex flex-col sm:flex-row sm:justify-between'>
-      <Suspense fallback={<Loading />}>
-        <div className="sm:w-2/3 sm:order-2 z-0">
-          <LandingPageTreeVisualizationPanel />
-        </div>
-      </Suspense>
-      <section className="w-full flex flex-col justify-between min-w-[390px] sm:w-1/3 sm:order-1 lg:mx-8">
-        <KeyValueProposition/>
-        <article className='border shadow-xl px-4 rounded-lg h-4/5 z-10 lg:-mt-16'>
-          {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
-        </article>
-      </section>
+    <div>
+      <KeyValueProposition/>
+      <div className='flex flex-col sm:flex-row sm:justify-between'>
+        <Suspense fallback={<Loading />}>
+          <div className="sm:w-2/3 sm:order-2 z-0">
+            <LandingPageTreeVisualizationPanel />
+          </div>
+        </Suspense>
+        <section className="w-full flex flex-col justify-between min-w-[360px]  sm:w-1/3 sm:order-1 lg:mx-8">
+          <article className='border shadow-xl px-4 rounded-lg z-10'>
+            {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
+          </article>
+        </section>
+      </div>
     </div>
   );
 }

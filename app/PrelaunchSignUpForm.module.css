@@ -1,13 +1,14 @@
 .input{
     width: 100%;
     border-radius: 0.5rem;
-    outline: 1px solid #2C1D15;
+    outline: 1.5px solid #938F99;
     padding: 0.5rem;
-    color: #2C1D15;
+    color: #938F99;
     text-align:start;
 }
 .inputError {
-    border: 2px solid #E4190C !important; /* Ensures this style has higher specificity */
+    border: 1.5px solid #E4190C !important; /* Ensures this style has higher specificity */
+    outline: 0.1px solid #E4190C;
 }
 .input:focus {
     outline: none; /* Optional: removes the default focus outline */
@@ -20,7 +21,7 @@
 }
 
 .root {
-    margin-bottom:0.5rem;
+    margin-bottom:1rem;
 }
 .error{
     color: #E4190C;
@@ -33,6 +34,6 @@
     border: 1px solid #FFA51B;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    font-size: 0.75rem;
+    font-size: 0.25rem;
     margin-top: 0.25rem;
 }

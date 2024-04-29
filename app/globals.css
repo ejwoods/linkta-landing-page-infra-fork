@@ -40,6 +40,9 @@
   }
   
   /* End of Mantine form elements */
+  canvas {
+    @apply w-[932px] !important;
+  }
 }
 
 @tailwind components;

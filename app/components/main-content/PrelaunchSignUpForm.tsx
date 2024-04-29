@@ -56,9 +56,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="max-w-screen-sm my-6 sm:px-4">
+      <Box className="max-w-screen-sm my-10 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h4 className="font-semibold xl:text-base mb-2 tracking-tight text-light-border">
+          <h4 className="font-semibold text-base lg:text-lg mb-8 tracking-tight text-light-border">
             Get exclusive early access to try our product
           </h4>
           <section
@@ -80,6 +80,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                       borderRadius: '4px',
                       position: 'absolute',
                       width: '300px',
+                      fontSize: '11px',
                     },
                   }}
                 >
@@ -115,7 +116,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 />
               )
             )}
-            <section className='text-center mt-8'>
+            <section className='text-center mt-12'>
               <UniversalButton
                 id="join-waiting-list-button"
                 type="submit"
@@ -127,7 +128,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 disabled={isLoading}
               />
 
-              <footer className="pt-2">
+              <footer className="-pt-2 mb-2 text-light-text">
                 <PrivacyAgreement />
               </footer>
             </section>

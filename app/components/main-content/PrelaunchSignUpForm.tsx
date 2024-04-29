@@ -8,10 +8,9 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, {
   type UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
-import { storeUserDataIfNew } from '@/app/services/firestore';
 import PrivacyAgreement from '../common/PrivacyAgreement';
-import userDataSanitizationSchema from '@/app/schemas/userDataSanitizationSchema';
 import UniversalButton from '../common/UniversalButton';
+import { sendEmailLink } from '@app/services/emailAuth';
 
 export interface PrelaunchSignUpFormProps {
   handleSuccessfulSubmit: () => void;
@@ -38,13 +37,22 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
   async function handleSignupSubmit(rawUserData: UserDataValidation) {
     setIsLoading(true);
 
-    const sanitizedUserData = userDataSanitizationSchema.parse(rawUserData);
+    const { email, name, interests, source } = rawUserData;
+
+    const stringifiedInterests = JSON.stringify(interests);
+
+    window.localStorage.setItem('userName', name);
+    if (interests) {
+      window.localStorage.setItem('userInterest', stringifiedInterests);
+    }
+    if (source) {
+      window.localStorage.setItem('userSource', source);
+    }
 
     try {
-      const userId = sanitizedUserData.email; // use user email as user Id to ensure user uniqueness
-      await storeUserDataIfNew(userId, sanitizedUserData);
+      sendEmailLink(email);
     } catch (error) {
-      console.error('Error checking user data existence or storing user data.');
+      console.error('Error sending email link.');
     }
 
     handleSuccessfulSubmit();
@@ -94,8 +102,12 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
             <UniversalButton
               id="join-waiting-list-button"
               type="submit"
-              label={isLoading ? "Adding..." : "Join Waiting List"}
-              aria-label={isLoading ? "Adding you to our waiting list" : "Join Waiting List"}
+              label={isLoading ? 'Adding...' : 'Join Waiting List'}
+              aria-label={
+                isLoading
+                  ? 'Adding you to our waiting list'
+                  : 'Join Waiting List'
+              }
               classNames={{
                 root: 'button-primary button-accent',
               }}

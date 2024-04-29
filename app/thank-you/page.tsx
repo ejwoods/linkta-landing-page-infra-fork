@@ -5,10 +5,10 @@ import { isSignInWithEmailLink } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { authenticateAndSaveUserDataFromEmailRedirect } from '../services/emailAuth';
 import { useRouter } from 'next/navigation';
-import loading from '../loading';
+import Loading from '../loading';
 import ThankYou from '../components/main-content/ThankYou';
 
-export default function ThankYou() {
+export default function ThankYouPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
@@ -32,10 +32,7 @@ export default function ThankYou() {
     }
   }, [router]);
 
-  // shows content of current SubmissionStatus component
   return (
-    // if isLoading render loading component
-    // if !isLoading render:
-
+    isLoading ? <Loading /> : <ThankYou />
   );
 }

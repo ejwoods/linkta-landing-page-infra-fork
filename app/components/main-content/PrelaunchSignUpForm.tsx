@@ -10,7 +10,7 @@ import userDataValidationSchema, {
 } from '@/app/schemas/userDataValidationSchema';
 import PrivacyAgreement from '../common/PrivacyAgreement';
 import UniversalButton from '../common/UniversalButton';
-import { sendEmailLink } from '@app/services/emailAuth';
+import { sendEmailLink } from '@/app/services/emailAuth';
 
 export interface PrelaunchSignUpFormProps {
   handleSuccessfulSubmit: () => void;

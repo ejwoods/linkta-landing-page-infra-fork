@@ -21,7 +21,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className='max-w-full h-screen'>
-        <header className="sm:h-1/6 xl:h-12 bt-4">
+        <header className="xl:h-12 bt-4">
           <LinktaLogoWithText />
         </header>
         <MantineProvider>

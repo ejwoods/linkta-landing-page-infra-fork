@@ -32,13 +32,13 @@ export default function Home() {
     <div>
       <span className="hidden"><LinktaLogoWithText /></span>
       <KeyValueProposition/>
-      <div className='flex flex-col sm:flex-row sm:justify-between'>
+      <div className='flex flex-col sm:flex-row sm:justify-between lg:ml-10'>
         <Suspense fallback={<Loading />}>
           <div className="sm:w-2/3 sm:order-2 z-0">
             <LandingPageTreeVisualizationPanel />
           </div>
         </Suspense>
-        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 lg:mx-8 my-2">
+        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 my-2">
           <article className='border shadow-xl px-4 rounded-lg z-10'>
             {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
           </article>

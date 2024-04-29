@@ -2,7 +2,6 @@ import { initializeApp } from 'firebase/app';
 import {
   type Auth,
   getAuth,
-  sendSignInLinkToEmail
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
 import { getFirestore } from 'firebase/firestore';
@@ -34,19 +33,7 @@ export const db = getFirestore(firebaseApp); //initialize Firestore service
 
 
 
-const actionCodeSettings = {
+export const actionCodeSettings = {
   url: 'http://localhost:3000/thanku', // the URl we want user to be redirecting to eg. 'linkta.io/thankyou' 'https://linkta.io'|| 'http://localhost:3000/early-access'
   handleCodeInApp: true,
 }
-
-export const sendEmailLink = ( email: string ) => {
-  sendSignInLinkToEmail(auth, email, actionCodeSettings)
-  .then(() => {
-    window.localStorage.setItem('emailForSignIn', email)
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message
-  })
-}
-

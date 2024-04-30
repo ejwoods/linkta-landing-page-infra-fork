@@ -7,9 +7,9 @@ export default function NotFound() {
   
   return (
     <div>
-      <h2 className="mt-16 text-3xl font-semibold">Oops!</h2>
-      <p className="mt-4">Something went wrong!</p>
-      <div>
+      <h2 className="mt-16 text-3xl font-semibold">Oops! Page Not Found</h2>
+      <p className="mt-4">We couldn&apos;t find the page that you&apos;re looking for</p>
+      <div aria-label='Page not found' aria-live='assertive'>
         <Player
         autoplay={true}
         loop={false}

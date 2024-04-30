@@ -73,60 +73,60 @@ describe('User Data Validation Utility Functions', () => {
 
   describe('Name Regex', () => {
     it('should accept names with English letters', () => {
-      expect(nameRegex.test('Chen Shen')).toBe(true);
+      expect(nameRegex.test('Fake Name')).toBe(true);
     });
 
     it('should accept hyphenated names', () => {
-      expect(nameRegex.test('Chen-Shen')).toBe(true);
+      expect(nameRegex.test('Fake-Name')).toBe(true);
     });
 
     it('should accept names with an apostrophe', () => {
-      expect(nameRegex.test("Chen'Shen")).toBe(true);
+      expect(nameRegex.test("Fake'Name")).toBe(true);
     });
 
     it('should accept names in Traditional Chinese', () => {
-      expect(nameRegex.test('陳慎')).toBe(true);
+      expect(nameRegex.test('繁體假名')).toBe(true);
     });
 
     it('should accept names in Simplified Chinese', () => {
-      expect(nameRegex.test('陈慎')).toBe(true);
+      expect(nameRegex.test('简体假名')).toBe(true);
     });
 
     it('should accept names with Arabic', () => {
-      expect(nameRegex.test('چن شن')).toBe(true);
+      expect(nameRegex.test('اسم مزيف')).toBe(true);
     });
 
     it('should accept names in Korean', () => {
-      expect(nameRegex.test('첸센')).toBe(true);
+      expect(nameRegex.test('가명')).toBe(true);
     });
 
     it('should accept names in Japanese', () => {
-      expect(nameRegex.test('チェン シェン')).toBe(true);
+      expect(nameRegex.test('偽名')).toBe(true);
     });
 
     it('should accept names with extended Latin characters', () => {
-      expect(nameRegex.test('Chên Shên')).toBe(true);
+      expect(nameRegex.test('Fäke Nåme')).toBe(true);
     });
 
     it('should accept names in Cyrillic', () => {
-      expect(nameRegex.test('Чен Шен')).toBe(true);
+      expect(nameRegex.test('фальшивое имя')).toBe(true);
     });
 
     it('should reject names with emojis', () => {
-      expect(nameRegex.test('Chen Shen 😊')).toBe(false);
+      expect(nameRegex.test('Fake Name 😊')).toBe(false);
     });
 
     it('should reject names that include numbers', () => {
-      expect(nameRegex.test('Chen Shen 2')).toBe(false);
+      expect(nameRegex.test('Fake Name 2')).toBe(false);
     });
 
     it('should reject names with special symbols', () => {
-      expect(nameRegex.test('Chen@Shen')).toBe(false);
+      expect(nameRegex.test('Fake@Name')).toBe(false);
     });
 
     it('should reject names that contain script tags or JavaScript code', () => {
       expect(nameRegex.test('<script>alert("XSS")</script>')).toBe(false);
-      expect(nameRegex.test('Chen Shen <img src=x onerror=alert("XSS")>')).toBe(
+      expect(nameRegex.test('Fake Name <img src=x onerror=alert("XSS")>')).toBe(
         false
       );
     });

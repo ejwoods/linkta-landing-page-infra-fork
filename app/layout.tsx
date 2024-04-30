@@ -4,7 +4,6 @@ import Footer from './components/layout/Footer';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
-
 export const metadata: Metadata = {
   title: 'Linkta',
   description: 'Revolutionize your learning',

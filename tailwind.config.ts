@@ -15,6 +15,7 @@ const config: Config = {
     fontFamily: {
       sans: ['Inter, sans-serif'],
       serif: ['EB Garamond', 'Garamond', 'serif'],
+      cursive: ['Nanum Pen Script', 'cursive'],
     },
     container:{
       padding:{

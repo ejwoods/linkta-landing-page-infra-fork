@@ -22,7 +22,7 @@ export default function LandingPageTreeVisualizationPanel() {
       <div className='sm:hidden'>
         <Spline className='' scene="https://prod.spline.design/n30RNsX1c9-QGXnZ/scene.splinecode" />
       </div>
-      <h2 className="block sm:hidden font-serif font-bold text-3xl -mt-24 mb-24 pl-2 text-light-text">Discover the IA of Knowledge with AI</h2>
+      <h2 className="block sm:hidden font-serif font-bold text-3xl -mt-24 mb-24 pl-2 text-light-text">Discover the <span className='font-cursive text-4xl -mt-4 inline-block align-baseline mx-2 text-light-accent'> IA </span> of Knowledge with <span className='font-cursive text-4xl inline-block align-baseline ml-2 text-light-border'> AI </span></h2>
       <h4 className="block sm:hidden font-sans font-bold text-sm -mt-20 mb-24 pl-2 text-light-text"> Our tool allows you to see the big picture and reveals the connections between ideas, enabling you to focus on what matters most.</h4>
     </div>
   );

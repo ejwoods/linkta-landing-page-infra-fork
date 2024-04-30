@@ -38,8 +38,8 @@ export default function Home() {
             <LandingPageTreeVisualizationPanel />
           </div>
         </Suspense>
-        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-4">
-          <article className='max-w-[390px] z-10'>
+        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-12">
+          <article className='max-w-[430px] z-10'>
             {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
           </article>
         </section>

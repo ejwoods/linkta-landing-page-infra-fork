@@ -56,7 +56,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="max-w-screen-sm my-10 sm:px-4">
+      <Box className="max-w-screen-sm mx-auto my-10 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
           <h4 className="font-semibold text-base lg:text-lg mb-8 tracking-tight text-light-border">
             Get exclusive early access to try our product

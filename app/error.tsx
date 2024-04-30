@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-/**
+import { Player } from '@lottiefiles/react-lottie-player';
+
+/*
  * Under the hood, error.tsx creates a React Error Boundary that wraps its child segments. The Error component is used as the fallback component, which is rendered if an error is thrown.
  * For more context on Error Boundary: https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary
  */
@@ -17,17 +19,19 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error]);
 
   return (
-    <div className="flex flex-col m-auto">
-      <h2 className="flex flex-col m-auto">Oops! Something went wrong!</h2>
-      <button
-        className="border-2 flex flex-col m-auto"
-        onClick={
-          // This button triggers the reset function, which will try to re-render the Error Boundary's contents without triggering a full page reload.
-          () => reset()
-        }
-      >
-        Try again
-      </button>
+    <div>
+      <h2 className="mt-8 mb-64 text-3xl font-semibold">Oops! Something went wrong!</h2>
+      <div>
+        <Player
+        autoplay={true}
+        loop={false}
+        className="w-[350px] h-[350px]"
+        >
+        </Player>
+      </div>
+      <p className="mb-16">
+        Please <a href="#" onClick={() => reset()}>click here</a> to refresh the page or contact us at <a href="mailto:info@linkta.org">info@linkta.org</a>
+      </p>       
     </div>
   );
 }

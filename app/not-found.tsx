@@ -14,7 +14,7 @@ export default function NotFound() {
         autoplay={true}
         loop={false}
         src={NotFoundAnimation}
-        style={{ width: "350px", height: "350px" }}
+        className="w-[350px] h-[350px]"
         >
         </Player>
       </div>

@@ -21,8 +21,9 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div>
-      <h2 className="mt-8 mb-64 text-3xl font-semibold">Oops! Something went wrong!</h2>
-      <div aria-label='Error page' aria-live='assertive'>
+      <h2 className="mt-12 text-3xl text-left font-semibold">Oops!</h2>
+      <p className="mt-4 text-left">Something went wrong!</p>
+      <div className="mt-12 mb-12" aria-label='Error page' aria-live='assertive'>
         <Player
         autoplay={true}
         loop={true}
@@ -31,7 +32,7 @@ export default function Error({ error, reset }: ErrorProps) {
         >
         </Player>
       </div>
-      <p className="mb-16">
+      <p className="mb-48">
         Please <a href="#" onClick={() => reset()}>click here</a> to refresh the page or contact us at <a href="mailto:info@linkta.org">info@linkta.org</a>
       </p>       
     </div>

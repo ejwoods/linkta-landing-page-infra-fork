@@ -7,7 +7,7 @@ export default function NotFound() {
   
   return (
     <div>
-      <h2 className="mt-16 text-3xl font-semibold">Oops! Page Not Found</h2>
+      <h2 className="mt-12 text-3xl font-semibold">Oops! Page Not Found</h2>
       <p className="mt-4">We couldn&apos;t find the page you&apos;re looking for</p>
       <div aria-label='Page not found' aria-live='assertive'>
         <Player

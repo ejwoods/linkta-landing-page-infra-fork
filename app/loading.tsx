@@ -1,3 +1,5 @@
+import LottieAnimateLoader from "./components/common/LottieAnimateLoader";
+
 export default function Loading() {
-  return <div>Loading</div>;
+  return <LottieAnimateLoader />;
 }

@@ -17,10 +17,9 @@ export const sendEmailLink = (email: string) => {
       window.localStorage.setItem('emailForSignIn', email);
     })
     .catch((error) => {
-      // TODO: what are we doing with these?
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('ERROR CAUGHT:', errorCode, errorMessage);
+      console.error(
+        'Error occurred while sending email authentication link. Please try again.'
+      );
     });
 };
 
@@ -31,7 +30,6 @@ export const sendEmailLink = (email: string) => {
 export const authenticateAndSaveUserDataFromEmailRedirect = (email: string) => {
   signInWithEmailLink(auth, email, window.location.href)
     .then(async (result) => {
-      // retrieve form data from localStorage
       const localStorageData = {
         email: email,
         name: window.localStorage.getItem('userName'),
@@ -41,19 +39,17 @@ export const authenticateAndSaveUserDataFromEmailRedirect = (email: string) => {
         source: window.localStorage.getItem('userSource'),
       };
 
-      const reducedLocalStorageData = Object.entries(localStorageData)
-        .filter(([key, value]) => value !== null)
-        .reduce((acc, [key, value]) => {
-          acc[key] = value;
-          return acc;
-        }, {});
+      const reducedLocalStorageData: { [key: string]: string | string[] } = Object.entries(localStorageData)
+          .filter(([key, value]) => value !== null)
+          .reduce<{ [key: string]: string | string[] }>((acc, [key, value]) => {
+            acc[key] = value;
+            return acc;
+          }, {});
 
-      // sanitize data from local storage before sending to db
       const sanitizedUserData = userDataSanitizationSchema.parse(
         reducedLocalStorageData
       );
 
-      // store sanitized data in firestore
       try {
         const userId = sanitizedUserData.email; // use user email as user Id to ensure user uniqueness
         await storeUserDataIfNew(userId, sanitizedUserData);

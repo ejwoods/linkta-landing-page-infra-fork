@@ -29,16 +29,16 @@ export default function Home() {
   }, [isSubmitted]);
 
   return (
-    <div className="xl:ml-10">
+    <div className="lg:ml-20">
       <span className="hidden"><LinktaLogoWithText /></span>
       <KeyValueProposition/>
       <div className='flex flex-col sm:flex-row sm:justify-between lg:ml-10'>
         <Suspense fallback={<Loading />}>
-          <div className="sm:w-3/5 sm:order-2 z-0">
+          <div className="sm:w-2/3 sm:order-2 z-0">
             <LandingPageTreeVisualizationPanel />
           </div>
         </Suspense>
-        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-2/5 sm:order-1 mt-2 mb-4">
+        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-4">
           <article className='border shadow-xl px-4 rounded-lg z-10'>
             {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
           </article>

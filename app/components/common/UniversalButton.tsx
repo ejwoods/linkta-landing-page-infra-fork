@@ -16,6 +16,7 @@ export default function UniversalButton({
   id,
   label,
   classNames,
+  type,
   ...props
 }: UniversalButtonProps) {
   classNames = Object.assign({ root: 'button-primary' }, classNames);
@@ -23,6 +24,7 @@ export default function UniversalButton({
     <Button
       id={id}
       classNames={classNames}
+      type={type}
       {...props}
     >
       {label}

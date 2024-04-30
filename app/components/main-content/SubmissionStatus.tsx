@@ -7,7 +7,7 @@ export default function SubmissionStatus() {
   const linktaEmail = 'info@linkta.org';
   
   return (
-    <article aria-live="polite" className="py-8 ml-4 mb-2">
+    <article aria-live="polite" className="py-12 ml-4 mb-2 px-2">
       <h2 className="flex pt-4 h-[60px] align-bottom">
         <span className="font-serif text-3xl font-bold align-text-bottom">
           Thank you!

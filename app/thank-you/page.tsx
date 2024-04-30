@@ -13,7 +13,6 @@ export default function ThankYouPage() {
 
   const router = useRouter();
   useEffect(() => {
-    console.log('in useEffect');
     // check if user is coming from an email auth link
     if (!isSignInWithEmailLink(auth, window.location.href)) {
       router.push('/');

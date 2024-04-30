@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { ButtonHTMLAttributes } from 'react';
 
-interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;
   label: string;
   classNames: Record<string, string>;

@@ -5,8 +5,8 @@ export default function KeyValueProposition() {
     const [hoverAI, setHoverAI] = useState(false);
 
     return (
-        <section className="pl-4 font-serif font-bold px-2 mt-16 mb-10 text-light-text">
-            <h1 className="text-5xl my-4 sm:text-4xl lg:text-5xl xl:text-6xl">
+        <section className="pl-4 font-serif font-bold px-2 mt-12 mb-6 text-light-text">
+            <h1 className="text-5xl sm:text-4xl lg:text-5xl xl:text-6xl">
                 Streamline Your Learning with <span className='font-cursive text-8xl xl:-mt-4 inline-block align-text-bottom lg:ml-2 my-0.5 text-light-border'>Linkta</span>
             </h1>
             <h2 className="hidden sm:block font-sans sm:font-serif sm:text-light-text sm:mb-2 sm:text-4xl lg:text-5xl xl:text-6xl">

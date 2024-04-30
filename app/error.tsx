@@ -22,10 +22,10 @@ export default function Error({ error, reset }: ErrorProps) {
   return (
     <div>
       <h2 className="mt-8 mb-64 text-3xl font-semibold">Oops! Something went wrong!</h2>
-      <div>
+      <div aria-label='Error page' aria-live='assertive'>
         <Player
         autoplay={true}
-        loop={false}
+        loop={true}
         className="w-[350px] h-[350px]"
         src={ErrorAnimation}
         >

@@ -19,16 +19,16 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className='max-w-full h-screen bg-[#F5F5F5]'>
-        <header className="xl:h-12 bt-4 hidden">
+      <body className='max-w-full h-full bg-[#F5F5F5]'>
+        <header className="hidden">
           <LinktaLogoWithText />
         </header>
         <MantineProvider>
-          <main className="container my-auto h-5/6 xl:mx-auto mb-6 overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible">
+          <main className="relative container my-auto xl:mx-auto overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible">
             {children}
           </main>
         </MantineProvider>
-        <footer className="hidden">
+        <footer className="absolute border-t-2 w-full">
           <Footer />
         </footer>
       </body>

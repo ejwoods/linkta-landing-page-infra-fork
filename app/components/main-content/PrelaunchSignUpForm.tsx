@@ -58,8 +58,8 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
     <>
       <Box className="max-w-screen-sm mx-auto my-10 sm:px-4">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h4 className="font-semibold text-base lg:text-lg mb-8 tracking-tight text-light-border">
-            Get exclusive early access to try our product
+          <h4 className="font-semibold text-base lg:text-lg mb-8 tracking-tight text-light-border text-center">
+            Get exclusive early access to Linkta
           </h4>
           <section
             aria-label="Sign Up with Email"
@@ -116,7 +116,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 />
               )
             )}
-            <section className='text-center mt-12'>
+            <section className='text-center mt-10'>
               <UniversalButton
                 id="join-waiting-list-button"
                 type="submit"
@@ -128,7 +128,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 disabled={isLoading}
               />
 
-              <footer className="-pt-2 mb-2 text-light-text">
+              <footer className="pt-2 mb-2 text-light-text">
                 <PrivacyAgreement />
               </footer>
             </section>

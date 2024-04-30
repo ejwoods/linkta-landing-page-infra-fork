@@ -39,7 +39,7 @@ export default function Home() {
           </div>
         </Suspense>
         <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-4">
-          <article className='border shadow-xl px-4 rounded-lg z-10'>
+          <article className='max-w-[390px] z-10'>
             {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
           </article>
         </section>

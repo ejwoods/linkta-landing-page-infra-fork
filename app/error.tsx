@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
+import ErrorAnimation from '../public/lottiefiles/error.json';
 
 /*
  * Under the hood, error.tsx creates a React Error Boundary that wraps its child segments. The Error component is used as the fallback component, which is rendered if an error is thrown.
@@ -26,6 +27,7 @@ export default function Error({ error, reset }: ErrorProps) {
         autoplay={true}
         loop={false}
         className="w-[350px] h-[350px]"
+        src={ErrorAnimation}
         >
         </Player>
       </div>

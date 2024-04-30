@@ -20,6 +20,7 @@ export const sendEmailLink = (email: string) => {
       // TODO: what are we doing with these?
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.error('ERROR CAUGHT:', errorCode, errorMessage);
     });
 };
 
@@ -28,21 +29,29 @@ export const sendEmailLink = (email: string) => {
  * @param {email} email - User's email address. Must be passed or user will be asked to provide it.
  */
 export const authenticateAndSaveUserDataFromEmailRedirect = (email: string) => {
-  signInWithEmailLink(auth, email, window.location.href).then(
-    async (result) => {
+  signInWithEmailLink(auth, email, window.location.href)
+    .then(async (result) => {
       // retrieve form data from localStorage
-      const name = window.localStorage.getItem('userName');
-      const interestsJSON = window.localStorage.getItem('userInterest');
-      const interests = interestsJSON ? JSON.parse(interestsJSON) : null;
-      const source = window.localStorage.getItem('userSource');
+      const localStorageData = {
+        email: email,
+        name: window.localStorage.getItem('userName'),
+        interests: window.localStorage.getItem('userInterest')
+          ? JSON.parse(window.localStorage.getItem('userInterest') as string)
+          : null,
+        source: window.localStorage.getItem('userSource'),
+      };
+
+      const reducedLocalStorageData = Object.entries(localStorageData)
+        .filter(([key, value]) => value !== null)
+        .reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        }, {});
 
       // sanitize data from local storage before sending to db
-      const sanitizedUserData = userDataSanitizationSchema.parse({
-        email,
-        name,
-        interests,
-        source,
-      });
+      const sanitizedUserData = userDataSanitizationSchema.parse(
+        reducedLocalStorageData
+      );
 
       // store sanitized data in firestore
       try {
@@ -56,6 +65,10 @@ export const authenticateAndSaveUserDataFromEmailRedirect = (email: string) => {
 
       signOut(auth);
       window.localStorage.clear();
-    }
-  );
+    })
+    .catch((error) => {
+      console.error(
+        'Error occurred during sign in with email. This is likely because your email is already saved in our database. Thank you for signing up for Linkta!'
+      );
+    });
 };

@@ -1,7 +1,5 @@
+import LottieAnimateLoader from "./components/common/LottieAnimateLoader";
+
 export default function Loading() {
-  return (
-    <div className='mx-auto text-center'>
-        Loading...
-    </div>
-  )
+  return <LottieAnimateLoader />;
 }

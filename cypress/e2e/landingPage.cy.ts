@@ -24,4 +24,9 @@ describe('Landing Page', () => {
     landingPage.setEmail('fake@email');
     landingPageValidator.expectErrorEmailAddressIncorrect();
   });
+
+  it('should validate if email input is too short', () => {
+    landingPage.setEmail('abc');
+    landingPageValidator.expectShortEmailErrorMessage();
+  });
 });

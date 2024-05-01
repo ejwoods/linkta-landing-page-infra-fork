@@ -38,11 +38,11 @@ export default function Home() {
           <KeyValueProposition />
           {isSubmitted ? <EmailVerificationPrompt /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
         </div>
-          {/* <div className="flex flex-col justify-center sm:flex-row-reverse">
+          <div className="flex flex-col justify-center sm:flex-row-reverse">
             <Suspense fallback={<Loading />}>
               <LandingPageTreeVisualizationPanel />
             </Suspense>
-          </div> */}
+          </div>
       </main>
     </>
   );

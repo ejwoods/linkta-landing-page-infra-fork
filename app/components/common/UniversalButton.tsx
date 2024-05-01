@@ -8,14 +8,17 @@ export interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonEle
   type: 'submit' | 'button' | 'reset';
 }
 /**
- * - `onClick`: A function to call when the button is clicked.
- * - `label`: The text to display on the button.
- * This allows the component to be reused for different actions and labels.
+ *  - `id`: Unique identifier for the button.
+ *  - `label`: Text to display on the button.
+ *  - `classNames`: Mantine-specific prop for custom class names applied to sub-components of the Button.
+ *  - `type`: The type attribute specifies the button type.
+ *  - `...props`: Additional attributes that can be spread into the button for further customization.
  */
 export default function UniversalButton({
   id,
   label,
   classNames,
+  type,
   ...props
 }: UniversalButtonProps) {
   classNames = Object.assign({ root: 'button-primary' }, classNames);
@@ -23,6 +26,7 @@ export default function UniversalButton({
     <Button
       id={id}
       classNames={classNames}
+      type={type}
       {...props}
     >
       {label}

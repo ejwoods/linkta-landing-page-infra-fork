@@ -33,7 +33,7 @@ export default function Error({ error, reset }: ErrorProps) {
         </Player>
       </div>
       <p className="mb-48">
-        Please <a href="#" onClick={() => reset()}>click here</a> to refresh the page or contact us at <a href="mailto:info@linkta.org">info@linkta.org</a>
+        Please click <a href="#" className="font-bold hover:text-red-500"onClick={() => reset()}>here</a> to refresh the page or contact us at <a href="mailto:info@linkta.org" className="underline hover:text-red-500">info@linkta.org</a>
       </p>       
     </div>
   );

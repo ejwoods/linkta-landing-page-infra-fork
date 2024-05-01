@@ -20,14 +20,14 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error]);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <h2 className="mt-12 text-3xl text-left font-semibold">Oops!</h2>
       <p className="mt-4 text-left">Something went wrong!</p>
-      <div className="mt-12 mb-12" aria-label='Error page' aria-live='assertive'>
+      <div className="flex justify-center items-center mt-12 mb-12" aria-label='Error page' aria-live='assertive'>
         <Player
         autoplay={true}
         loop={true}
-        className="w-[350px] h-[350px]"
+        className="w-[150px] h-[150px]"
         src={ErrorAnimation}
         >
         </Player>

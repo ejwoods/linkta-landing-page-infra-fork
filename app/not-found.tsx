@@ -18,7 +18,7 @@ export default function NotFound() {
         >
         </Player>
       </div>
-      <p className="mb-48 text-light-text">Please click <a href="/" className="font-bold hover:text-red-500">here</a> to return home or contact us at <a href="mailto:info@linkta.org" className="underline">info@linkta.org</a></p>
+      <p className="mb-48 text-light-text">Please click <a href="/" className="font-bold hover:text-red-500">here</a> to return home or contact us at <a href="mailto:info@linkta.org" className="underline hover:text-red-500">info@linkta.org</a></p>
     </div>
   )
 };

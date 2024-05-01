@@ -8,6 +8,7 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, {
   type UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
+
 import PrivacyAgreement from '../common/PrivacyAgreement';
 import UniversalButton from '../common/UniversalButton';
 import { sendEmailLink } from '@/app/services/emailAuth';
@@ -48,7 +49,7 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
     }
 
     try {
-      sendEmailLink(email);
+      sendEmailLink(email.trim());
     } catch (error) {
       console.error('Error sending email link.');
     }

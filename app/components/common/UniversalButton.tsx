@@ -10,7 +10,7 @@ export interface UniversalButtonProps extends ButtonHTMLAttributes<HTMLButtonEle
 /**
  *  - `id`: Unique identifier for the button.
  *  - `label`: Text to display on the button.
- *  - `classNames`: - Mantine-specific prop for custom class names applied to sub-components of the Button.
+ *  - `classNames`: Mantine-specific prop for custom class names applied to sub-components of the Button.
  *  - `type`: The type attribute specifies the button type.
  *  - `...props`: Additional attributes that can be spread into the button for further customization.
  */

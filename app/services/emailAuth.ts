@@ -32,7 +32,7 @@ export const authenticateAndSaveUserDataFromEmailRedirect = async (email: string
     await signInWithEmailLink(auth, email, window.location.href)
   } catch (error) {
       console.error(
-        'Error occurred during sign in with email. This is likely because your email is already saved in our database. Thank you for signing up for Linkta!', error
+        'Error occurred during sign in with email.',
       );
   }
 

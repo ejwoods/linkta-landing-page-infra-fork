@@ -18,7 +18,7 @@ export const sendEmailLink = (email: string) => {
     })
     .catch((error) => {
       console.error(
-        'Error occurred while sending email authentication link. Please try again.'
+        'Error occurred while sending email authentication link.'
       );
     });
 };

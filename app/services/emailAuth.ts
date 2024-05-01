@@ -33,21 +33,12 @@ export const authenticateAndSaveUserDataFromEmailRedirect = (email: string) => {
       const localStorageData = {
         email: email,
         name: window.localStorage.getItem('userName'),
-        interests: window.localStorage.getItem('userInterest')
-          ? JSON.parse(window.localStorage.getItem('userInterest') as string)
-          : null,
-        source: window.localStorage.getItem('userSource'),
+        interests: window.localStorage.getItem('userInterest') || '',
+        source: window.localStorage.getItem('userSource') || '',
       };
 
-      const reducedLocalStorageData: { [key: string]: string | string[] } = Object.entries(localStorageData)
-          .filter(([key, value]) => value !== null)
-          .reduce<{ [key: string]: string | string[] }>((acc, [key, value]) => {
-            acc[key] = value;
-            return acc;
-          }, {});
-
       const sanitizedUserData = userDataSanitizationSchema.parse(
-        reducedLocalStorageData
+        localStorageData
       );
 
       try {

@@ -39,11 +39,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
     const { email, name, interests, source } = rawUserData;
 
-    const stringifiedInterests = JSON.stringify(interests);
-
     window.localStorage.setItem('userName', name);
     if (interests) {
-      window.localStorage.setItem('userInterest', stringifiedInterests);
+      window.localStorage.setItem('userInterest', interests);
     }
     if (source) {
       window.localStorage.setItem('userSource', source);

@@ -72,7 +72,7 @@ describe('User Data Validation Utility Functions', () => {
   });
 
   describe('Name Regex', () => {
-    it('should accept names with English letters', () => {
+    it('should accept names in English', () => {
       expect(nameRegex.test('Fake Name')).toBe(true);
     });
 
@@ -92,7 +92,7 @@ describe('User Data Validation Utility Functions', () => {
       expect(nameRegex.test('简体假名')).toBe(true);
     });
 
-    it('should accept names with Arabic', () => {
+    it('should accept names in Arabic', () => {
       expect(nameRegex.test('اسم مزيف')).toBe(true);
     });
 

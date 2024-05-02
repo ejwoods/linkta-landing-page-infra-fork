@@ -28,7 +28,7 @@ export default function LandingPageTreeVisualizationPanel() {
       <h4 className="text-light-text">
         Linkta makes learning easier by uncovering the hidden relationships between concepts.
       </h4>
-      <h4 className="text-light-text">
+      <h4 className="pt-4 text-light-text">
         Our tool allows you to see the big picture and reveals the connections between ideas, enabling you to focus on what matters most.
       </h4>
     </section>

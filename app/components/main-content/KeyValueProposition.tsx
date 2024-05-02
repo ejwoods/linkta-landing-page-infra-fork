@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function KeyValueProposition() {
-    const [hoverIA, setHoverIA] = useState(false);
-    const [hoverAI, setHoverAI] = useState(false);
 
     return (
         <div>

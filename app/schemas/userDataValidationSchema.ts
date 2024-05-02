@@ -26,7 +26,7 @@ const userDataValidationSchema = z.object({
       message: 'Hmm, that email seems a bit short. Could you check it again?',
     })
     .max(254, { message: 'Email can be up to 254 characters.' })
-    .refine((val) => val.length > 254 || emailRegex.test(val), {
+    .refine((val) => val.length > 254 || val.length < 6 || emailRegex.test(val), {
       message:
         'Oops, the email address seems incorrect. Could you check it again?',
     }),

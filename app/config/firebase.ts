@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import {
   type Auth,
-  getAuth
+  getAuth,
 } from 'firebase/auth';
 import type { FirebaseConfig } from '../types/firebase';
 import { getFirestore } from 'firebase/firestore';
@@ -31,7 +31,10 @@ export const auth: Auth = getAuth(firebaseApp); //initialize Firebase Authentica
 auth.useDeviceLanguage(); //detecting/using user perferrd languague on their devices
 export const db = getFirestore(firebaseApp); //initialize Firestore service
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+const redirectUrl = isDevelopment ? 'http://localhost:3000/thank-you' : 'https://linkta.io/thank-you';
 
-
-
-
+export const actionCodeSettings = {
+  url: redirectUrl,
+  handleCodeInApp: true,
+}

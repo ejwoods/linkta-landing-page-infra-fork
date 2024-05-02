@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <>
-      <div className="text-center pt-2 px-10 text-light-text">
+      <div className="text-center pt-2 sm:-mb-4 px-10 text-light-text">
         <span className="justify-start flex-grow">
         ©2024 Linkta L.L.C. All rights reserved.
         </span>

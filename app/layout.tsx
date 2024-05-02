@@ -28,7 +28,7 @@ export default function RootLayout({
             {children}
           </main>
         </MantineProvider>
-        <footer className="absolute -mt-2 border-t-2 w-full sm:bottom-2">
+        <footer className="absolute -mt-2 border-t-2 w-full xl:bottom-0">
           <Footer />
         </footer>
       </body>

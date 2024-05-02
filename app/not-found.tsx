@@ -6,15 +6,15 @@ import { Player } from '@lottiefiles/react-lottie-player';
 export default function NotFound() {
   
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h2 className="mt-12 text-3xl text-left font-semibold">Oops!</h2>
-      <p className="mt-4 text-left">We couldn&apos;t find the page you&apos;re looking for</p>
+    <div className="text-center my-auto">
+      <h2 className="mt-12 text-3xl font-semibold">Oops!</h2>
+      <p className="mt-4 ">We couldn&apos;t find the page you&apos;re looking for</p>
       <div className="flex justify-center items-center mt-12 mb-12" aria-label='Page not found' aria-live='assertive'>
         <Player
         autoplay={true}
         loop={false}
         src={NotFoundAnimation}
-        className="w-[150px] h-[150px]"
+        className="w-[150px] h-[150px] "
         >
         </Player>
       </div>

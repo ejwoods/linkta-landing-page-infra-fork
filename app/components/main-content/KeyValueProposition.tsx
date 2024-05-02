@@ -20,7 +20,7 @@ export default function KeyValueProposition() {
                   Streamline Your Learning with 
                   <span className='text-[#F88639]'> Linkta</span>
               </h1>
-              <h2 className="hidden pt-4 sm:block font-sans sm:font-serif sm:text-light-text sm:mb-2 sm:text-3xl lg:text-4xl xl:text-4xl">
+              <h2 className="hidden lg:pt-4 sm:block font-sans sm:font-serif sm:text-light-text sm:mb-2 sm:text-3xl lg:text-4xl xl:text-4xl">
                   Discover the Structure of Knowledge with the help of AI
               </h2>
             </section>

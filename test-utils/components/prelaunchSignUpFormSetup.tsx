@@ -1,8 +1,8 @@
 import { render, userEvent } from 'test-utils';
 import PrelaunchSignUpForm, { PrelaunchSignUpFormProps } from '@/app/components/main-content/PrelaunchSignUpForm';
 
-jest.mock('@/app/services/firestore', () => ({
-  storeUserDataIfNew: jest.fn(() => Promise.resolve())
+jest.mock('@/app/services/emailAuth', () => ({
+  sendEmailLink: jest.fn()
 }));
 
 /**

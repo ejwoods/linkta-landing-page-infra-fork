@@ -21,20 +21,21 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div className="text-center h-lvh text-light-text">
-      <h2 className="mt-12 text-3xl font-semibold">Oops!</h2>
-      <p className="mt-4 text-left">Something went wrong!</p>
+      <h2 className="mt-36 text-6xl font-semibold">Oops!</h2>
+      <p className="mt-4 text-2xl">Something went wrong!</p>
       <div className="mt-12 mb-12" aria-label='Error page' aria-live='assertive'>
         <Player
         autoplay={true}
         loop={true}
-        className="w-[150px] h-[150px]"
+        className="w-[150px] h-[150px] py-2"
         src={ErrorAnimation}
         >
         </Player>
       </div>
-      <p className="mb-48">
-        Please click <a href="#" className="font-bold hover:text-red-500"onClick={() => reset()}>here</a> to refresh the page or contact us at <a href="mailto:info@linkta.org" className="underline hover:text-red-500">info@linkta.org</a>
-      </p>       
+      <p className="mb-48 text-xl">
+        Please click <a href="#" className="underline decoration-light-link font-semibold" onClick={() => reset()}>here</a> to refresh the Page or
+        Contact us at <a href="mailto:info@linkta.org" className="underline decoration-light-link font-semibold">info@linkta.org</a>
+      </p>     
     </div>
   );
 }

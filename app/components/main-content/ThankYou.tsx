@@ -1,9 +1,9 @@
 'use client'
 
-import heartAnimationData from "../../../public/lottiefiles/heart.json";
-import mailAnimationData from "../../../public/lottiefiles/mail-plane.json";
+import mailAnimationData from '../../../public/lottiefiles/mail-plane.json';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-export default function SubmissionStatus() {
+
+const ThankYou = () => {
   const linktaEmail = 'info@linkta.org';
   
   return (
@@ -33,4 +33,6 @@ export default function SubmissionStatus() {
       </section>
     </article>
   )
-}
+};
+
+export default ThankYou;

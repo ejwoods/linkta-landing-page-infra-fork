@@ -1,7 +1,7 @@
 'use client';
 import { Suspense, lazy, useEffect, useState } from 'react';
 import KeyValueProposition from './components/main-content/KeyValueProposition';
-import SubmissionStatus from './components/main-content/SubmissionStatus';
+import EmailVerificationPrompt from './components/main-content/EmailVerificationPrompt';
 import PrelaunchSignUpForm from './components/main-content/PrelaunchSignUpForm';
 import Loading from './loading';
 import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
@@ -40,7 +40,7 @@ export default function Home() {
         </Suspense>
         <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-12">
           <article className='max-w-[430px] z-10'>
-            {isSubmitted ? <SubmissionStatus /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
+            {isSubmitted ? <EmailVerificationPrompt /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
           </article>
         </section>
       </div>

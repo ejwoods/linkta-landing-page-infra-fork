@@ -42,7 +42,7 @@ export default function ThankYouPage() {
       </Suspense>
       <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-12 xl:mx-auto">
         <article className='max-w-[430px] z-10 -mt-4'>
-         {isLoading ? <Loading /> : <ThankYou />}
+         <ThankYou />
         </article>
       </section>
     </div>

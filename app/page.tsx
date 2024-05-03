@@ -15,7 +15,7 @@ export default function Home() {
 
   /**
    * useEffect to manage the display of submission status.
-   * Sets a timer to reset the submission status after 3 seconds of display.
+   * Sets a long timer to reset the submission status after to ensure user have enough time to view the submission confirmation.
    */
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;;

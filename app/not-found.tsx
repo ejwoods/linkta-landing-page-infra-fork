@@ -19,9 +19,8 @@ export default function NotFound() {
         </Player>
       </div>
       <p className="mb-48 text-xl">
-        Please click <a href="#" className="underline decoration-light-link font-semibold">here</a> to refresh the Page or
-        Contact us at <a href="mailto:info@linkta.org" className="underline decoration-light-link font-semibold">info@linkta.org</a>
-      </p>  
+        Please click <a href="/" className="underline decoration-light-link font-semibold">here</a> to return home or contact us at <a href="mailto:info@linkta.org" className="underline decoration-light-link font-semibold">info@linkta.org</a>
+      </p>
     </div>
   )
 };

@@ -14,11 +14,11 @@ export default function KeyValueProposition() {
             />
             <section className='mt-10 sm:-mr-96 lg:-mr-56 '>
               <h1 className="text-4xl sm:text-3xl lg:text-5xl xl:text-6xl">
-                  Streamline Your Learning with 
+                  Streamline Your Learning with
                   <span className='text-[#F88639]'> Linkta</span>
               </h1>
               <h2 className="hidden lg:pt-4 sm:block font-sans sm:font-serif sm:text-light-text sm:mb-2 sm:text-3xl lg:text-4xl xl:text-4xl">
-                  Discover the Structure of Knowledge with the help of AI
+                  Discover the Structure of Knowledge with the Help of AI
               </h2>
             </section>
         </section>

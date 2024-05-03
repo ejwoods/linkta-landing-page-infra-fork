@@ -33,9 +33,9 @@ export default function Error({ error, reset }: ErrorProps) {
         </Player>
       </div>
       <p className="mb-48 text-xl">
-        Please click <a href="#" className="underline decoration-light-link font-semibold" onClick={() => reset()}>here</a> to refresh the Page or
-        Contact us at <a href="mailto:info@linkta.org" className="underline decoration-light-link font-semibold">info@linkta.org</a>
-      </p>     
+        Please click <a href="#" className="underline decoration-light-link font-semibold" onClick={() => reset()}>here</a> to refresh the page or
+        contact us at <a href="mailto:info@linkta.org" className="underline decoration-light-link font-semibold">info@linkta.org</a>
+      </p>
     </div>
   );
 }

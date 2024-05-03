@@ -36,11 +36,11 @@ export default function ThankYouPage() {
     <KeyValueProposition/>
     <div className='flex flex-col sm:flex-row sm:justify-between lg:ml-10'>
       <Suspense fallback={<Loading />}>
-        <div className="sm:w-2/3 sm:order-2 z-0">
+        <div className="sm:w-2/3 sm:-ml-20 z-0">
           <LandingPageTreeVisualizationPanel />
         </div>
       </Suspense>
-      <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-12 xl:mx-auto">
+      <section id="thank-you" className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:-ml-20 mt-2 mb-12 xl:mx-auto">
         <article className='max-w-[430px] z-10 -mt-4'>
          <ThankYou />
         </article>

@@ -5,7 +5,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 
 export default function LottieAnimateLoader() {
   return (
-    <div aria-label='Loading content' aria-live='assertive'>
+    <div aria-label='Loading content' aria-live='assertive' className="mx-auto text-center my-auto">
       <Player
         autoplay
         loop

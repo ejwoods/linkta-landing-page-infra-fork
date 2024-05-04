@@ -29,7 +29,7 @@ const ThankYou = () => {
         </Player>        
       </div>
       <section>
-        <p>If you&apos;d like to keep updated with the project, <a href='https://www.linkedin.com/company/100947448/' className="underline decoration-light-link font-semibold">follow us on LinkedIn!</a> or Email us at <a href={`mailto:${linktaEmail}`} className="underline decoration-light-link font-semibold">{linktaEmail}</a> </p>
+        <p>If you&apos;d like to keep updated with the project, <a href='https://www.linkedin.com/company/100947448/' className="underline decoration-light-link font-semibold">follow us on LinkedIn!</a> or email us at <a href={`mailto:${linktaEmail}`} className="underline decoration-light-link font-semibold">{linktaEmail}</a> </p>
       </section>
     </article>
   )

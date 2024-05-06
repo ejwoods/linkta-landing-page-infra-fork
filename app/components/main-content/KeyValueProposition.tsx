@@ -1,8 +1,27 @@
+import Image from 'next/image';
+
 export default function KeyValueProposition() {
+
     return (
-      <section>
-        <h1>Streamline Your Learning with Linkta: Discover the Structure of Knowledge</h1>
-        <h4>Linkta makes learning easier by uncovering the hidden relationships between concepts. Our tool allows you to see the big picture and reveals the connections between ideas, enabling you to focus on what matters most.</h4>
-      </section>
-    )
+        <div>
+        <section className="flex pl-4 font-serif font-bold px-2 mt-12 mb-6 text-light-text align-top">
+            <Image
+              src="/linkta-logo-transparent.svg"
+              width={150}
+              height={150}
+              alt="Linkta Logo"
+              className='scale-[0.75] sm:scale-[0.8] lg:scale-[1] mt-4 -ml-8'
+            />
+            <section className='mt-10 sm:-mr-96 lg:-mr-56 '>
+              <h1 className="text-4xl sm:text-3xl lg:text-5xl xl:text-6xl">
+                  Streamline Your Learning with
+                  <span className='text-[#F88639]'> Linkta</span>
+              </h1>
+              <h2 className="hidden lg:pt-4 sm:block font-sans sm:font-serif sm:text-light-text sm:mb-2 sm:text-3xl lg:text-4xl xl:text-4xl">
+                  Discover the Structure of Knowledge with the Help of AI
+              </h2>
+            </section>
+        </section>
+      </div>
+    );
 }

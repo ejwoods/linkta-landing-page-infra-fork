@@ -1,10 +1,10 @@
 'use client';
 import { Suspense, lazy, useEffect, useState } from 'react';
-import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import KeyValueProposition from './components/main-content/KeyValueProposition';
 import EmailVerificationPrompt from './components/main-content/EmailVerificationPrompt';
 import PrelaunchSignUpForm from './components/main-content/PrelaunchSignUpForm';
 import Loading from './loading';
+import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 
 const LandingPageTreeVisualizationPanel = lazy(() => import('./components/main-content/LandingPageTreeVisualizationPanel'));
 
@@ -15,35 +15,35 @@ export default function Home() {
 
   /**
    * useEffect to manage the display of submission status.
-   * Sets a timer to reset the submission status after 3 seconds of display.
+   * Sets a long timer to reset the submission status after to ensure user have enough time to view the submission confirmation.
    */
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;;
     if (isSubmitted) {
       timeoutId = setTimeout(() => {
         setIsSubmitted(false);
-      }, 3000);
+      }, 12000000);
     }
 
     return () => clearTimeout(timeoutId);
   }, [isSubmitted]);
 
   return (
-    <>
-      <header className="sm:hidden ml-0">
-        <LinktaLogoWithText />
-      </header>
-      <main>
-        <div>
-          <KeyValueProposition />
-          {isSubmitted ? <EmailVerificationPrompt /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
-        </div>
-          <div className="flex flex-col justify-center sm:flex-row-reverse">
-            <Suspense fallback={<Loading />}>
-              <LandingPageTreeVisualizationPanel />
-            </Suspense>
+    <div className="lg:ml-20">
+      <span className="hidden"><LinktaLogoWithText /></span>
+      <KeyValueProposition/>
+      <div className='flex flex-col sm:flex-row sm:justify-between lg:ml-10'>
+        <Suspense fallback={<Loading />}>
+          <div className="sm:w-2/3 sm:order-2 z-0">
+            <LandingPageTreeVisualizationPanel />
           </div>
-      </main>
-    </>
+        </Suspense>
+        <section className="w-full flex flex-col justify-between min-w-[360px] sm:w-1/3 sm:order-1 mt-2 mb-12">
+          <article className='max-w-[430px] z-10'>
+            {isSubmitted ? <EmailVerificationPrompt /> : <PrelaunchSignUpForm handleSuccessfulSubmit={handleSuccessfulSubmit} />}
+          </article>
+        </section>
+      </div>
+    </div>
   );
 }

@@ -5,12 +5,12 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
 
   it('renders the name TextInput accessibly and with the correct label', () => {
     prelaunchSignUpFormSetup();
-    expect(screen.getByRole('textbox', { name: 'What is your name? (required)' })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Name (required)' })).toBeInTheDocument();
   });
   
   it('renders the email TextInput accessibly and with the correct label', () => {
     prelaunchSignUpFormSetup();
-    expect(screen.getByRole('textbox', { name: 'Where can we email you? (required)' })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Email (required)' })).toBeInTheDocument();
   });  
 
   it('renders the interests TextInput accessibly and with the correct label', () => {
@@ -25,14 +25,14 @@ describe('TextInput components in PrelaunchSignUpForm', () => {
 
   it('allows users to enter text into the name TextInput', async () => {
     const { user } = prelaunchSignUpFormSetup();
-    const input = screen.getByRole('textbox', { name: 'What is your name? (required)' }) as HTMLInputElement;
+    const input = screen.getByRole('textbox', { name: 'Name (required)' }) as HTMLInputElement;
     await user.type(input, 'Mabel Wuckert');
     expect(input.value).toBe('Mabel Wuckert');
   });
 
   it('allows users to enter text into the email TextInput', async () => {
     const { user } = prelaunchSignUpFormSetup();
-    const input = screen.getByRole('textbox', { name: 'Where can we email you? (required)'}) as HTMLInputElement;
+    const input = screen.getByRole('textbox', { name: 'Email (required)'}) as HTMLInputElement;
     await user.type(input, 'mabel.w@gmail.com');
     expect(input.value).toBe('mabel.w@gmail.com');
   });

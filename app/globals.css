@@ -1,14 +1,19 @@
 @tailwind base;
 
 @layer base {
-  main div {
-    /* This will apply all of these values to <div> elements under main */
-    @apply m-auto flex flex-col items-center justify-center;
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1 {
-    @apply font-serif text-3xl font-semibold;
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
   }
+
 
   /* The following is for handling form elements with Mantine */
   .button-primary {

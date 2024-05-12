@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
 
   return (
     <div>
-      <header className="w-full border-b border-t-2 p-4">
+      <header className="w-full border-b py-2">
         <Link href="/" aria-label="Click to go back to homepage"><LinktaLogoWithText /></Link>
       </header>
       <div className="container mx-auto py-8">

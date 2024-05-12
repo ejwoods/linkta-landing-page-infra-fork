@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import LinktaLogoWithText from '../components/layout/LinktaLogoWithText';
 
 export default function PrivacyPolicy() {
@@ -8,7 +9,7 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <header className="w-full border-b border-t-2 p-4">
-        <LinktaLogoWithText />
+        <Link href="/" aria-label="Click to go back to homepage"><LinktaLogoWithText /></Link>
       </header>
       <div className="container mx-auto py-8">
         <article aria-labelledby="privacy-policy-header">

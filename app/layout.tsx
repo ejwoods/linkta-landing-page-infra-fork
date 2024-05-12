@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className='max-w-full h-full bg-[#F5F5F5]'>
+      <body className='flex flex-col min-h-screen bg-[#F5F5F5]'>
         <header className="hidden">
           <LinktaLogoWithText />
         </header>
@@ -28,7 +28,7 @@ export default function RootLayout({
             {children}
           </main>
         </MantineProvider>
-        <footer className="absolute -mt-2 border-t-2 w-full xl:bottom-0">
+        <footer className="border-t-2">
           <Footer />
         </footer>
       </body>

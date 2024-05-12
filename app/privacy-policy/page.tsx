@@ -9,7 +9,12 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <header className="w-full border-b py-2">
-        <Link href="/" aria-label="Click to go back to homepage"><LinktaLogoWithText /></Link>
+        <Link
+          href="/"
+          aria-label="Click to go back to homepage"
+        >
+          <LinktaLogoWithText />
+        </Link>
       </header>
       <div className="container mx-auto py-8">
         <article aria-labelledby="privacy-policy-header">

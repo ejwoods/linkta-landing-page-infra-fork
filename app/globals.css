@@ -4,7 +4,7 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  
+
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -43,3 +43,40 @@
 
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .section-base {
+    @apply mb-2;
+  }
+
+  .section-header-base {
+    @apply section-base font-bold;
+  }
+
+  .section-body {
+    @apply mb-6;
+  }
+  .section-header {
+    @apply section-header-base text-2xl;
+  }
+
+  .section-subheader {
+    @apply section-header-base text-xl;
+  }
+
+  .section--tertiary-header {
+    @apply section-header-base text-lg;
+  }
+
+  .section-paragraph {
+    @apply section-base text-base leading-relaxed;
+  }
+
+  .list {
+    @apply section-base space-y-2;
+  }
+
+  .list-item {
+    @apply flex list-inside list-disc items-center space-x-2;
+  }
+}

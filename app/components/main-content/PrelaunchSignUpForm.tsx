@@ -8,7 +8,7 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import userDataValidationSchema, {
   type UserDataValidation,
 } from '@/app/schemas/userDataValidationSchema';
-import PrivacyAgreement from '../common/PrivacyAgreement';
+import UserConsent from './UserConsent';
 import UniversalButton from '../common/UniversalButton';
 import classes from '../../PrelaunchSignUpForm.module.css'
 import { sendEmailLink } from '@/app/services/emailAuth';
@@ -134,9 +134,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
                 disabled={isLoading}
               />
 
-              <footer className="pt-2 mb-2 text-light-text">
-                <PrivacyAgreement />
-              </footer>
+              <div className="pt-2 mb-2 text-light-text">
+                <UserConsent />
+              </div>
             </section>
           </section>
         </form>

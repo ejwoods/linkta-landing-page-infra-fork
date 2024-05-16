@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Footer from './components/layout/Footer';
-import LinktaLogoWithText from './components/layout/LinktaLogoWithText';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 
 export const metadata: Metadata = {
@@ -19,16 +18,16 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className='flex flex-col min-h-screen bg-[#F5F5F5]'>
-        <header className="hidden">
+      <body className='min-h-screen w-dvw bg-[#F5F5F5]'>
+        {/* <header className="hidden">
           <LinktaLogoWithText />
-        </header>
+        </header> */}
         <MantineProvider>
-          <main className="relative container my-auto overflow-x-clip sm:overflow-x-visible xl:overflow-x-clip xl:overflow-y-visible xl:pl-12 xl:mx-auto">
+          <main className="min-h-screen w-dvw">
             {children}
           </main>
         </MantineProvider>
-        <footer className="border-t-2">
+        <footer className="static">
           <Footer />
         </footer>
       </body>

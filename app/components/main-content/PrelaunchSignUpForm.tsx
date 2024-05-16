@@ -62,9 +62,9 @@ const PrelaunchSignUpForm: React.FC<PrelaunchSignUpFormProps> = ({
 
   return (
     <>
-      <Box className="mx-auto my-10 sm:px-4 ">
+      <Box className="my-10 sm:px-10 max-w-lg">
         <form onSubmit={form.onSubmit(handleSignupSubmit)}>
-          <h4 className="font-semibold text-base lg:text-lg mb-8 tracking-tight text-light-border text-center">
+          <h4 className="font-semibold text-base text-lg mb-8 tracking-tight text-light-border text-center">
             Get exclusive early access to Linkta
           </h4>
           <section

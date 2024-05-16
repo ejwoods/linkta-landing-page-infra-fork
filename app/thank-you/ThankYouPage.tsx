@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, lazy, useEffect, useState } from 'react';
-import KeyValueProposition from '../components/main-content/KeyValueProposition';
+import HeadlineProposition from '../components/main-content/HeadlineProposition';
 import { isSignInWithEmailLink } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { authenticateAndSaveUserDataFromEmailRedirect } from '../services/emailAuth';
@@ -33,7 +33,7 @@ export default function ThankYouPage() {
   return (
     <div className="lg:ml-20">
     <span className="hidden"><LinktaLogoWithText /></span>
-    <KeyValueProposition/>
+    <HeadlineProposition/>
     <div className='flex flex-col sm:flex-row sm:justify-between lg:ml-10'>
       <Suspense fallback={<Loading />}>
         <div className="sm:w-2/3 sm:-ml-20 z-0">

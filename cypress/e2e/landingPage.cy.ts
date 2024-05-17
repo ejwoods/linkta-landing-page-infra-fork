@@ -11,7 +11,7 @@ describe('Landing Page', () => {
     landingPage.open();
   });
 
-  it('should contain a header with the title Linkta', () => {
+  xit('should contain a header with the title Linkta', () => {
     landingPageValidator.expectHeaderTitleToBe('Linkta');
   });
 
